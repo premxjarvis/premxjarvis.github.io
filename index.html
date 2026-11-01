@@ -3,644 +3,505 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#050914">
-<title>J.A.R.V.I.S. V2 — Prem Patel</title>
+<title>J.A.R.V.I.S. V2 | Prem Patel</title>
 
 <style>
 :root{
---bg:#050914;
---card:#0c192b;
---line:#1d3a58;
---blue:#38bdf8;
---cyan:#75e6ff;
---txt:#eaf6ff;
---muted:#91a9c1;
---green:#54e3a4;
+  --bg:#030712;
+  --panel:#081426;
+  --blue:#00b7ff;
+  --text:#eaf7ff;
+  --muted:#8ba8bd;
+  --border:#123a58;
 }
 *{box-sizing:border-box}
 body{
-margin:0;
-background:radial-gradient(ellipse at top,#102a48,#050914 65%);
-color:var(--txt);
-font:15px system-ui;
-min-height:100vh;
+  margin:0;
+  background:radial-gradient(circle at top,#09213b,#030712 55%);
+  color:var(--text);
+  font-family:Arial,sans-serif;
 }
 header{
-position:sticky;
-top:0;
-background:#050914ee;
-backdrop-filter:blur(12px);
-border-bottom:1px solid var(--line);
-padding:13px 18px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:5;
+  padding:22px 15px;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+  background:#030a14;
 }
-.brand{display:flex;align-items:center;gap:10px}
-.logo{
-width:42px;height:42px;
-display:grid;place-items:center;
-border:1px solid var(--blue);
-border-radius:13px;
-color:var(--cyan);
-font-weight:900;
-font-size:22px;
-box-shadow:0 0 18px #38bdf855;
+header h1{
+  margin:0;
+  color:var(--blue);
+  letter-spacing:5px;
+  text-shadow:0 0 15px var(--blue);
 }
-.brand b{letter-spacing:2px}
-.brand small{display:block;color:var(--muted);font-size:10px}
-.status{
-color:var(--green);
-border:1px solid #54e3a455;
-padding:5px 9px;
-border-radius:30px;
-font-size:11px;
-}
-main{max-width:1100px;margin:auto;padding:24px 16px 50px}
-.hero{
-border:1px solid #245078;
-border-radius:23px;
-padding:25px;
-background:linear-gradient(120deg,#102944,#091525);
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:15px;
-box-shadow:0 18px 50px #0006;
-}
-.eyebrow{color:var(--cyan);font-size:11px;letter-spacing:3px;font-weight:bold}
-.hero h1{font-size:clamp(26px,5vw,40px);margin:8px 0}
-.hero p,.hint{color:var(--muted);margin:0}
+header p{color:var(--muted);font-size:12px}
+.status{color:#00ff9d;font-size:12px}
+.container{max-width:1000px;margin:auto;padding:15px}
 .core{
-width:85px;height:85px;
-border:1px solid var(--cyan);
-border-radius:50%;
-display:grid;place-items:center;
-font-size:34px;color:var(--cyan);
-box-shadow:0 0 28px #38bdf866;
-animation:pulse 2s infinite;
+  width:105px;height:105px;border-radius:50%;
+  margin:20px auto;
+  border:3px solid var(--blue);
+  box-shadow:0 0 20px var(--blue),inset 0 0 20px var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  font-size:30px;
+  animation:pulse 2s infinite;
 }
 @keyframes pulse{
-50%{box-shadow:0 0 45px #38bdf8aa;transform:scale(1.04)}
+  50%{box-shadow:0 0 40px var(--blue),inset 0 0 30px var(--blue)}
 }
-h2{font-size:18px;margin:27px 0 12px}
+.card{
+  background:linear-gradient(145deg,#0a1c31,#050d19);
+  border:1px solid var(--border);
+  border-radius:13px;
+  padding:16px;margin:12px 0;
+  box-shadow:0 5px 20px #0005;
+}
+h2{color:var(--blue);font-size:18px}
 .grid{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(155px,1fr));
-gap:12px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(135px,1fr));
+  gap:10px;
 }
-.tool{
-cursor:pointer;text-align:left;color:var(--txt);
-background:linear-gradient(145deg,#10223a,#091322);
-border:1px solid var(--line);
-border-radius:16px;padding:15px;min-height:108px;
-transition:.2s;
+button{
+  background:#09243c;color:white;
+  border:1px solid #087db2;
+  border-radius:8px;padding:11px;
+  cursor:pointer;font-weight:bold;
 }
-.tool:hover{
-border-color:var(--blue);
-transform:translateY(-3px);
-box-shadow:0 8px 25px #168bd522;
-}
-.tool strong{display:block;margin:7px 0 2px}
-.tool small{color:var(--muted)}
-.ico{font-size:23px}
-#work{
-margin-top:22px;
-background:#091525;
-border:1px solid var(--line);
-border-radius:19px;
-padding:18px;
-min-height:190px;
-}
-label{display:block;margin:12px 0 6px;color:#c5d8e9;font-size:13px}
+button:hover{background:#07517a}
 input,textarea,select{
-width:100%;
-background:#050c18;
-color:var(--txt);
-border:1px solid #294966;
-border-radius:10px;
-padding:12px;
-font:inherit;
+  width:100%;padding:12px;margin:6px 0;
+  background:#030b16;color:white;
+  border:1px solid #174565;border-radius:7px;
 }
-textarea{min-height:100px}
-button.action{
-background:linear-gradient(110deg,#087bc2,#25bce9);
-border:0;border-radius:10px;
-padding:11px 15px;
-color:#00111d;font-weight:bold;
-cursor:pointer;margin:10px 7px 0 0;
+textarea{min-height:90px;resize:vertical}
+.tool{display:none}
+.tool.active{display:block}
+.chatbox{
+  height:260px;overflow-y:auto;
+  background:#020914;border:1px solid var(--border);
+  padding:10px;border-radius:8px;margin:10px 0;
 }
-button.secondary{
-background:#142943;color:var(--txt);
-border:1px solid #294966;
+.msg{padding:9px;margin:7px 0;border-radius:8px;white-space:pre-wrap;overflow-wrap:anywhere}
+.user{background:#073451;text-align:right}
+.bot{background:#101f31;border-left:3px solid var(--blue)}
+.small{font-size:12px;color:var(--muted)}
+.output{
+  padding:12px;background:#020914;
+  border:1px solid var(--border);
+  border-radius:7px;min-height:35px;
+  overflow-wrap:anywhere;margin-top:10px;
 }
-.result{
-background:#050d19;
-border:1px solid var(--line);
-border-radius:11px;
-padding:12px;margin-top:13px;
-white-space:pre-wrap;overflow-wrap:anywhere;
-}
-.warning{
-background:#2b2111;color:#ffdda0;
-border-left:3px solid #ffc96b;
-border-radius:8px;padding:10px;
-margin-top:12px;font-size:12px;
-}
-.chatlog{
-height:280px;overflow:auto;
-background:#050c18;
-border:1px solid var(--line);
-border-radius:10px;padding:10px;
-}
-.bubble{
-padding:10px 12px;
-border-radius:10px;
-margin:7px 0;
-white-space:pre-wrap;
-overflow-wrap:anywhere;
-}
-.user{background:#123b5a;margin-left:12%}
-.bot{background:#132238;margin-right:12%}
-.chatrow{display:flex;gap:8px;margin-top:10px}
-.chatrow input{flex:1;min-width:0}
-a{color:var(--cyan)}
-.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:25px}
-@media(max-width:550px){
-.grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-.hero{padding:19px}
-.core{width:65px;height:65px;font-size:27px}
-.tool{padding:12px}
-}
+footer{text-align:center;color:var(--muted);padding:25px;font-size:12px}
+a{color:#32c5ff}
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="brand">
-<span class="logo">J</span>
-<div>
-<b>J.A.R.V.I.S.</b>
-<small>PERSONAL TECH ASSISTANT · V2.0</small>
-</div>
-</div>
-<span class="status">● SYSTEM ONLINE</span>
+<h1>J.A.R.V.I.S.</h1>
+<p>JUST A RATHER VERY INTELLIGENT SYSTEM</p>
+<div class="status">● SYSTEM ONLINE | VERSION 2.0</div>
 </header>
 
-<main>
+<div class="container">
 
-<section class="hero">
-<div>
-<div class="eyebrow">JUST A RATHER VERY INTELLIGENT SYSTEM</div>
-<h1>Welcome, Commander Prem</h1>
-<p>Your personal technology dashboard is ready.</p>
-</div>
-<div class="core">◉</div>
-</section>
+<div class="core">J</div>
+<h2 style="text-align:center">WELCOME COMMANDER PREM</h2>
+<p class="small" style="text-align:center">Personal Assistant System | Created by Prem Patel</p>
 
-<h2>Explore Tools ⚡</h2>
-
+<div class="card">
+<h2>⚡ CONTROL CENTER</h2>
 <div class="grid">
-<button class="tool" onclick="openTool('chat')"><span class="ico">🧠</span><strong>Smart Assistant</strong><small>Hindi · English · Bhojpuri</small></button>
-<button class="tool" onclick="openTool('link')"><span class="ico">🔗</span><strong>Link Checker</strong><small>URL warning signs</small></button>
-<button class="tool" onclick="openTool('file')"><span class="ico">🛡️</span><strong>File Check</strong><small>File details & SHA-256</small></button>
-<button class="tool" onclick="openTool('video')"><span class="ico">🎬</span><strong>Video Link</strong><small>Recognise & open links</small></button>
-<button class="tool" onclick="openTool('text')"><span class="ico">✍️</span><strong>Text Checker</strong><small>Spelling & spacing</small></button>
-<button class="tool" onclick="openTool('calc')"><span class="ico">🧮</span><strong>Calculator</strong><small>Basic arithmetic</small></button>
-<button class="tool" onclick="openTool('notes')"><span class="ico">📝</span><strong>Private Notes</strong><small>Browser storage</small></button>
-<button class="tool" onclick="openTool('tasks')"><span class="ico">✅</span><strong>To-do List</strong><small>Daily task tracker</small></button>
-<button class="tool" onclick="openTool('voice')"><span class="ico">🎙️</span><strong>Voice Tools</strong><small>Speech input & output</small></button>
-<button class="tool" onclick="openTool('about')"><span class="ico">👨‍💻</span><strong>Developer</strong><small>Contact Prem Patel</small></button>
+<button onclick="showTool('chat')">🤖 Smart AI Chat</button>
+<button onclick="showTool('link')">🔗 Link Checker</button>
+<button onclick="showTool('file')">📁 File Scanner</button>
+<button onclick="showTool('video')">🎬 Video Tool</button>
+<button onclick="showTool('text')">📝 Text Helper</button>
+<button onclick="showTool('calc')">🧮 Calculator</button>
+<button onclick="showTool('notes')">📒 Notes</button>
+<button onclick="showTool('tasks')">✅ To-Do List</button>
+<button onclick="showTool('voice')">🎙️ Voice Assistant</button>
+<button onclick="showTool('about')">👨‍💻 Developer</button>
+</div>
 </div>
 
-<section id="work">
-<h3>Choose a tool</h3>
-<p class="hint">J.A.R.V.I.S. is ready. Tap any option above.</p>
-</section>
+<!-- SMART CHAT -->
+<section id="chat" class="card tool active">
+<h2>🤖 JARVIS SMART ASSISTANT</h2>
+<p class="small">Demo assistant • Hindi • Hinglish • English • Basic Bhojpuri</p>
 
-<div class="footer">
-J.A.R.V.I.S. V2.0 · Built by <b>Prem Patel</b><br>
-Public demo · Do not enter passwords, OTPs or private information.
-</div>
-
-</main>
-
-<script>
-const W=document.getElementById("work");
-let corrected="";
-
-function panel(title,description,content){
-W.innerHTML="<h3>"+title+"</h3><p class='hint'>"+description+"</p>"+content;
-}
-
-function result(id,text){
-const el=document.getElementById(id);
-if(!el)return;
-el.style.display="block";
-el.textContent=text;
-}
-
-function esc(s){
-return String(s).replace(/[&<>"']/g,c=>({
-"&":"&amp;","<":"&lt;",">":"&gt;",
-'"':"&quot;","'":"&#39;"
-}[c]));
-}
-
-function openTool(t){
-
-if(t==="chat"){
-panel("🧠 J.A.R.V.I.S. Smart Assistant",
-"Free built-in demo assistant. Not connected to live AI.",
-`
-<label>Language</label>
 <select id="language">
-<option value="auto">Automatic</option>
+<option value="auto">Auto Language</option>
 <option value="hinglish">Hinglish</option>
 <option value="hindi">Hindi</option>
 <option value="english">English</option>
 <option value="bhojpuri">Bhojpuri</option>
 </select>
-<div id="log" class="chatlog"></div>
-<div class="chatrow">
-<input id="msg" placeholder="Ask J.A.R.V.I.S. anything..." onkeydown="if(event.key==='Enter')sendChat()">
-<button class="action" onclick="sendChat()">Send</button>
+
+<div class="chatbox" id="chatbox"></div>
+<input id="chatInput" placeholder="Commander, type your message..." onkeydown="if(event.key==='Enter')sendChat()">
+<div class="grid">
+<button onclick="sendChat()">SEND ➤</button>
+<button onclick="clearChat()">CLEAR CHAT</button>
 </div>
-<button class="action secondary" onclick="clearChat()">Clear Chat</button>
-<div class="warning">Demo assistant: replies are based on built-in rules, not a live AI model.</div>
-`);
-loadChat();
-if(!document.getElementById("log").children.length){
-addChat("bot","Hello Prem! J.A.R.V.I.S. V2 online. 🤖");
-}
-}
+</section>
 
-if(t==="link")panel("🔗 Link Checker","Checks basic URL warning signs locally—not a live threat database.",`
-<label>Website URL</label>
-<input id="url" placeholder="https://example.com">
-<button class="action" onclick="linkCheck()">Analyse</button>
-<div id="lr" class="result" style="display:none"></div>
-<div class="warning">A safe-looking URL is not proof of safety. Never share passwords or OTPs on unfamiliar sites.</div>
-`);
+<!-- LINK CHECKER -->
+<section id="link" class="card tool">
+<h2>🔗 LINK FORMAT CHECKER</h2>
+<input id="linkInput" placeholder="https://example.com">
+<button onclick="checkLink()">CHECK LINK</button>
+<div id="linkResult" class="output"></div>
+<p class="small">Note: Ye URL format check karta hai, live malware ya reputation scan nahi.</p>
+</section>
 
-if(t==="file")panel("🛡️ File Check","File details and SHA-256 fingerprint. Not antivirus.",`
-<label>Select a file</label>
-<input type="file" id="file">
-<button class="action" onclick="fileCheck()">Inspect File</button>
-<div id="fr" class="result" style="display:none"></div>
-<div class="warning">This tool cannot certify a file as malware-free.</div>
-`);
+<!-- FILE SCANNER -->
+<section id="file" class="card tool">
+<h2>📁 FILE HASH TOOL</h2>
+<input type="file" id="fileInput">
+<button onclick="checkFile()">ANALYZE FILE</button>
+<div id="fileResult" class="output"></div>
+<p class="small">File ka naam, size aur SHA-256 hash check hoga. Ye antivirus nahi hai.</p>
+</section>
 
-if(t==="video")panel("🎬 Video Link","Recognises and opens a valid web URL.",`
-<label>Video URL</label>
-<input id="vid" placeholder="Paste video URL">
-<button class="action" onclick="videoOpen()">Check & Open</button>
-<div id="vr" class="result" style="display:none"></div>
-`);
+<!-- VIDEO -->
+<section id="video" class="card tool">
+<h2>🎬 VIDEO LINK TOOL</h2>
+<input id="videoInput" placeholder="Paste video URL">
+<button onclick="openVideo()">OPEN VIDEO</button>
+<div id="videoResult" class="output"></div>
+</section>
 
-if(t==="text")panel("✍️ Text Checker","Basic English spelling and spacing hints.",`
-<label>Your text</label>
-<textarea id="txt" placeholder="Type or paste text..."></textarea>
-<button class="action" onclick="textCheck()">Check Text</button>
-<button class="action secondary" onclick="copyText()">Copy Corrected Text</button>
-<div id="tr" class="result" style="display:none"></div>
-`);
+<!-- TEXT -->
+<section id="text" class="card tool">
+<h2>📝 TEXT HELPER</h2>
+<textarea id="textInput" placeholder="Enter your English text..."></textarea>
+<button onclick="fixText()">IMPROVE TEXT</button>
+<div id="textResult" class="output"></div>
+<p class="small">Basic spacing and capitalization helper. Full grammar checker nahi.</p>
+</section>
 
-if(t==="calc")panel("🧮 Calculator","Basic arithmetic.",`
-<label>Expression</label>
-<input id="expr" placeholder="(25 + 15) * 2">
-<button class="action" onclick="calculate()">Calculate</button>
-<div id="cr" class="result" style="display:none"></div>
-`);
+<!-- CALCULATOR -->
+<section id="calc" class="card tool">
+<h2>🧮 SMART CALCULATOR</h2>
+<input id="calcInput" placeholder="Example: (25+15)*2">
+<button onclick="calculate()">CALCULATE</button>
+<div id="calcResult" class="output"></div>
+</section>
 
-if(t==="notes")panel("📝 Private Notes","Notes are saved only in this browser.",`
-<label>Write a note</label>
-<textarea id="note" placeholder="Your note..."></textarea>
-<button class="action" onclick="saveNote()">Save</button>
-<button class="action secondary" onclick="loadNoteTool()">Load</button>
-<button class="action secondary" onclick="deleteNote()">Delete</button>
-<div id="nr" class="result">Notes stay in this browser's local storage.</div>
-`);
+<!-- NOTES -->
+<section id="notes" class="card tool">
+<h2>📒 PERSONAL NOTES</h2>
+<textarea id="noteInput" placeholder="Write your notes..."></textarea>
+<button onclick="saveNote()">SAVE NOTE</button>
+<div id="noteResult" class="output"></div>
+</section>
 
-if(t==="tasks"){
-panel("✅ To-do List","Tasks are saved in this browser.",`
-<div class="chatrow">
-<input id="task" placeholder="Add a task">
-<button class="action" onclick="addTask()">Add</button>
+<!-- TODO -->
+<section id="tasks" class="card tool">
+<h2>✅ TASK MANAGER</h2>
+<input id="taskInput" placeholder="Enter your task">
+<button onclick="addTask()">ADD TASK</button>
+<div id="taskList" class="output"></div>
+</section>
+
+<!-- VOICE -->
+<section id="voice" class="card tool">
+<h2>🎙️ VOICE ASSISTANT</h2>
+<button onclick="startVoice()">🎤 START SPEAKING</button>
+<button onclick="speakText('Hello Commander Prem. JARVIS is online.')">🔊 TEST VOICE</button>
+<div id="voiceResult" class="output">Voice system ready.</div>
+<p class="small">Voice support browser aur device par depend karta hai.</p>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="card tool">
+<h2>👨‍💻 DEVELOPER PROFILE</h2>
+<h3>PREM PATEL</h3>
+<p>Cybersecurity Learner | Tech Enthusiast | Developer</p>
+<p>Instagram: <a href="https://instagram.com/prime__sgod" target="_blank" rel="noopener">@prime__sgod</a></p>
+<p>Instagram: <a href="https://instagram.com/patel.darkxx.in" target="_blank" rel="noopener">@patel.darkxx.in</a></p>
+<p>Telegram: <a href="https://t.me/patelxbotx" target="_blank" rel="noopener">patelxbotx</a></p>
+<p>Email: <a href="mailto:premkumar2008@gmail.com">premkumar2008@gmail.com</a></p>
+<p class="small">J.A.R.V.I.S. V2 | Built by Prem Patel</p>
+</section>
+
 </div>
-<div id="tasklist" class="result"></div>
-`);
-renderTasks();
+
+<footer>
+J.A.R.V.I.S. V2.0<br>
+DESIGNED & DEVELOPED BY PREM PATEL
+</footer>
+
+<script>
+/* NAVIGATION */
+function showTool(id){
+ document.querySelectorAll('.tool').forEach(x=>x.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
 }
 
-if(t==="voice")panel("🎙️ Voice Tools","Depends on browser and device support.",`
-<button class="action" onclick="voiceIn()">🎙️ Start Speech Input</button>
-<button class="action secondary" onclick="speak()">🔊 Read Welcome</button>
-<div id="voiceout" class="result">Voice tools ready.</div>
-`);
+/* CHAT HISTORY */
+let chatHistory=[];
+try{
+ chatHistory=JSON.parse(localStorage.getItem('jarvis_chat_v2')||'[]');
+ if(!Array.isArray(chatHistory))chatHistory=[];
+}catch(e){chatHistory=[];}
 
-if(t==="about")panel("👨‍💻 Developer & Support","J.A.R.V.I.S. public demo — built by Prem Patel.",`
-<div class="result">
-Developer: <b>Prem Patel</b><br>
-Instagram: <a href="https://www.instagram.com/prime__sgod/" target="_blank" rel="noopener">@prime__sgod</a><br>
-Instagram: <a href="https://www.instagram.com/patel.darkxx.in/" target="_blank" rel="noopener">@patel.darkxx.in</a><br>
-Telegram: <a href="https://t.me/patelxbotx" target="_blank" rel="noopener">t.me/patelxbotx</a><br>
-Email: <a href="mailto:premkumar2008pp@gmail.com">premkumar2008pp@gmail.com</a>
-</div>
-`);
+function renderChat(){
+ const box=document.getElementById('chatbox');
+ box.replaceChildren();
+ chatHistory.forEach(m=>{
+  const div=document.createElement('div');
+  div.className='msg '+(m.role==='user'?'user':'bot');
+  div.textContent=m.text;
+  box.appendChild(div);
+ });
+ box.scrollTop=box.scrollHeight;
 }
-
-/* SMART ASSISTANT */
-
-function addChat(w,m){
-const log=document.getElementById("log");
-if(!log)return;
-const bubble=document.createElement("div");
-bubble.className="bubble "+w;
-bubble.textContent=m;
-log.appendChild(bubble);
-log.scrollTop=log.scrollHeight;
-saveChat();
+function addChat(role,text){
+ chatHistory.push({role,text});
+ if(chatHistory.length>100)chatHistory=chatHistory.slice(-100);
+ try{localStorage.setItem('jarvis_chat_v2',JSON.stringify(chatHistory));}catch(e){}
+ renderChat();
 }
-
-function saveChat(){
-const log=document.getElementById("log");
-if(log)localStorage.setItem("jvchat",log.innerHTML);
-}
-
-function loadChat(){
-const log=document.getElementById("log");
-const saved=localStorage.getItem("jvchat");
-if(saved)log.innerHTML=saved;
-}
-
 function clearChat(){
-localStorage.removeItem("jvchat");
-const log=document.getElementById("log");
-if(log)log.innerHTML="";
-addChat("bot","Chat cleared. How can I help?");
+ chatHistory=[];
+ localStorage.removeItem('jarvis_chat_v2');
+ renderChat();
+ addChat('bot','Chat history cleared, Commander.');
 }
 
+function getReply(raw){
+ const msg=raw.toLowerCase().trim();
+ const lang=document.getElementById('language').value;
+ const has=(...words)=>words.some(w=>msg.includes(w));
+
+ if(has('hello','hi','hey','namaste','नमस्ते','प्रanam'))
+  return 'Hello Commander Prem! J.A.R.V.I.S. system online. Bataiye, aaj kya karna hai?';
+
+ if(has('your name','who are you','tum kaun','tera naam','naam kya'))
+  return 'I am J.A.R.V.I.S. — Just A Rather Very Intelligent System. Created by Commander Prem Patel.';
+
+ if(has('prem','commander'))
+  return 'Commander Prem Patel — Tech Enthusiast, Cyber Explorer aur future developer! Keep learning.';
+
+ if(has('time','samay','kitne baje','समय'))
+  return 'Current time: '+new Date().toLocaleTimeString();
+
+ if(has('date','today','tarikh','तारीख','दिनांक'))
+  return 'Today: '+new Date().toLocaleDateString();
+
+ if(has('python','पाइथन'))
+  return 'Python ek beginner-friendly programming language hai. Start with print("Hello World"), variables, input(), if-else, loops aur functions.';
+
+ if(has('cybersecurity','cyber security','hacking','हैकिंग'))
+  return 'Cybersecurity mein systems aur data ko protect karna seekhte hain. Start with networking basics, Linux, Python, web security aur ethical practice labs. Hamesha permission ke saath testing karo.';
+
+ if(has('html','website','web development'))
+  return 'Website banane ke liye HTML structure, CSS design aur JavaScript functionality seekho. Tumhari J.A.R.V.I.S. website bhi isi se bani hai!';
+
+ if(has('study','padhai','पढ़ाई','board','exam'))
+  return 'Study mode ON! 📚 Ek topic chuno, 25 minutes focus karo, phir bina dekhe recall practice karo. Aaj ka target chhota aur clear rakho.';
+
+ if(has('jarvis','system'))
+  return 'J.A.R.V.I.S. V2 is online. All local demo tools are ready, Commander.';
+
+ if(has('thank','thanks','shukriya','धन्यवाद'))
+  return 'You are welcome, Commander! Keep learning and building.';
+
+ if(has('help','commands','kya kar sakte'))
+  return 'Main Python, cybersecurity, study tips, website basics, date/time aur general questions mein basic help kar sakta hoon.';
+
+ if(lang==='bhojpuri')
+  return 'का हो Commander! रउआ सवाल समझ में आइल। थोड़ा अउरी साफ-साफ बताईं, हम मदद करे के कोशिश करब।';
+ if(lang==='hindi')
+  return 'आपका सवाल मिला। मैं एक डेमो असिस्टेंट हूँ। थोड़ा और स्पष्ट लिखें, ताकि मैं बेहतर मदद कर सकूँ।';
+ if(lang==='english')
+  return 'I received your message. I am a rule-based demo assistant, not a live AI model. Try asking about Python, cybersecurity, studying, or web development.';
+ return 'Samajh gaya, Commander! Main abhi rule-based demo assistant hoon. Python, cybersecurity, study, website ya general topic par poochho.';
+}
 function sendChat(){
-const e=document.getElementById("msg");
-const v=e.value.trim();
-if(!v)return;
+ const input=document.getElementById('chatInput');
+ const msg=input.value.trim();
+ if(!msg)return;
+ addChat('user',msg);
+ input.value='';
+ const reply=getReply(msg);
+ setTimeout(()=>addChat('bot',reply),250);
+}
+renderChat();
+if(chatHistory.length===0)addChat('bot','Welcome Commander Prem! J.A.R.V.I.S. V2 online. Ask me something.');
 
-addChat("user",v);
-e.value="";
-
-const q=v.toLowerCase();
-const lang=document.getElementById("language").value;
-let a="Main abhi demo assistant hoon. Python, Cybersecurity, Study ya JARVIS ke baare mein poochho.";
-
-if(/hello|hi|hey|namaste|नमस्ते/.test(q)){
-a="Hello! Welcome to J.A.R.V.I.S. 🤖";
-}
-else if(/your name|who are you|tum kaun|naam kya/.test(q)){
-a="I am J.A.R.V.I.S. — Just A Rather Very Intelligent System.";
-}
-else if(/prem|commander|developer|creator/.test(q)){
-a="My developer is Prem Patel. Welcome, Commander! ⚡";
-}
-else if(/python|coding|programming/.test(q)){
-a="Python Learning Path:\n1. print()\n2. Variables\n3. If-Else\n4. Loops\n5. Functions\nKeep practising!";
-}
-else if(/cyber|hacking|security|phishing|scam/.test(q)){
-a="Cyber Safety Tips:\n• Never share OTPs.\n• Use strong passwords.\n• Enable 2-step verification.\n• Avoid suspicious links.";
-}
-else if(/study|exam|board|padhai/.test(q)){
-a="Study Mode ON! 📚 Ek topic padho, phir questions solve karo. Daily revision zaroor karo.";
-}
-else if(/bhojpuri|भोजपुरी|ka haal|ka ba/.test(q)){
-a="Ka haal ba! J.A.R.V.I.S. ready ba! Batawa, ka madad kari? 😎";
-}
-else if(/time|date|samay|tarikh/.test(q)){
-a="Current Date & Time: "+new Date().toLocaleString();
-}
-else if(/thank|thanks|dhanyawad/.test(q)){
-a="You are welcome! J.A.R.V.I.S. is ready to help.";
-}
-else if(/help|commands|kya kar/.test(q)){
-a="Try asking me about:\n• Python\n• Cybersecurity\n• Study\n• Date and Time\n• Bhojpuri";
+/* LINK FORMAT CHECKER */
+function checkLink(){
+ const value=document.getElementById('linkInput').value.trim();
+ const out=document.getElementById('linkResult');
+ try{
+  const u=new URL(value);
+  if(!['http:','https:'].includes(u.protocol)){
+   out.textContent='Unsupported link protocol.';
+   return;
+  }
+  out.textContent='Valid URL format ✅\nHost: '+u.hostname+'\nProtocol: '+u.protocol+'\n\nThis does NOT confirm that the website is safe.';
+ }catch(e){out.textContent='Invalid URL format. Check the link.';}
 }
 
-if(lang==="hindi")a="J.A.R.V.I.S.: "+a;
-if(lang==="bhojpuri")a="J.A.R.V.I.S.: "+a;
-
-setTimeout(()=>addChat("bot",a),300);
+/* FILE HASH */
+async function checkFile(){
+ const file=document.getElementById('fileInput').files[0];
+ const out=document.getElementById('fileResult');
+ if(!file){out.textContent='Please select a file first.';return;}
+ out.textContent='Analyzing file...';
+ try{
+  const buffer=await file.arrayBuffer();
+  const hash=await crypto.subtle.digest('SHA-256',buffer);
+  const hex=Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,'0')).join('');
+  out.textContent='File: '+file.name+'\nSize: '+file.size+' bytes\nSHA-256: '+hex+'\n\nThis is metadata/hash analysis, not antivirus scanning.';
+ }catch(e){out.textContent='Hash unavailable. Try HTTPS or a supported browser.';}
 }
 
-/* LINK CHECKER */
-
-function linkCheck(){
-const v=document.getElementById("url").value.trim();
-try{
-const u=new URL(v);
-const warnings=[];
-if(u.protocol!=="https:")warnings.push("Not HTTPS");
-if(u.username||u.password)warnings.push("Contains embedded login details");
-if(u.hostname.includes("xn--"))warnings.push("Punycode domain — inspect carefully");
-if(/^(\d{1,3}\.){3}\d{1,3}$/.test(u.hostname))warnings.push("Raw IP address");
-result("lr","Domain: "+u.hostname+"\nProtocol: "+u.protocol+"\n"+
-(warnings.length?"Warnings: "+warnings.join("; "):"No basic format warning found.")+
-"\nThis is not a live reputation scan.");
-}catch(e){
-result("lr","Enter a valid full URL, e.g. https://example.com");
-}
+/* VIDEO */
+function openVideo(){
+ const value=document.getElementById('videoInput').value.trim();
+ const out=document.getElementById('videoResult');
+ try{
+  const u=new URL(value);
+  if(!['http:','https:'].includes(u.protocol))throw Error();
+  out.textContent='Opening: '+u.href;
+  window.open(u.href,'_blank','noopener,noreferrer');
+ }catch(e){out.textContent='Please enter a valid http or https video URL.';}
 }
 
-/* FILE CHECKER */
-
-async function fileCheck(){
-const f=document.getElementById("file").files[0];
-if(!f){result("fr","Choose a file first.");return;}
-try{
-const h=await crypto.subtle.digest("SHA-256",await f.arrayBuffer());
-const hash=[...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,"0")).join("");
-result("fr","Name: "+f.name+"\nSize: "+f.size+" bytes\nType: "+(f.type||"Unknown")+"\nSHA-256: "+hash+"\nNo malware verdict available.");
-}catch(e){
-result("fr","Could not inspect this file in this browser.");
-}
-}
-
-/* VIDEO LINK */
-
-function videoOpen(){
-const v=document.getElementById("vid").value.trim();
-try{
-const u=new URL(v);
-if(!["https:","http:"].includes(u.protocol))throw 0;
-result("vr","Opening: "+u.hostname);
-window.open(u.href,"_blank","noopener,noreferrer");
-}catch(e){
-result("vr","Enter a valid http:// or https:// URL.");
-}
-}
-
-/* TEXT CHECKER */
-
-function textCheck(){
-let v=document.getElementById("txt").value;
-let c=v;
-let issues=[];
-const dict={
-helo:"hello",helllo:"hello",teh:"the",
-recieve:"receive",definately:"definitely",
-becuase:"because",thier:"their",
-seperate:"separate",freind:"friend",
-tommorow:"tomorrow"
-};
-
-if(/[ \t]{2,}/.test(c)){
-issues.push("Extra spaces");
-c=c.replace(/[ \t]{2,}/g," ");
-}
-if(/\s+([,.!?])/.test(c)){
-issues.push("Space before punctuation");
-c=c.replace(/\s+([,.!?])/g,"$1");
-}
-if(/([,.!?])([A-Za-z])/.test(c)){
-issues.push("Missing space after punctuation");
-c=c.replace(/([,.!?])([A-Za-z])/g,"$1 $2");
-}
-c=c.replace(/\b[\w']+\b/g,w=>{
-if(dict[w.toLowerCase()]){
-issues.push(w+" → "+dict[w.toLowerCase()]);
-return dict[w.toLowerCase()];
-}
-return w;
-});
-if(c.trim()&&!/^[A-Z]/.test(c.trim())){
-issues.push("May need capital letter");
-c=c.trim()[0].toUpperCase()+c.trim().slice(1);
-}
-corrected=c;
-result("tr",(issues.length?"Possible issues:\n• "+[...new Set(issues)].join("\n• "):"No supported basic issue found.")+"\n\nSuggested text:\n"+c+"\n\nHindi/Hinglish may not be corrected accurately.");
-}
-
-function copyText(){
-if(!corrected)textCheck();
-if(navigator.clipboard){
-navigator.clipboard.writeText(corrected)
-.then(()=>alert("Copied!"))
-.catch(()=>alert("Please select and copy manually."));
-}else{
-alert("Please select and copy manually.");
-}
+/* TEXT HELPER */
+function fixText(){
+ const value=document.getElementById('textInput').value.trim();
+ if(!value){document.getElementById('textResult').textContent='Enter some text first.';return;}
+ const fixed=value.replace(/\s+/g,' ').replace(/\s+([,.!?])/g,'$1');
+ const result=fixed.charAt(0).toUpperCase()+fixed.slice(1);
+ document.getElementById('textResult').textContent=result;
 }
 
 /* CALCULATOR */
-
 function calculate(){
-const s=document.getElementById("expr").value.trim();
-if(!/^[0-9+\-*/().%\s]+$/.test(s)){
-result("cr","Only numbers and arithmetic operators allowed.");
-return;
-}
-try{
-const n=Function('"use strict";return ('+s+')')();
-result("cr",Number.isFinite(n)?"Result: "+n:"Invalid calculation");
-}catch(e){
-result("cr","Invalid expression");
-}
+ const value=document.getElementById('calcInput').value.trim();
+ const out=document.getElementById('calcResult');
+ if(!value){out.textContent='Enter a calculation.';return;}
+ if(!/^[0-9+\-*/().%\s]+$/.test(value)){
+  out.textContent='Only numbers and basic math operators are allowed.';
+  return;
+ }
+ try{
+  const result=Function('"use strict";return ('+value+')')();
+  out.textContent=Number.isFinite(result)?'Result: '+result:'Invalid calculation.';
+ }catch(e){out.textContent='Invalid calculation.';}
 }
 
 /* NOTES */
-
 function saveNote(){
-localStorage.setItem("jvnote",document.getElementById("note").value);
-document.getElementById("nr").textContent="Saved in this browser.";
+ const value=document.getElementById('noteInput').value.trim();
+ if(!value)return;
+ let notes=[];
+ try{notes=JSON.parse(localStorage.getItem('jarvis_notes_v2')||'[]');}catch(e){}
+ if(!Array.isArray(notes))notes=[];
+ notes.push(value);
+ localStorage.setItem('jarvis_notes_v2',JSON.stringify(notes));
+ document.getElementById('noteInput').value='';
+ renderNotes();
 }
-
-function loadNoteTool(){
-document.getElementById("note").value=localStorage.getItem("jvnote")||"";
-document.getElementById("nr").textContent="Loaded.";
+function renderNotes(){
+ let notes=[];
+ try{notes=JSON.parse(localStorage.getItem('jarvis_notes_v2')||'[]');}catch(e){}
+ if(!Array.isArray(notes))notes=[];
+ const out=document.getElementById('noteResult');
+ out.replaceChildren();
+ notes.forEach((n,i)=>{
+  const row=document.createElement('p');
+  row.textContent=(i+1)+'. '+n;
+  out.appendChild(row);
+ });
 }
+renderNotes();
 
-function deleteNote(){
-localStorage.removeItem("jvnote");
-document.getElementById("note").value="";
-document.getElementById("nr").textContent="Deleted.";
-}
-
-/* TASKS */
-
+/* TASK MANAGER */
 function getTasks(){
-try{return JSON.parse(localStorage.getItem("jvtasks")||"[]");}
-catch(e){return [];}
+ try{
+  const t=JSON.parse(localStorage.getItem('jarvis_tasks_v2')||'[]');
+  return Array.isArray(t)?t:[];
+ }catch(e){return [];}
 }
-
-function renderTasks(){
-const box=document.getElementById("tasklist");
-if(!box)return;
-const tasks=getTasks();
-box.innerHTML=tasks.length?tasks.map((x,i)=>`
-<div style="margin:10px 0">
-<label>
-<input type="checkbox" style="width:auto" ${x.done?"checked":""} onchange="toggleTask(${i})">
-${esc(x.text)}
-</label>
-<button class="action secondary" onclick="removeTask(${i})">Delete</button>
-</div>
-`).join(""):"No tasks yet.";
-}
-
 function addTask(){
-const e=document.getElementById("task");
-const v=e.value.trim();
-if(!v)return;
-const a=getTasks();
-a.push({text:v,done:false});
-localStorage.setItem("jvtasks",JSON.stringify(a));
-e.value="";
-renderTasks();
+ const input=document.getElementById('taskInput');
+ const value=input.value.trim();
+ if(!value)return;
+ const tasks=getTasks();
+ tasks.push({text:value,done:false});
+ localStorage.setItem('jarvis_tasks_v2',JSON.stringify(tasks));
+ input.value='';
+ renderTasks();
 }
-
 function toggleTask(i){
-const a=getTasks();
-if(!a[i])return;
-a[i].done=!a[i].done;
-localStorage.setItem("jvtasks",JSON.stringify(a));
-renderTasks();
+ const tasks=getTasks();
+ if(!tasks[i])return;
+ tasks[i].done=!tasks[i].done;
+ localStorage.setItem('jarvis_tasks_v2',JSON.stringify(tasks));
+ renderTasks();
 }
-
-function removeTask(i){
-const a=getTasks();
-a.splice(i,1);
-localStorage.setItem("jvtasks",JSON.stringify(a));
-renderTasks();
+function deleteTask(i){
+ const tasks=getTasks();
+ tasks.splice(i,1);
+ localStorage.setItem('jarvis_tasks_v2',JSON.stringify(tasks));
+ renderTasks();
 }
+function renderTasks(){
+ const out=document.getElementById('taskList');
+ out.replaceChildren();
+ getTasks().forEach((t,i)=>{
+  const row=document.createElement('div');
+  row.style.margin='8px 0';
+  const label=document.createElement('span');
+  label.textContent=(t.done?'✅ ':'⬜ ')+t.text+' ';
+  label.style.textDecoration=t.done?'line-through':'none';
+  const done=document.createElement('button');
+  done.textContent='DONE';
+  done.onclick=()=>toggleTask(i);
+  const del=document.createElement('button');
+  del.textContent='DELETE';
+  del.style.marginLeft='5px';
+  del.onclick=()=>deleteTask(i);
+  row.append(label,done,del);
+  out.appendChild(row);
+ });
+}
+renderTasks();
 
 /* VOICE */
-
-function voiceIn(){
-const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-if(!SR){
-document.getElementById("voiceout").textContent="Speech input not supported in this browser.";
-return;
+function speakText(text){
+ if(!('speechSynthesis' in window)){
+  document.getElementById('voiceResult').textContent='Speech output not supported.';
+  return;
+ }
+ const speech=new SpeechSynthesisUtterance(text);
+ speech.lang='en-IN';
+ speechSynthesis.cancel();
+ speechSynthesis.speak(speech);
 }
-const s=new SR();
-s.lang="hi-IN";
-s.onresult=e=>{
-document.getElementById("voiceout").textContent=e.results[0][0].transcript;
-};
-s.onerror=e=>{
-document.getElementById("voiceout").textContent="Voice error: "+e.error;
-};
-s.start();
-document.getElementById("voiceout").textContent="Listening...";
-}
-
-function speak(){
-if(!window.speechSynthesis){
-document.getElementById("voiceout").textContent="Speech output not supported.";
-return;
-}
-const u=new SpeechSynthesisUtterance("Welcome Prem. JARVIS system online.");
-u.lang="en-IN";
-speechSynthesis.speak(u);
+function startVoice(){
+ const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+ const out=document.getElementById('voiceResult');
+ if(!SpeechRecognition){out.textContent='Voice input is not supported in this browser.';return;}
+ const rec=new SpeechRecognition();
+ rec.lang='hi-IN';
+ rec.onstart=()=>out.textContent='Listening...';
+ rec.onresult=e=>{
+  const text=e.results[0][0].transcript;
+  out.textContent='You said: '+text;
+  document.getElementById('chatInput').value=text;
+  showTool('chat');
+  sendChat();
+ };
+ rec.onerror=()=>out.textContent='Voice recognition error. Try again.';
+ rec.start();
 }
 </script>
 </body>
