@@ -60,21 +60,46 @@ if(t==='about')panel('👨‍💻 Developer & Support','J.A.R.V.I.S. public demo
 }
 function esc(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function addChat(w,m){let l=document.getElementById('log');l.innerHTML+=`<div class="bubble ${w}">${esc(m)}</div>`;l.scrollTop=l.scrollHeight}
-function sendChat(){let e=document.getElementById('msg'),v=e.value.trim();if(!v)return;addChat('user',v);e.value='';let q=v.toLowerCase(),a='I can help with basic questions. Try the tools above.';if(/hello|hi|namaste/.test(q))a='Hello! Welcome to J.A.R.V.I.S.';else if(q.includes('python'))a='Python tip: learn print(), variables, if/else, loops and functions step by step.';else if(/cyber|scam|phish/.test(q))a='Cyber safety: never share OTPs, use unique passwords, enable 2-step verification and verify links.';else if(/study|exam/.test(q))a='Study tip: focus on one small topic for 25 minutes, then practise questions.';else if(/date|time/.test(q))a=new Date().toLocaleString();setTimeout(()=>addChat('bot',a),200)}
-function linkCheck(){let v=document.getElementById('url').value.trim();try{let u=new URL(v),f=[];if(u.protocol!=='https:')f.push('Not HTTPS');if(u.username||u.password)f.push('Contains embedded login details');if(u.hostname.includes('xn--'))f.push('Punycode domain—inspect carefully');if(/^([0-9]{1,3}\\.){3}[0-9]{1,3}$/.test(u.hostname))f.push('Raw IP address');result('lr','Domain: '+u.hostname+'\\nProtocol: '+u.protocol+'\\n'+(f.length?'Warnings: '+f.join('; '):'No basic format warning found.')+'\\nNot a live reputation scan.')}catch(e){result('lr','Enter a valid full URL such as https://example.com')}}
-async function fileCheck(){let f=document.getElementById('file').files[0];if(!f){result('fr','Choose a file first.');return}try{let h=await crypto.subtle.digest('SHA-256',await f.arrayBuffer()),hash=[...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,'0')).join('');result('fr',`Name: ${f.name}\\nSize: ${f.size} bytes\\nType: ${f.type||'Unknown'}\\nSHA-256: ${hash}\\nNo malware verdict available.`)}catch(e){result('fr','Could not inspect this file in this browser.')}}
-function videoOpen(){let v=document.getElementById('vid').value.trim();try{let u=new URL(v);if(!['https:','http:'].includes(u.protocol))throw 0;result('vr','Opening: '+u.hostname);window.open(u.href,'_blank','noopener,noreferrer')}catch(e){result('vr','Enter a valid http:// or https:// video URL.')}}
-function textCheck(){let v=document.getElementById('txt').value,c=v,issues=[],d={helo:'hello',helllo:'hello',teh:'the',recieve:'receive',definately:'definitely',becuase:'because',thier:'their',seperate:'separate',freind:'friend',tommorow:'tomorrow'};if(/[ \\t]{2,}/.test(c)){issues.push('Extra spaces');c=c.replace(/[ \\t]{2,}/g,' ')}if(/\\s+([,.!?])/.test(c)){issues.push('Space before punctuation');c=c.replace(/\\s+([,.!?])/g,'$1')}if(/([,.!?])([A-Za-z])/.test(c)){issues.push('Missing space after punctuation');c=c.replace(/([,.!?])([A-Za-z])/g,'$1 $2')}c=c.replace(/\\b[\\w']+\\b/g,w=>{if(d[w.toLowerCase()]){issues.push(w+' → '+d[w.toLowerCase()]);return d[w.toLowerCase()]}return w});if(c.trim()&&!/^[A-Z]/.test(c.trim())){issues.push('May need capital letter');c=c.trim()[0].toUpperCase()+c.trim().slice(1)}corrected=c;result('tr',(issues.length?'Possible issues:\\n• '+[...new Set(issues)].join('\\n• '):'No supported basic issue found.')+'\\n\\nSuggested text:\\n'+c+'\\n\\nLimited dictionary: Hindi/Hinglish may not be corrected accurately.')}
-function copyText(){if(!corrected)textCheck();if(navigator.clipboard)navigator.clipboard.writeText(corrected).then(()=>alert('Copied!')).catch(()=>alert('Select and copy the text manually.'));else alert('Select and copy the text manually.')}
-function calc(){let s=document.getElementById('expr').value.trim();if(!/^[0-9+\\-*/().%\\s]+$/.test(s)){result('cr','Only numbers and arithmetic operators allowed.');return}try{let n=Function('"use strict";return ('+s+')')();result('cr',Number.isFinite(n)?'Result: '+n:'Invalid calculation')}catch(e){result('cr','Invalid expression')}}
-function saveNote(){localStorage.setItem('jvnote',document.getElementById('note').value);document.getElementById('nr').textContent='Saved on this browser.'}
-function loadNote(){document.getElementById('note').value=localStorage.getItem('jvnote')||'';document.getElementById('nr').textContent='Loaded.'}
-function delNote(){localStorage.removeItem('jvnote');document.getElementById('note').value='';document.getElementById('nr').textContent='Deleted.'}
-function getTasks(){try{return JSON.parse(localStorage.getItem('jvtasks')||'[]')}catch(e){return []}}
-function renderTasks(){let a=getTasks();document.getElementById('tasks').innerHTML=a.length?a.map((x,i)=>`<p><label><input type="checkbox" style="width:auto" ${x.done?'checked':''} onchange="toggleTask(${i})"> ${esc(x.text)}</label><button class="action secondary" onclick="removeTask(${i})">Delete</button></p>`).join(''):'No tasks yet.'}
-function addTask(){let e=document.getElementById('task'),v=e.value.trim();if(!v)return;let a=getTasks();a.push({text:v,done:false});localStorage.setItem('jvtasks',JSON.stringify(a));e.value='';renderTasks()}
-function toggleTask(i){let a=getTasks();a[i].done=!a[i].done;localStorage.setItem('jvtasks',JSON.stringify(a));renderTasks()}
-function removeTask(i){let a=getTasks();a.splice(i,1);localStorage.setItem('jvtasks',JSON.stringify(a));renderTasks()}
-function voiceIn(){let SR=window.SpeechRecognition||window.webkitSpeechRecognition;if(!SR){document.getElementById('voiceout').textContent='Speech input not supported by this browser.';return}let s=new SR();s.lang='en-IN';s.onresult=e=>document.getElementById('voiceout').textContent=e.results[0][0].transcript;s.onerror=e=>document.getElementById('voiceout').textContent='Voice error: '+e.error;s.start();document.getElementById('voiceout').textContent='Listening...'}
-function speak(){if(!window.speechSynthesis){document.getElementById('voiceout').textContent='Speech output not supported.';return}speechSynthesis.speak(new SpeechSynthesisUtterance('Welcome to Jarvis, your personal tech assistant.'))}
-</script></body></html>
+function sendChat(){
+let e=document.getElementById('msg');
+let v=e.value.trim();
+if(!v)return;
+
+addChat('user',v);
+e.value='';
+
+let q=v.toLowerCase();
+let a='Main abhi demo AI hoon. Python, Cybersecurity, Study ya JARVIS ke baare mein poochho.';
+
+if(/hello|hi|hey|namaste|नमस्ते/.test(q))
+a='Hello! Welcome to J.A.R.V.I.S. 🤖 How can I help you?';
+
+else if(/your name|who are you|tum kaun|naam kya/.test(q))
+a='I am J.A.R.V.I.S. — Just A Rather Very Intelligent System.';
+
+else if(/prem|commander|developer|creator/.test(q))
+a='My developer is Prem Patel. Welcome, Commander! ⚡';
+
+else if(/python|coding|programming/.test(q))
+a='Python Learning Path:\\n1. print()\\n2. Variables\\n3. If-Else\\n4. Loops\\n5. Functions\\nKeep practising!';
+
+else if(/cyber|hacking|security|phishing|scam/.test(q))
+a='Cyber Safety Tips:\\n• Never share OTPs.\\n• Use strong passwords.\\n• Enable 2-step verification.\\n• Avoid suspicious links.';
+
+else if(/study|exam|board|padhai/.test(q))
+a='Study Mode ON! 📚 Ek topic padho, phir uske questions solve karo. Daily revision zaroor karo.';
+
+else if(/bhojpuri|भोजपुरी/.test(q))
+a='Ka haal ba! J.A.R.V.I.S. ready ba! Batawa, ka madad kari? 😎';
+
+else if(/time|date|samay|tarikh/.test(q))
+a='Current Date & Time: '+new Date().toLocaleString();
+
+else if(/thank|thanks|dhanyawad/.test(q))
+a='You are welcome! J.A.R.V.I.S. is always ready to help.';
+
+else if(/help|commands|kya kar/.test(q))
+a='Try asking me about:\\n• Python\\n• Cybersecurity\\n• Study\\n• Date and Time\\n• Bhojpuri';
+
+setTimeout(()=>addChat('bot',a),300);
+}
