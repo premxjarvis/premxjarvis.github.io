@@ -3,112 +3,268 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>J.A.R.V.I.S. V2 | Prem Patel</title>
-  <meta name="description" content="Official website of Prem Patel. Explore J.A.R.V.I.S., AI projects, Python programming, technology and cybersecurity learning.">
 
-<meta name="keywords" content="Prem Patel, PREM X JARVIS, JARVIS AI, Python, Cybersecurity, Technology">
+<title>J.A.R.V.I.S. V2.1 | Prem Patel</title>
 
+<meta name="description" content="Official website of Prem Patel. J.A.R.V.I.S. AI tools, media hub, audio search, technology and cybersecurity learning.">
+<meta name="keywords" content="Prem Patel, JARVIS AI, Python, Cybersecurity, Technology">
 <meta name="author" content="Prem Patel">
-
 <meta name="robots" content="index, follow">
-
 <link rel="canonical" href="https://premxjarvis.github.io/">
 
 <meta property="og:title" content="PREM X JARVIS | Prem Patel">
-
-<meta property="og:description" content="Explore AI projects, technology, Python and cybersecurity with Prem Patel.">
-
+<meta property="og:description" content="Explore J.A.R.V.I.S. AI projects, technology and cybersecurity.">
 <meta property="og:url" content="https://premxjarvis.github.io/">
-
 <meta property="og:type" content="website">
+
 <style>
 :root{
-  --bg:#030712;
-  --panel:#081426;
-  --blue:#00b7ff;
-  --text:#eaf7ff;
-  --muted:#8ba8bd;
-  --border:#123a58;
+ --bg:#030712;
+ --panel:#081426;
+ --blue:#00b7ff;
+ --text:#eaf7ff;
+ --muted:#8ba8bd;
+ --border:#123a58;
 }
+
 *{box-sizing:border-box}
+
 body{
-  margin:0;
-  background:radial-gradient(circle at top,#09213b,#030712 55%);
-  color:var(--text);
-  font-family:Arial,sans-serif;
+ margin:0;
+ background:radial-gradient(circle at top,#09213b,#030712 55%);
+ color:var(--text);
+ font-family:Arial,sans-serif;
 }
+
 header{
-  padding:22px 15px;
-  text-align:center;
-  border-bottom:1px solid var(--border);
-  background:#030a14;
+ padding:22px 15px;
+ text-align:center;
+ border-bottom:1px solid var(--border);
+ background:#030a14;
 }
+
 header h1{
-  margin:0;
-  color:var(--blue);
-  letter-spacing:5px;
-  text-shadow:0 0 15px var(--blue);
+ margin:0;
+ color:var(--blue);
+ letter-spacing:5px;
+ text-shadow:0 0 15px var(--blue);
 }
+
 header p{color:var(--muted);font-size:12px}
+
 .status{color:#00ff9d;font-size:12px}
+
 .container{max-width:1000px;margin:auto;padding:15px}
+
 .core{
-  width:105px;height:105px;border-radius:50%;
-  margin:20px auto;
-  border:3px solid var(--blue);
-  box-shadow:0 0 20px var(--blue),inset 0 0 20px var(--blue);
-  display:flex;align-items:center;justify-content:center;
-  font-size:30px;
-  animation:pulse 2s infinite;
+ width:105px;height:105px;
+ border-radius:50%;
+ margin:20px auto;
+ border:3px solid var(--blue);
+ box-shadow:0 0 20px var(--blue),inset 0 0 20px var(--blue);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:30px;
+ animation:pulse 2s infinite;
 }
+
 @keyframes pulse{
-  50%{box-shadow:0 0 40px var(--blue),inset 0 0 30px var(--blue)}
+ 50%{box-shadow:0 0 40px var(--blue),inset 0 0 30px var(--blue)}
 }
+
 .card{
-  background:linear-gradient(145deg,#0a1c31,#050d19);
-  border:1px solid var(--border);
-  border-radius:13px;
-  padding:16px;margin:12px 0;
-  box-shadow:0 5px 20px #0005;
+ background:linear-gradient(145deg,#0a1c31,#050d19);
+ border:1px solid var(--border);
+ border-radius:13px;
+ padding:16px;
+ margin:12px 0;
+ box-shadow:0 5px 20px #0005;
 }
+
 h2{color:var(--blue);font-size:18px}
+
 .grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(135px,1fr));
-  gap:10px;
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(135px,1fr));
+ gap:10px;
 }
+
 button{
-  background:#09243c;color:white;
-  border:1px solid #087db2;
-  border-radius:8px;padding:11px;
-  cursor:pointer;font-weight:bold;
+ background:#09243c;
+ color:white;
+ border:1px solid #087db2;
+ border-radius:8px;
+ padding:11px;
+ cursor:pointer;
+ font-weight:bold;
+ transition:.25s;
 }
-button:hover{background:#07517a}
+
+button:hover{
+ background:#07517a;
+ box-shadow:0 0 12px #00b7ff66;
+ transform:translateY(-2px);
+}
+
 input,textarea,select{
-  width:100%;padding:12px;margin:6px 0;
-  background:#030b16;color:white;
-  border:1px solid #174565;border-radius:7px;
+ width:100%;
+ padding:12px;
+ margin:6px 0;
+ background:#030b16;
+ color:white;
+ border:1px solid #174565;
+ border-radius:7px;
 }
+
 textarea{min-height:90px;resize:vertical}
+
 .tool{display:none}
-.tool.active{display:block}
-.chatbox{
-  height:260px;overflow-y:auto;
-  background:#020914;border:1px solid var(--border);
-  padding:10px;border-radius:8px;margin:10px 0;
+.tool.active{display:block;animation:appear .35s ease}
+
+@keyframes appear{
+ from{opacity:0;transform:translateY(10px)}
+ to{opacity:1;transform:translateY(0)}
 }
-.msg{padding:9px;margin:7px 0;border-radius:8px;white-space:pre-wrap;overflow-wrap:anywhere}
+
+.chatbox{
+ height:260px;
+ overflow-y:auto;
+ background:#020914;
+ border:1px solid var(--border);
+ padding:10px;
+ border-radius:8px;
+ margin:10px 0;
+}
+
+.msg{
+ padding:9px;
+ margin:7px 0;
+ border-radius:8px;
+ white-space:pre-wrap;
+ overflow-wrap:anywhere;
+}
+
 .user{background:#073451;text-align:right}
 .bot{background:#101f31;border-left:3px solid var(--blue)}
+
 .small{font-size:12px;color:var(--muted)}
+
 .output{
-  padding:12px;background:#020914;
-  border:1px solid var(--border);
-  border-radius:7px;min-height:35px;
-  overflow-wrap:anywhere;margin-top:10px;
+ padding:12px;
+ background:#020914;
+ border:1px solid var(--border);
+ border-radius:7px;
+ min-height:35px;
+ overflow-wrap:anywhere;
+ margin-top:10px;
 }
-footer{text-align:center;color:var(--muted);padding:25px;font-size:12px}
+
+footer{
+ text-align:center;
+ color:var(--muted);
+ padding:25px;
+ font-size:12px;
+}
+
 a{color:#32c5ff}
+
+/* V2.1 MEDIA HUB */
+
+.media-search{
+ border:1px solid var(--blue);
+ box-shadow:0 0 12px #00b7ff22;
+ transition:.3s;
+}
+
+.media-search:focus{
+ outline:none;
+ box-shadow:0 0 20px #00b7ff88;
+}
+
+.media-grid{
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+ gap:12px;
+ margin-top:15px;
+}
+
+.media-card{
+ background:linear-gradient(145deg,#081c30,#020914);
+ border:1px solid var(--border);
+ padding:15px;
+ border-radius:12px;
+ margin:10px 0;
+ overflow-wrap:anywhere;
+ transition:.3s;
+}
+
+.media-card:hover{
+ border-color:var(--blue);
+ transform:translateY(-3px);
+ box-shadow:0 0 15px #00b7ff44;
+}
+
+.media-card h3{
+ color:var(--blue);
+ font-size:15px;
+}
+
+.media-card button{
+ margin-top:8px;
+ width:100%;
+}
+
+.media-card audio{
+ width:100%;
+ margin-top:10px;
+}
+
+.platform-tag{
+ display:inline-block;
+ padding:5px 9px;
+ margin:4px;
+ border:1px solid #087db2;
+ border-radius:20px;
+ color:var(--blue);
+ font-size:12px;
+}
+
+.jarvis-loader{
+ display:none;
+ text-align:center;
+ color:var(--blue);
+ padding:18px;
+}
+
+.jarvis-loader.active{display:block}
+
+.loader-ring{
+ width:35px;
+ height:35px;
+ border:3px solid #123a58;
+ border-top:3px solid var(--blue);
+ border-radius:50%;
+ margin:10px auto;
+ animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+ to{transform:rotate(360deg)}
+}
+
+.result-title{
+ color:var(--blue);
+ font-weight:bold;
+}
+
+.copy-btn{margin-top:8px}
+
+@media(max-width:500px){
+ header h1{letter-spacing:3px;font-size:23px}
+ .container{padding:10px}
+ .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 </style>
 </head>
 
@@ -117,22 +273,30 @@ a{color:#32c5ff}
 <header>
 <h1>J.A.R.V.I.S.</h1>
 <p>JUST A RATHER VERY INTELLIGENT SYSTEM</p>
-<div class="status">● SYSTEM ONLINE | VERSION 2.0</div>
+<div class="status">● SYSTEM ONLINE | VERSION 2.1</div>
 </header>
 
 <div class="container">
 
 <div class="core">J</div>
+
 <h2 style="text-align:center">WELCOME COMMANDER PREM</h2>
-<p class="small" style="text-align:center">Personal Assistant System | Created by Prem Patel</p>
+
+<p class="small" style="text-align:center">
+Personal Assistant System | Created by Prem Patel
+</p>
+
+<!-- CONTROL CENTER -->
 
 <div class="card">
 <h2>⚡ CONTROL CENTER</h2>
+
 <div class="grid">
 <button onclick="showTool('chat')">🤖 Smart AI Chat</button>
 <button onclick="showTool('link')">🔗 Link Checker</button>
 <button onclick="showTool('file')">📁 File Scanner</button>
 <button onclick="showTool('video')">🎬 Video Tool</button>
+<button onclick="showTool('media')">🚀 Media Hub V2.1</button>
 <button onclick="showTool('text')">📝 Text Helper</button>
 <button onclick="showTool('calc')">🧮 Calculator</button>
 <button onclick="showTool('notes')">📒 Notes</button>
@@ -143,9 +307,14 @@ a{color:#32c5ff}
 </div>
 
 <!-- SMART CHAT -->
+
 <section id="chat" class="card tool active">
+
 <h2>🤖 JARVIS SMART ASSISTANT</h2>
-<p class="small">Demo assistant • Hindi • Hinglish • English • Basic Bhojpuri</p>
+
+<p class="small">
+Demo assistant • Hindi • Hinglish • English • Bhojpuri
+</p>
 
 <select id="language">
 <option value="auto">Auto Language</option>
@@ -156,109 +325,339 @@ a{color:#32c5ff}
 </select>
 
 <div class="chatbox" id="chatbox"></div>
-<input id="chatInput" placeholder="Commander, type your message..." onkeydown="if(event.key==='Enter')sendChat()">
+
+<input id="chatInput"
+placeholder="Commander, type your message..."
+onkeydown="if(event.key==='Enter')sendChat()">
+
 <div class="grid">
 <button onclick="sendChat()">SEND ➤</button>
 <button onclick="clearChat()">CLEAR CHAT</button>
 </div>
+
 </section>
 
 <!-- LINK CHECKER -->
+
 <section id="link" class="card tool">
+
 <h2>🔗 LINK FORMAT CHECKER</h2>
+
 <input id="linkInput" placeholder="https://example.com">
+
 <button onclick="checkLink()">CHECK LINK</button>
+
 <div id="linkResult" class="output"></div>
-<p class="small">Note: Ye URL format check karta hai, live malware ya reputation scan nahi.</p>
+
+<p class="small">
+URL format checker only. Ye live malware scan nahi hai.
+</p>
+
 </section>
 
 <!-- FILE SCANNER -->
+
 <section id="file" class="card tool">
+
 <h2>📁 FILE HASH TOOL</h2>
+
 <input type="file" id="fileInput">
+
 <button onclick="checkFile()">ANALYZE FILE</button>
+
 <div id="fileResult" class="output"></div>
-<p class="small">File ka naam, size aur SHA-256 hash check hoga. Ye antivirus nahi hai.</p>
+
+<p class="small">
+SHA-256 hash analysis. Ye antivirus nahi hai.
+</p>
+
 </section>
 
-<!-- VIDEO -->
+<!-- OLD VIDEO TOOL -->
+
 <section id="video" class="card tool">
+
 <h2>🎬 VIDEO LINK TOOL</h2>
+
 <input id="videoInput" placeholder="Paste video URL">
+
 <button onclick="openVideo()">OPEN VIDEO</button>
+
 <div id="videoResult" class="output"></div>
+
 </section>
 
-<!-- TEXT -->
+<!-- V2.1 MEDIA HUB -->
+
+<section id="media" class="card tool">
+
+<h2>🚀 J.A.R.V.I.S. ADVANCED MEDIA HUB</h2>
+
+<p class="small">
+Social video link detection • Audio search • Lyrics finder
+</p>
+
+<!-- SOCIAL VIDEO -->
+
+<div class="card">
+
+<h2>🎬 SOCIAL VIDEO HUB</h2>
+
+<input id="socialInput"
+class="media-search"
+placeholder="Paste YouTube / Instagram / Facebook / TikTok URL">
+
+<button onclick="detectSocial()">🔍 ANALYZE VIDEO LINK</button>
+
+<div id="mediaLoader" class="jarvis-loader">
+<div class="loader-ring"></div>
+SYSTEM SCANNING...
+</div>
+
+<div id="socialResult" class="output"></div>
+
+<div class="media-grid">
+
+<div class="media-card">
+<h3>▶️ YouTube</h3>
+<span class="platform-tag">Video Platform</span>
+</div>
+
+<div class="media-card">
+<h3>📸 Instagram</h3>
+<span class="platform-tag">Social Media</span>
+</div>
+
+<div class="media-card">
+<h3>📘 Facebook</h3>
+<span class="platform-tag">Social Media</span>
+</div>
+
+<div class="media-card">
+<h3>🎵 TikTok</h3>
+<span class="platform-tag">Short Videos</span>
+</div>
+
+<div class="media-card">
+<h3>𝕏 X / Twitter</h3>
+<span class="platform-tag">Social Media</span>
+</div>
+
+<div class="media-card">
+<h3>📌 Pinterest</h3>
+<span class="platform-tag">Video Pins</span>
+</div>
+
+</div>
+
+</div>
+
+<!-- DIRECT DOWNLOAD -->
+
+<div class="card">
+
+<h2>⬇️ DIRECT VIDEO DOWNLOAD</h2>
+
+<p class="small">
+Direct MP4, WebM and MOV video links. Download only media you own or have permission to save.
+</p>
+
+<input id="directVideo"
+placeholder="Paste direct .mp4 / .webm URL">
+
+<button onclick="downloadDirectVideo()">
+⬇️ DOWNLOAD VIDEO
+</button>
+
+<div id="downloadResult" class="output"></div>
+
+</div>
+
+<!-- AUDIO SEARCH -->
+
+<div class="card">
+
+<h2>🎵 AUDIO SEARCH ENGINE</h2>
+
+<input id="songSearch"
+class="media-search"
+placeholder="Enter song name or artist...">
+
+<button onclick="searchAudio()">🔍 SEARCH MUSIC</button>
+
+<div id="audioLoader" class="jarvis-loader">
+<div class="loader-ring"></div>
+SEARCHING MUSIC DATABASE...
+</div>
+
+<div id="audioResults"></div>
+
+</div>
+
+<!-- LYRICS -->
+
+<div class="card">
+
+<h2>📝 LYRICS FINDER</h2>
+
+<input id="lyricsSong" placeholder="Enter song name">
+
+<input id="lyricsArtist" placeholder="Enter artist name">
+
+<button onclick="findLyrics()">🔍 FIND LYRICS</button>
+
+<div id="lyricsResult" class="output"></div>
+
+<p class="small">
+Lyrics search opens external sources. Full copyrighted lyrics may not be available for reproduction.
+</p>
+
+</div>
+
+</section>
+
+<!-- TEXT HELPER -->
+
 <section id="text" class="card tool">
+
 <h2>📝 TEXT HELPER</h2>
-<textarea id="textInput" placeholder="Enter your English text..."></textarea>
+
+<textarea id="textInput" placeholder="Enter your text..."></textarea>
+
 <button onclick="fixText()">IMPROVE TEXT</button>
+
 <div id="textResult" class="output"></div>
-<p class="small">Basic spacing and capitalization helper. Full grammar checker nahi.</p>
+
+<p class="small">Basic spacing and capitalization helper.</p>
+
 </section>
 
 <!-- CALCULATOR -->
+
 <section id="calc" class="card tool">
+
 <h2>🧮 SMART CALCULATOR</h2>
+
 <input id="calcInput" placeholder="Example: (25+15)*2">
+
 <button onclick="calculate()">CALCULATE</button>
+
 <div id="calcResult" class="output"></div>
+
 </section>
 
 <!-- NOTES -->
+
 <section id="notes" class="card tool">
+
 <h2>📒 PERSONAL NOTES</h2>
+
 <textarea id="noteInput" placeholder="Write your notes..."></textarea>
+
 <button onclick="saveNote()">SAVE NOTE</button>
+
 <div id="noteResult" class="output"></div>
+
 </section>
 
 <!-- TODO -->
+
 <section id="tasks" class="card tool">
+
 <h2>✅ TASK MANAGER</h2>
+
 <input id="taskInput" placeholder="Enter your task">
+
 <button onclick="addTask()">ADD TASK</button>
+
 <div id="taskList" class="output"></div>
+
 </section>
 
 <!-- VOICE -->
+
 <section id="voice" class="card tool">
+
 <h2>🎙️ VOICE ASSISTANT</h2>
+
 <button onclick="startVoice()">🎤 START SPEAKING</button>
-<button onclick="speakText('Hello Commander Prem. JARVIS is online.')">🔊 TEST VOICE</button>
+
+<button onclick="speakText('Hello Commander Prem. JARVIS is online.')">
+🔊 TEST VOICE
+</button>
+
 <div id="voiceResult" class="output">Voice system ready.</div>
-<p class="small">Voice support browser aur device par depend karta hai.</p>
+
+<p class="small">
+Voice support browser aur device par depend karta hai.
+</p>
+
 </section>
 
 <!-- ABOUT -->
+
 <section id="about" class="card tool">
+
 <h2>👨‍💻 DEVELOPER PROFILE</h2>
+
 <h3>PREM PATEL</h3>
+
 <p>Cybersecurity Learner | Tech Enthusiast | Developer</p>
-<p>Instagram: <a href="https://instagram.com/prime__sgod" target="_blank" rel="noopener">@prime__sgod</a></p>
-<p>Instagram: <a href="https://instagram.com/patel.darkxx.in" target="_blank" rel="noopener">@patel.darkxx.in</a></p>
-<p>Telegram: <a href="https://t.me/patelxbotx" target="_blank" rel="noopener">patelxbotx</a></p>
-<p>Email: <a href="mailto:premkumar2008@gmail.com">premkumar2008@gmail.com</a></p>
-<p class="small">J.A.R.V.I.S. V2 | Built by Prem Patel</p>
+
+<p>
+Instagram:
+<a href="https://instagram.com/prime__sgod" target="_blank" rel="noopener">
+@prime__sgod
+</a>
+</p>
+
+<p>
+Instagram:
+<a href="https://instagram.com/patel.darkxx.in" target="_blank" rel="noopener">
+@patel.darkxx.in
+</a>
+</p>
+
+<p>
+Telegram:
+<a href="https://t.me/patelxbotx" target="_blank" rel="noopener">
+patelxbotx
+</a>
+</p>
+
+<p>
+Email:
+<a href="mailto:premkumar2008@gmail.com">
+premkumar2008@gmail.com
+</a>
+</p>
+
+<p class="small">J.A.R.V.I.S. V2.1 | Built by Prem Patel</p>
+
 </section>
 
 </div>
 
 <footer>
-J.A.R.V.I.S. V2.0<br>
+J.A.R.V.I.S. V2.1<br>
 DESIGNED & DEVELOPED BY PREM PATEL
 </footer>
 
 <script>
+
 /* NAVIGATION */
+
 function showTool(id){
  document.querySelectorAll('.tool').forEach(x=>x.classList.remove('active'));
- document.getElementById(id).classList.add('active');
+ const target=document.getElementById(id);
+ if(target)target.classList.add('active');
+ window.scrollTo({top:0,behavior:'smooth'});
 }
 
 /* CHAT HISTORY */
+
 let chatHistory=[];
+
 try{
  chatHistory=JSON.parse(localStorage.getItem('jarvis_chat_v2')||'[]');
  if(!Array.isArray(chatHistory))chatHistory=[];
@@ -267,20 +666,31 @@ try{
 function renderChat(){
  const box=document.getElementById('chatbox');
  box.replaceChildren();
+
  chatHistory.forEach(m=>{
   const div=document.createElement('div');
   div.className='msg '+(m.role==='user'?'user':'bot');
   div.textContent=m.text;
   box.appendChild(div);
  });
+
  box.scrollTop=box.scrollHeight;
 }
+
 function addChat(role,text){
  chatHistory.push({role,text});
- if(chatHistory.length>100)chatHistory=chatHistory.slice(-100);
- try{localStorage.setItem('jarvis_chat_v2',JSON.stringify(chatHistory));}catch(e){}
+
+ if(chatHistory.length>100){
+  chatHistory=chatHistory.slice(-100);
+ }
+
+ try{
+  localStorage.setItem('jarvis_chat_v2',JSON.stringify(chatHistory));
+ }catch(e){}
+
  renderChat();
 }
+
 function clearChat(){
  chatHistory=[];
  localStorage.removeItem('jarvis_chat_v2');
@@ -289,11 +699,12 @@ function clearChat(){
 }
 
 function getReply(raw){
+
  const msg=raw.toLowerCase().trim();
  const lang=document.getElementById('language').value;
  const has=(...words)=>words.some(w=>msg.includes(w));
 
- if(has('hello','hi','hey','namaste','नमस्ते','प्रanam'))
+ if(has('hello','hi','hey','namaste','नमस्ते','pranam'))
   return 'Hello Commander Prem! J.A.R.V.I.S. system online. Bataiye, aaj kya karna hai?';
 
  if(has('your name','who are you','tum kaun','tera naam','naam kya'))
@@ -318,10 +729,10 @@ function getReply(raw){
   return 'Website banane ke liye HTML structure, CSS design aur JavaScript functionality seekho. Tumhari J.A.R.V.I.S. website bhi isi se bani hai!';
 
  if(has('study','padhai','पढ़ाई','board','exam'))
-  return 'Study mode ON! 📚 Ek topic chuno, 25 minutes focus karo, phir bina dekhe recall practice karo. Aaj ka target chhota aur clear rakho.';
+  return 'Study mode ON! Ek topic chuno, 25 minutes focus karo, phir bina dekhe recall practice karo.';
 
  if(has('jarvis','system'))
-  return 'J.A.R.V.I.S. V2 is online. All local demo tools are ready, Commander.';
+  return 'J.A.R.V.I.S. V2.1 is online. Media Hub and local demo tools are ready, Commander.';
 
  if(has('thank','thanks','shukriya','धन्यवाद'))
   return 'You are welcome, Commander! Keep learning and building.';
@@ -330,195 +741,684 @@ function getReply(raw){
   return 'Main Python, cybersecurity, study tips, website basics, date/time aur general questions mein basic help kar sakta hoon.';
 
  if(lang==='bhojpuri')
-  return 'का हो Commander! रउआ सवाल समझ में आइल। थोड़ा अउरी साफ-साफ बताईं, हम मदद करे के कोशिश करब।';
+  return 'का हो Commander! रउआ सवाल समझ में आइल। थोड़ा अउरी साफ-साफ बताईं।';
+
  if(lang==='hindi')
-  return 'आपका सवाल मिला। मैं एक डेमो असिस्टेंट हूँ। थोड़ा और स्पष्ट लिखें, ताकि मैं बेहतर मदद कर सकूँ।';
+  return 'आपका सवाल मिला। मैं एक डेमो असिस्टेंट हूँ। थोड़ा और स्पष्ट लिखें।';
+
  if(lang==='english')
-  return 'I received your message. I am a rule-based demo assistant, not a live AI model. Try asking about Python, cybersecurity, studying, or web development.';
- return 'Samajh gaya, Commander! Main abhi rule-based demo assistant hoon. Python, cybersecurity, study, website ya general topic par poochho.';
+  return 'I received your message. I am a rule-based demo assistant, not a live AI model.';
+
+ return 'Samajh gaya, Commander! Main abhi rule-based demo assistant hoon. Python, cybersecurity, study ya website ke baare mein poochho.';
 }
+
 function sendChat(){
+
  const input=document.getElementById('chatInput');
  const msg=input.value.trim();
+
  if(!msg)return;
+
  addChat('user',msg);
  input.value='';
+
  const reply=getReply(msg);
+
  setTimeout(()=>addChat('bot',reply),250);
 }
-renderChat();
-if(chatHistory.length===0)addChat('bot','Welcome Commander Prem! J.A.R.V.I.S. V2 online. Ask me something.');
 
-/* LINK FORMAT CHECKER */
+renderChat();
+
+if(chatHistory.length===0){
+ addChat('bot','Welcome Commander Prem! J.A.R.V.I.S. V2.1 online. Ask me something.');
+}
+
+/* LINK CHECKER */
+
 function checkLink(){
+
  const value=document.getElementById('linkInput').value.trim();
  const out=document.getElementById('linkResult');
+
  try{
+
   const u=new URL(value);
+
   if(!['http:','https:'].includes(u.protocol)){
    out.textContent='Unsupported link protocol.';
    return;
   }
-  out.textContent='Valid URL format ✅\nHost: '+u.hostname+'\nProtocol: '+u.protocol+'\n\nThis does NOT confirm that the website is safe.';
- }catch(e){out.textContent='Invalid URL format. Check the link.';}
+
+  out.textContent=
+  'Valid URL format\nHost: '+u.hostname+
+  '\nProtocol: '+u.protocol+
+  '\n\nThis does NOT confirm that the website is safe.';
+
+ }catch(e){
+  out.textContent='Invalid URL format. Check the link.';
+ }
 }
 
 /* FILE HASH */
+
 async function checkFile(){
+
  const file=document.getElementById('fileInput').files[0];
  const out=document.getElementById('fileResult');
- if(!file){out.textContent='Please select a file first.';return;}
+
+ if(!file){
+  out.textContent='Please select a file first.';
+  return;
+ }
+
  out.textContent='Analyzing file...';
+
  try{
+
   const buffer=await file.arrayBuffer();
   const hash=await crypto.subtle.digest('SHA-256',buffer);
-  const hex=Array.from(new Uint8Array(hash)).map(b=>b.toString(16).padStart(2,'0')).join('');
-  out.textContent='File: '+file.name+'\nSize: '+file.size+' bytes\nSHA-256: '+hex+'\n\nThis is metadata/hash analysis, not antivirus scanning.';
- }catch(e){out.textContent='Hash unavailable. Try HTTPS or a supported browser.';}
+
+  const hex=Array.from(new Uint8Array(hash))
+  .map(b=>b.toString(16).padStart(2,'0')).join('');
+
+  out.textContent=
+  'File: '+file.name+
+  '\nSize: '+file.size+' bytes'+
+  '\nSHA-256: '+hex+
+  '\n\nThis is metadata/hash analysis, not antivirus scanning.';
+
+ }catch(e){
+  out.textContent='Hash unavailable. Try HTTPS or a supported browser.';
+ }
 }
 
-/* VIDEO */
+/* OLD VIDEO TOOL */
+
 function openVideo(){
+
  const value=document.getElementById('videoInput').value.trim();
  const out=document.getElementById('videoResult');
+
  try{
+
   const u=new URL(value);
+
   if(!['http:','https:'].includes(u.protocol))throw Error();
+
   out.textContent='Opening: '+u.href;
+
   window.open(u.href,'_blank','noopener,noreferrer');
- }catch(e){out.textContent='Please enter a valid http or https video URL.';}
+
+ }catch(e){
+  out.textContent='Please enter a valid http or https video URL.';
+ }
 }
 
 /* TEXT HELPER */
+
 function fixText(){
+
  const value=document.getElementById('textInput').value.trim();
- if(!value){document.getElementById('textResult').textContent='Enter some text first.';return;}
+ const out=document.getElementById('textResult');
+
+ if(!value){
+  out.textContent='Enter some text first.';
+  return;
+ }
+
  const fixed=value.replace(/\s+/g,' ').replace(/\s+([,.!?])/g,'$1');
- const result=fixed.charAt(0).toUpperCase()+fixed.slice(1);
- document.getElementById('textResult').textContent=result;
+
+ out.textContent=fixed.charAt(0).toUpperCase()+fixed.slice(1);
 }
 
 /* CALCULATOR */
+
 function calculate(){
+
  const value=document.getElementById('calcInput').value.trim();
  const out=document.getElementById('calcResult');
- if(!value){out.textContent='Enter a calculation.';return;}
+
+ if(!value){
+  out.textContent='Enter a calculation.';
+  return;
+ }
+
  if(!/^[0-9+\-*/().%\s]+$/.test(value)){
   out.textContent='Only numbers and basic math operators are allowed.';
   return;
  }
+
  try{
+
   const result=Function('"use strict";return ('+value+')')();
-  out.textContent=Number.isFinite(result)?'Result: '+result:'Invalid calculation.';
- }catch(e){out.textContent='Invalid calculation.';}
+
+  out.textContent=Number.isFinite(result)?
+  'Result: '+result:'Invalid calculation.';
+
+ }catch(e){
+  out.textContent='Invalid calculation.';
+ }
 }
 
 /* NOTES */
+
 function saveNote(){
+
  const value=document.getElementById('noteInput').value.trim();
+
  if(!value)return;
+
  let notes=[];
- try{notes=JSON.parse(localStorage.getItem('jarvis_notes_v2')||'[]');}catch(e){}
+
+ try{
+  notes=JSON.parse(localStorage.getItem('jarvis_notes_v2')||'[]');
+ }catch(e){}
+
  if(!Array.isArray(notes))notes=[];
+
  notes.push(value);
+
  localStorage.setItem('jarvis_notes_v2',JSON.stringify(notes));
+
  document.getElementById('noteInput').value='';
+
  renderNotes();
 }
+
 function renderNotes(){
+
  let notes=[];
- try{notes=JSON.parse(localStorage.getItem('jarvis_notes_v2')||'[]');}catch(e){}
+
+ try{
+  notes=JSON.parse(localStorage.getItem('jarvis_notes_v2')||'[]');
+ }catch(e){}
+
  if(!Array.isArray(notes))notes=[];
+
  const out=document.getElementById('noteResult');
  out.replaceChildren();
+
  notes.forEach((n,i)=>{
+
   const row=document.createElement('p');
   row.textContent=(i+1)+'. '+n;
+
   out.appendChild(row);
  });
 }
+
 renderNotes();
 
 /* TASK MANAGER */
+
 function getTasks(){
+
  try{
+
   const t=JSON.parse(localStorage.getItem('jarvis_tasks_v2')||'[]');
+
   return Array.isArray(t)?t:[];
- }catch(e){return [];}
+
+ }catch(e){
+  return [];
+ }
 }
+
 function addTask(){
+
  const input=document.getElementById('taskInput');
  const value=input.value.trim();
+
  if(!value)return;
+
  const tasks=getTasks();
+
  tasks.push({text:value,done:false});
+
  localStorage.setItem('jarvis_tasks_v2',JSON.stringify(tasks));
+
  input.value='';
+
  renderTasks();
 }
+
 function toggleTask(i){
+
  const tasks=getTasks();
+
  if(!tasks[i])return;
+
  tasks[i].done=!tasks[i].done;
+
  localStorage.setItem('jarvis_tasks_v2',JSON.stringify(tasks));
+
  renderTasks();
 }
+
 function deleteTask(i){
+
  const tasks=getTasks();
+
  tasks.splice(i,1);
+
  localStorage.setItem('jarvis_tasks_v2',JSON.stringify(tasks));
+
  renderTasks();
 }
+
 function renderTasks(){
+
  const out=document.getElementById('taskList');
  out.replaceChildren();
+
  getTasks().forEach((t,i)=>{
+
   const row=document.createElement('div');
   row.style.margin='8px 0';
+
   const label=document.createElement('span');
   label.textContent=(t.done?'✅ ':'⬜ ')+t.text+' ';
   label.style.textDecoration=t.done?'line-through':'none';
+
   const done=document.createElement('button');
   done.textContent='DONE';
   done.onclick=()=>toggleTask(i);
+
   const del=document.createElement('button');
   del.textContent='DELETE';
   del.style.marginLeft='5px';
   del.onclick=()=>deleteTask(i);
+
   row.append(label,done,del);
   out.appendChild(row);
  });
 }
+
 renderTasks();
 
 /* VOICE */
+
 function speakText(text){
+
  if(!('speechSynthesis' in window)){
   document.getElementById('voiceResult').textContent='Speech output not supported.';
   return;
  }
+
  const speech=new SpeechSynthesisUtterance(text);
+
  speech.lang='en-IN';
+
  speechSynthesis.cancel();
  speechSynthesis.speak(speech);
 }
+
 function startVoice(){
+
  const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
  const out=document.getElementById('voiceResult');
- if(!SpeechRecognition){out.textContent='Voice input is not supported in this browser.';return;}
+
+ if(!SpeechRecognition){
+  out.textContent='Voice input is not supported in this browser.';
+  return;
+ }
+
  const rec=new SpeechRecognition();
+
  rec.lang='hi-IN';
+
  rec.onstart=()=>out.textContent='Listening...';
+
  rec.onresult=e=>{
+
   const text=e.results[0][0].transcript;
+
   out.textContent='You said: '+text;
+
   document.getElementById('chatInput').value=text;
+
   showTool('chat');
+
   sendChat();
  };
+
  rec.onerror=()=>out.textContent='Voice recognition error. Try again.';
+
  rec.start();
 }
+
+/* V2.1 MEDIA HUB */
+
+/* LOADING EFFECT */
+
+function mediaLoading(id,show){
+
+ const el=document.getElementById(id);
+
+ el.classList.toggle('active',show);
+}
+
+/* SOCIAL PLATFORM DETECTION */
+
+function detectSocial(){
+
+ const input=document.getElementById('socialInput').value.trim();
+ const out=document.getElementById('socialResult');
+
+ if(!input){
+  out.textContent='Please paste a video link.';
+  return;
+ }
+
+ let url;
+
+ try{
+
+  url=new URL(input);
+
+  if(!['http:','https:'].includes(url.protocol))throw Error();
+
+ }catch(e){
+
+  out.textContent='Invalid URL.';
+  return;
+ }
+
+ mediaLoading('mediaLoader',true);
+
+ out.textContent='';
+
+ setTimeout(()=>{
+
+  const host=url.hostname.toLowerCase().replace(/^www\./,'');
+
+  const platforms={
+   'youtube.com':'YouTube',
+   'youtu.be':'YouTube',
+   'youtube-nocookie.com':'YouTube',
+   'instagram.com':'Instagram',
+   'facebook.com':'Facebook',
+   'fb.watch':'Facebook',
+   'tiktok.com':'TikTok',
+   'x.com':'X / Twitter',
+   'twitter.com':'X / Twitter',
+   'pinterest.com':'Pinterest',
+   'pin.it':'Pinterest'
+  };
+
+  let platform='Unknown Platform';
+
+  for(const domain in platforms){
+
+   if(host===domain||host.endsWith('.'+domain)){
+    platform=platforms[domain];
+    break;
+   }
+  }
+
+  out.replaceChildren();
+
+  const title=document.createElement('h3');
+  title.className='result-title';
+  title.textContent='SYSTEM ANALYSIS COMPLETE';
+
+  const name=document.createElement('p');
+  name.textContent='Detected platform: '+platform;
+
+  const link=document.createElement('p');
+  link.textContent=url.href;
+
+  const copy=document.createElement('button');
+  copy.textContent='📋 COPY LINK';
+  copy.onclick=()=>copyMediaText(url.href);
+
+  const open=document.createElement('button');
+  open.textContent='🌐 OPEN VIDEO';
+  open.onclick=()=>window.open(url.href,'_blank','noopener,noreferrer');
+
+  out.append(title,name,link,copy,open);
+
+  const note=document.createElement('p');
+  note.className='small';
+  note.textContent='Download availability depends on the platform. Use official download options where available. Login, DRM and platform restrictions are not bypassed.';
+
+  out.appendChild(note);
+
+  mediaLoading('mediaLoader',false);
+
+ },500);
+}
+
+/* DIRECT VIDEO DOWNLOAD */
+
+function downloadDirectVideo(){
+
+ const input=document.getElementById('directVideo').value.trim();
+ const out=document.getElementById('downloadResult');
+
+ try{
+
+  const url=new URL(input);
+
+  if(!['http:','https:'].includes(url.protocol))throw Error();
+
+  if(!/\.(mp4|webm|mov|m4v)(\?|$)/i.test(url.href)){
+
+   out.textContent='Direct MP4/WebM/MOV video file URL required.';
+   return;
+  }
+
+  const link=document.createElement('a');
+
+  link.href=url.href;
+  link.download='';
+  link.target='_blank';
+  link.rel='noopener noreferrer';
+
+  document.body.appendChild(link);
+
+  link.click();
+
+  link.remove();
+
+  out.textContent='Download requested. Browser or source server may open the video instead. Only save media you own or are permitted to download.';
+
+ }catch(e){
+
+  out.textContent='Please enter a valid direct video file URL.';
+ }
+}
+
+/* COPY BUTTON */
+
+async function copyMediaText(text){
+
+ try{
+
+  await navigator.clipboard.writeText(text);
+
+  alert('Copied successfully!');
+
+ }catch(e){
+
+  const area=document.createElement('textarea');
+
+  area.value=text;
+
+  document.body.appendChild(area);
+
+  area.select();
+
+  try{
+   document.execCommand('copy');
+   alert('Copied!');
+  }catch(err){
+   alert('Copy not supported by this browser.');
+  }
+
+  area.remove();
+ }
+}
+
+/* AUDIO SEARCH */
+
+async function searchAudio(){
+
+ const query=document.getElementById('songSearch').value.trim();
+ const out=document.getElementById('audioResults');
+
+ if(!query){
+  out.textContent='Enter a song or artist name.';
+  return;
+ }
+
+ mediaLoading('audioLoader',true);
+
+ out.replaceChildren();
+
+ try{
+
+  const api='https://itunes.apple.com/search?term='+
+  encodeURIComponent(query)+'&entity=song&limit=10';
+
+  const response=await fetch(api);
+
+  if(!response.ok)throw Error();
+
+  const data=await response.json();
+
+  if(!data.results||data.results.length===0){
+
+   out.textContent='No songs found.';
+   return;
+  }
+
+  data.results.forEach(song=>{
+
+   const card=document.createElement('div');
+   card.className='media-card';
+
+   const title=document.createElement('h3');
+   title.textContent=song.trackName;
+
+   const artist=document.createElement('p');
+   artist.textContent=song.artistName;
+
+   const album=document.createElement('p');
+   album.className='small';
+   album.textContent=song.collectionName||'';
+
+   card.append(title,artist,album);
+
+   if(song.artworkUrl100){
+
+    const image=document.createElement('img');
+
+    image.src=song.artworkUrl100;
+    image.alt='Album artwork';
+    image.style.width='85px';
+    image.style.borderRadius='8px';
+
+    card.appendChild(image);
+   }
+
+   if(song.previewUrl){
+
+    const audio=document.createElement('audio');
+
+    audio.controls=true;
+    audio.src=song.previewUrl;
+    audio.preload='none';
+
+    card.appendChild(audio);
+
+    const preview=document.createElement('p');
+    preview.className='small';
+    preview.textContent='Short music preview';
+
+    card.appendChild(preview);
+   }
+
+   const copy=document.createElement('button');
+
+   copy.textContent='📋 COPY SONG DETAILS';
+
+   copy.onclick=()=>copyMediaText(
+    song.trackName+' - '+song.artistName
+   );
+
+   const official=document.createElement('button');
+
+   official.textContent='🌐 OPEN SONG';
+
+   official.onclick=()=>{
+
+    if(song.trackViewUrl){
+     window.open(song.trackViewUrl,'_blank','noopener,noreferrer');
+    }
+   };
+
+   card.append(copy,official);
+
+   out.appendChild(card);
+  });
+
+ }catch(e){
+
+  out.textContent='Music search unavailable. Check your internet connection.';
+
+ }finally{
+
+  mediaLoading('audioLoader',false);
+ }
+}
+
+/* LYRICS FINDER */
+
+function findLyrics(){
+
+ const song=document.getElementById('lyricsSong').value.trim();
+ const artist=document.getElementById('lyricsArtist').value.trim();
+
+ const out=document.getElementById('lyricsResult');
+
+ if(!song){
+  out.textContent='Enter a song name.';
+  return;
+ }
+
+ const searchText=encodeURIComponent(
+  song+' '+artist+' official lyrics'
+ );
+
+ out.replaceChildren();
+
+ const info=document.createElement('p');
+
+ info.textContent='Lyrics search ready. Opening external search results lets you find authorized lyrics sources.';
+
+ const searchButton=document.createElement('button');
+
+ searchButton.textContent='🔍 SEARCH LYRICS';
+
+ searchButton.onclick=()=>window.open(
+  'https://www.google.com/search?q='+searchText,
+  '_blank',
+  'noopener,noreferrer'
+ );
+
+ const copyButton=document.createElement('button');
+
+ copyButton.textContent='📋 COPY SONG NAME';
+
+ copyButton.onclick=()=>copyMediaText(
+  song+(artist?' - '+artist:'')
+ );
+
+ out.append(info,searchButton,copyButton);
+}
+
 </script>
+
 </body>
 </html>
