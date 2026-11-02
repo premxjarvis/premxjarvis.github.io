@@ -1,24 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
- <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>J.A.R.V.I.S. V2.1 | Prem Patel</title>
+<title>PREM X JARVIS | Official Website by Prem Patel</title>
 
-<meta name="description" content="Official website of Prem Patel. J.A.R.V.I.S. AI tools, media hub, audio search, technology and cybersecurity learning.">
-<meta name="keywords" content="Prem Patel, JARVIS AI, Python, Cybersecurity, Technology">
+<meta name="description" content="Official website of Prem Patel, creator of J.A.R.V.I.S. Explore AI tools, technology projects, media hub, Python and cybersecurity learning.">
+
+<meta name="keywords" content="Prem Patel, Prem x Jarvis, PREM X JARVIS, JARVIS AI, JARVIS V2.1, Python, Cybersecurity, Technology">
+
 <meta name="author" content="Prem Patel">
+<meta name="creator" content="Prem Patel">
+<meta name="application-name" content="PREM X JARVIS">
 <meta name="robots" content="index, follow">
+
 <link rel="canonical" href="https://premxjarvis.github.io/">
 
-<meta property="og:title" content="PREM X JARVIS | Prem Patel">
-<meta property="og:description" content="Explore J.A.R.V.I.S. AI projects, technology and cybersecurity.">
-<meta property="og:url" content="https://premxjarvis.github.io/">
+<!-- FAVICON -->
+<link rel="icon" type="image/png" sizes="192x192" href="/jarvis-logo.png">
+<link rel="apple-touch-icon" href="/jarvis-logo.png">
+
+<!-- OPEN GRAPH -->
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="PREM X JARVIS">
+<meta property="og:title" content="PREM X JARVIS | Prem Patel">
+<meta property="og:description" content="Official website of Prem Patel. Explore J.A.R.V.I.S. AI projects, technology and cybersecurity.">
+<meta property="og:url" content="https://premxjarvis.github.io/">
+<meta property="og:image" content="https://premxjarvis.github.io/jarvis-logo.png">
+<meta property="og:image:alt" content="PREM X JARVIS Official Logo">
+
+<!-- TWITTER -->
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PREM X JARVIS | Prem Patel">
+<meta name="twitter:description" content="Official J.A.R.V.I.S. AI project created by Prem Patel.">
+<meta name="twitter:image" content="https://premxjarvis.github.io/jarvis-logo.png">
+
+<!-- GOOGLE STRUCTURED DATA -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://premxjarvis.github.io/#website",
+      "url": "https://premxjarvis.github.io/",
+      "name": "PREM X JARVIS",
+      "alternateName": [
+        "Prem x Jarvis",
+        "PremXJarvis"
+      ],
+      "description": "Official website of Prem Patel and his J.A.R.V.I.S. AI project.",
+      "publisher": {
+        "@id": "https://premxjarvis.github.io/#person"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://premxjarvis.github.io/#person",
+      "name": "Prem Patel",
+      "url": "https://premxjarvis.github.io/",
+      "image": "https://premxjarvis.github.io/jarvis-logo.png",
+      "jobTitle": "J.A.R.V.I.S. Project Creator",
+      "description": "Creator of the J.A.R.V.I.S. personal AI project. Tech enthusiast and cybersecurity learner."
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "J.A.R.V.I.S. V2.1",
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser",
+      "author": {
+        "@id": "https://premxjarvis.github.io/#person"
+      },
+      "url": "https://premxjarvis.github.io/",
+      "description": "A personal web-based assistant project created by Prem Patel."
+    }
+  ]
+}
+</script>
 
 <style>
+
 :root{
  --bg:#030712;
  --panel:#081426;
@@ -51,14 +114,34 @@ header h1{
  text-shadow:0 0 15px var(--blue);
 }
 
-header p{color:var(--muted);font-size:12px}
+header p{
+ color:var(--muted);
+ font-size:12px;
+}
 
-.status{color:#00ff9d;font-size:12px}
+.header-logo{
+ width:85px;
+ height:85px;
+ object-fit:contain;
+ border-radius:50%;
+ box-shadow:0 0 20px var(--blue);
+ margin-bottom:12px;
+}
 
-.container{max-width:1000px;margin:auto;padding:15px}
+.status{
+ color:#00ff9d;
+ font-size:12px;
+}
+
+.container{
+ max-width:1000px;
+ margin:auto;
+ padding:15px;
+}
 
 .core{
- width:105px;height:105px;
+ width:105px;
+ height:105px;
  border-radius:50%;
  margin:20px auto;
  border:3px solid var(--blue);
@@ -71,7 +154,9 @@ header p{color:var(--muted);font-size:12px}
 }
 
 @keyframes pulse{
- 50%{box-shadow:0 0 40px var(--blue),inset 0 0 30px var(--blue)}
+ 50%{
+  box-shadow:0 0 40px var(--blue),inset 0 0 30px var(--blue);
+ }
 }
 
 .card{
@@ -83,7 +168,10 @@ header p{color:var(--muted);font-size:12px}
  box-shadow:0 5px 20px #0005;
 }
 
-h2{color:var(--blue);font-size:18px}
+h2{
+ color:var(--blue);
+ font-size:18px;
+}
 
 .grid{
  display:grid;
@@ -118,10 +206,16 @@ input,textarea,select{
  border-radius:7px;
 }
 
-textarea{min-height:90px;resize:vertical}
+textarea{
+ min-height:90px;
+ resize:vertical;
+}
 
 .tool{display:none}
-.tool.active{display:block;animation:appear .35s ease}
+.tool.active{
+ display:block;
+ animation:appear .35s ease;
+}
 
 @keyframes appear{
  from{opacity:0;transform:translateY(10px)}
@@ -146,10 +240,20 @@ textarea{min-height:90px;resize:vertical}
  overflow-wrap:anywhere;
 }
 
-.user{background:#073451;text-align:right}
-.bot{background:#101f31;border-left:3px solid var(--blue)}
+.user{
+ background:#073451;
+ text-align:right;
+}
 
-.small{font-size:12px;color:var(--muted)}
+.bot{
+ background:#101f31;
+ border-left:3px solid var(--blue);
+}
+
+.small{
+ font-size:12px;
+ color:var(--muted);
+}
 
 .output{
  padding:12px;
@@ -169,8 +273,6 @@ footer{
 }
 
 a{color:#32c5ff}
-
-/* V2.1 MEDIA HUB */
 
 .media-search{
  border:1px solid var(--blue);
@@ -262,26 +364,52 @@ a{color:#32c5ff}
 .copy-btn{margin-top:8px}
 
 @media(max-width:500px){
- header h1{letter-spacing:3px;font-size:23px}
+
+ header h1{
+  letter-spacing:3px;
+  font-size:23px;
+ }
+
  .container{padding:10px}
- .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+ .grid{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+ }
+
 }
+
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>J.A.R.V.I.S.</h1>
+
+<img
+ src="/jarvis-logo.png"
+ alt="PREM X JARVIS Official Logo"
+ class="header-logo"
+ width="85"
+ height="85"
+>
+
+<h1>PREM X JARVIS</h1>
+
 <p>JUST A RATHER VERY INTELLIGENT SYSTEM</p>
-<div class="status">● SYSTEM ONLINE | VERSION 2.1</div>
+
+<div class="status">
+● SYSTEM ONLINE | VERSION 2.1
+</div>
+
 </header>
 
 <div class="container">
 
 <div class="core">J</div>
 
-<h2 style="text-align:center">WELCOME COMMANDER PREM</h2>
+<h2 style="text-align:center">
+WELCOME COMMANDER PREM
+</h2>
 
 <p class="small" style="text-align:center">
 Personal Assistant System | Created by Prem Patel
@@ -290,9 +418,11 @@ Personal Assistant System | Created by Prem Patel
 <!-- CONTROL CENTER -->
 
 <div class="card">
+
 <h2>⚡ CONTROL CENTER</h2>
 
 <div class="grid">
+
 <button onclick="showTool('chat')">🤖 Smart AI Chat</button>
 <button onclick="showTool('link')">🔗 Link Checker</button>
 <button onclick="showTool('file')">📁 File Scanner</button>
@@ -304,10 +434,11 @@ Personal Assistant System | Created by Prem Patel
 <button onclick="showTool('tasks')">✅ To-Do List</button>
 <button onclick="showTool('voice')">🎙️ Voice Assistant</button>
 <button onclick="showTool('about')">👨‍💻 Developer</button>
+
 </div>
 </div>
 
-<!-- SMART CHAT -->
+<!-- CHAT -->
 
 <section id="chat" class="card tool active">
 
@@ -318,22 +449,26 @@ Demo assistant • Hindi • Hinglish • English • Bhojpuri
 </p>
 
 <select id="language">
+
 <option value="auto">Auto Language</option>
 <option value="hinglish">Hinglish</option>
 <option value="hindi">Hindi</option>
 <option value="english">English</option>
 <option value="bhojpuri">Bhojpuri</option>
+
 </select>
 
 <div class="chatbox" id="chatbox"></div>
 
 <input id="chatInput"
-placeholder="Commander, type your message..."
-onkeydown="if(event.key==='Enter')sendChat()">
+ placeholder="Commander, type your message..."
+ onkeydown="if(event.key==='Enter')sendChat()">
 
 <div class="grid">
+
 <button onclick="sendChat()">SEND ➤</button>
 <button onclick="clearChat()">CLEAR CHAT</button>
+
 </div>
 
 </section>
@@ -356,7 +491,7 @@ URL format checker only. Ye live malware scan nahi hai.
 
 </section>
 
-<!-- FILE SCANNER -->
+<!-- FILE HASH -->
 
 <section id="file" class="card tool">
 
@@ -374,7 +509,7 @@ SHA-256 hash analysis. Ye antivirus nahi hai.
 
 </section>
 
-<!-- OLD VIDEO TOOL -->
+<!-- VIDEO TOOL -->
 
 <section id="video" class="card tool">
 
@@ -388,7 +523,7 @@ SHA-256 hash analysis. Ye antivirus nahi hai.
 
 </section>
 
-<!-- V2.1 MEDIA HUB -->
+<!-- MEDIA HUB -->
 
 <section id="media" class="card tool">
 
@@ -398,21 +533,21 @@ SHA-256 hash analysis. Ye antivirus nahi hai.
 Social video link detection • Audio search • Lyrics finder
 </p>
 
-<!-- SOCIAL VIDEO -->
-
 <div class="card">
 
 <h2>🎬 SOCIAL VIDEO HUB</h2>
 
 <input id="socialInput"
-class="media-search"
-placeholder="Paste YouTube / Instagram / Facebook / TikTok URL">
+ class="media-search"
+ placeholder="Paste YouTube / Instagram / Facebook / TikTok URL">
 
 <button onclick="detectSocial()">🔍 ANALYZE VIDEO LINK</button>
 
 <div id="mediaLoader" class="jarvis-loader">
+
 <div class="loader-ring"></div>
 SYSTEM SCANNING...
+
 </div>
 
 <div id="socialResult" class="output"></div>
@@ -450,10 +585,9 @@ SYSTEM SCANNING...
 </div>
 
 </div>
-
 </div>
 
-<!-- DIRECT DOWNLOAD -->
+<!-- DIRECT VIDEO DOWNLOAD -->
 
 <div class="card">
 
@@ -464,7 +598,7 @@ Direct MP4, WebM and MOV video links. Download only media you own or have permis
 </p>
 
 <input id="directVideo"
-placeholder="Paste direct .mp4 / .webm URL">
+ placeholder="Paste direct .mp4 / .webm URL">
 
 <button onclick="downloadDirectVideo()">
 ⬇️ DOWNLOAD VIDEO
@@ -481,14 +615,16 @@ placeholder="Paste direct .mp4 / .webm URL">
 <h2>🎵 AUDIO SEARCH ENGINE</h2>
 
 <input id="songSearch"
-class="media-search"
-placeholder="Enter song name or artist...">
+ class="media-search"
+ placeholder="Enter song name or artist...">
 
 <button onclick="searchAudio()">🔍 SEARCH MUSIC</button>
 
 <div id="audioLoader" class="jarvis-loader">
+
 <div class="loader-ring"></div>
 SEARCHING MUSIC DATABASE...
+
 </div>
 
 <div id="audioResults"></div>
@@ -510,7 +646,7 @@ SEARCHING MUSIC DATABASE...
 <div id="lyricsResult" class="output"></div>
 
 <p class="small">
-Lyrics search opens external sources. Full copyrighted lyrics may not be available for reproduction.
+Lyrics search opens external sources.
 </p>
 
 </div>
@@ -529,7 +665,9 @@ Lyrics search opens external sources. Full copyrighted lyrics may not be availab
 
 <div id="textResult" class="output"></div>
 
-<p class="small">Basic spacing and capitalization helper.</p>
+<p class="small">
+Basic spacing and capitalization helper.
+</p>
 
 </section>
 
@@ -561,7 +699,7 @@ Lyrics search opens external sources. Full copyrighted lyrics may not be availab
 
 </section>
 
-<!-- TODO -->
+<!-- TASKS -->
 
 <section id="tasks" class="card tool">
 
@@ -587,7 +725,9 @@ Lyrics search opens external sources. Full copyrighted lyrics may not be availab
 🔊 TEST VOICE
 </button>
 
-<div id="voiceResult" class="output">Voice system ready.</div>
+<div id="voiceResult" class="output">
+Voice system ready.
+</div>
 
 <p class="small">
 Voice support browser aur device par depend karta hai.
@@ -595,33 +735,58 @@ Voice support browser aur device par depend karta hai.
 
 </section>
 
-<!-- ABOUT -->
+<!-- DEVELOPER -->
 
 <section id="about" class="card tool">
 
 <h2>👨‍💻 DEVELOPER PROFILE</h2>
 
+<img
+ src="/jarvis-logo.png"
+ alt="Prem x Jarvis Logo"
+ width="100"
+ height="100"
+ style="border-radius:50%;box-shadow:0 0 15px #00b7ff;"
+>
+
 <h3>PREM PATEL</h3>
 
-<p>Cybersecurity Learner | Tech Enthusiast | Developer</p>
+<p>
+Creator & Developer of J.A.R.V.I.S.
+</p>
+
+<p>
+Tech Enthusiast | Cybersecurity Learner | Developer
+</p>
+
+<p>
+Project: J.A.R.V.I.S. V2.1
+</p>
+
+<p>
+Website: PREM X JARVIS
+</p>
 
 <p>
 Instagram:
-<a href="https://instagram.com/prime__sgod" target="_blank" rel="noopener">
+<a href="https://instagram.com/prime__sgod"
+ target="_blank" rel="noopener noreferrer">
 @prime__sgod
 </a>
 </p>
 
 <p>
 Instagram:
-<a href="https://instagram.com/patel.darkxx.in" target="_blank" rel="noopener">
+<a href="https://instagram.com/patel.darkxx.in"
+ target="_blank" rel="noopener noreferrer">
 @patel.darkxx.in
 </a>
 </p>
 
 <p>
 Telegram:
-<a href="https://t.me/patelxbotx" target="_blank" rel="noopener">
+<a href="https://t.me/patelxbotx"
+ target="_blank" rel="noopener noreferrer">
 patelxbotx
 </a>
 </p>
@@ -629,29 +794,49 @@ patelxbotx
 <p>
 Email:
 <a href="mailto:premkumar2008@gmail.com">
-premkumar2008@gmail.com
+Contact Developer
 </a>
 </p>
 
-<p class="small">J.A.R.V.I.S. V2.1 | Built by Prem Patel</p>
+<p class="small">
+Designed & Developed by Prem Patel.
+</p>
 
 </section>
 
 </div>
 
 <footer>
+
+<strong>PREM X JARVIS</strong><br>
+
 J.A.R.V.I.S. V2.1<br>
-DESIGNED & DEVELOPED BY PREM PATEL
+
+DESIGNED & DEVELOPED BY PREM PATEL<br>
+
+© <span id="year"></span> All Rights Reserved.
+
 </footer>
 
 <script>
 
+/* YEAR */
+
+document.getElementById('year').textContent =
+new Date().getFullYear();
+
 /* NAVIGATION */
 
 function showTool(id){
- document.querySelectorAll('.tool').forEach(x=>x.classList.remove('active'));
+
+ document.querySelectorAll('.tool').forEach(x=>{
+  x.classList.remove('active');
+ });
+
  const target=document.getElementById(id);
+
  if(target)target.classList.add('active');
+
  window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -660,25 +845,42 @@ function showTool(id){
 let chatHistory=[];
 
 try{
- chatHistory=JSON.parse(localStorage.getItem('jarvis_chat_v2')||'[]');
+
+ chatHistory=JSON.parse(
+  localStorage.getItem('jarvis_chat_v2')||'[]'
+ );
+
  if(!Array.isArray(chatHistory))chatHistory=[];
-}catch(e){chatHistory=[];}
+
+}catch(e){
+
+ chatHistory=[];
+
+}
 
 function renderChat(){
+
  const box=document.getElementById('chatbox');
+
  box.replaceChildren();
 
  chatHistory.forEach(m=>{
+
   const div=document.createElement('div');
+
   div.className='msg '+(m.role==='user'?'user':'bot');
+
   div.textContent=m.text;
+
   box.appendChild(div);
+
  });
 
  box.scrollTop=box.scrollHeight;
 }
 
 function addChat(role,text){
+
  chatHistory.push({role,text});
 
  if(chatHistory.length>100){
@@ -686,81 +888,112 @@ function addChat(role,text){
  }
 
  try{
-  localStorage.setItem('jarvis_chat_v2',JSON.stringify(chatHistory));
+
+  localStorage.setItem(
+   'jarvis_chat_v2',
+   JSON.stringify(chatHistory)
+  );
+
  }catch(e){}
 
  renderChat();
 }
 
 function clearChat(){
+
  chatHistory=[];
+
  localStorage.removeItem('jarvis_chat_v2');
+
  renderChat();
+
  addChat('bot','Chat history cleared, Commander.');
 }
+
+/* JARVIS REPLY SYSTEM */
 
 function getReply(raw){
 
  const msg=raw.toLowerCase().trim();
+
  const lang=document.getElementById('language').value;
+
  const has=(...words)=>words.some(w=>msg.includes(w));
 
  if(has('hello','hi','hey','namaste','नमस्ते','pranam'))
-  return 'Hello Commander Prem! J.A.R.V.I.S. system online. Bataiye, aaj kya karna hai?';
+
+ return 'Hello Commander Prem! J.A.R.V.I.S. system online. Bataiye, aaj kya karna hai?';
 
  if(has('your name','who are you','tum kaun','tera naam','naam kya'))
-  return 'I am J.A.R.V.I.S. — Just A Rather Very Intelligent System. Created by Commander Prem Patel.';
+
+ return 'I am J.A.R.V.I.S. — Just A Rather Very Intelligent System. Created by Commander Prem Patel.';
 
  if(has('prem','commander'))
-  return 'Commander Prem Patel — Tech Enthusiast, Cyber Explorer aur future developer! Keep learning.';
+
+ return 'Commander Prem Patel — Tech Enthusiast, Cyber Explorer aur future developer! Keep learning.';
 
  if(has('time','samay','kitne baje','समय'))
-  return 'Current time: '+new Date().toLocaleTimeString();
+
+ return 'Current time: '+new Date().toLocaleTimeString();
 
  if(has('date','today','tarikh','तारीख','दिनांक'))
-  return 'Today: '+new Date().toLocaleDateString();
+
+ return 'Today: '+new Date().toLocaleDateString();
 
  if(has('python','पाइथन'))
-  return 'Python ek beginner-friendly programming language hai. Start with print("Hello World"), variables, input(), if-else, loops aur functions.';
+
+ return 'Python ek beginner-friendly programming language hai. Start with print("Hello World"), variables, input(), if-else, loops aur functions.';
 
  if(has('cybersecurity','cyber security','hacking','हैकिंग'))
-  return 'Cybersecurity mein systems aur data ko protect karna seekhte hain. Start with networking basics, Linux, Python, web security aur ethical practice labs. Hamesha permission ke saath testing karo.';
+
+ return 'Cybersecurity mein systems aur data ko protect karna seekhte hain. Start with networking basics, Linux, Python, web security aur ethical practice labs. Hamesha permission ke saath testing karo.';
 
  if(has('html','website','web development'))
-  return 'Website banane ke liye HTML structure, CSS design aur JavaScript functionality seekho. Tumhari J.A.R.V.I.S. website bhi isi se bani hai!';
+
+ return 'Website banane ke liye HTML structure, CSS design aur JavaScript functionality seekho. Tumhari J.A.R.V.I.S. website bhi isi se bani hai!';
 
  if(has('study','padhai','पढ़ाई','board','exam'))
-  return 'Study mode ON! Ek topic chuno, 25 minutes focus karo, phir bina dekhe recall practice karo.';
+
+ return 'Study mode ON! Ek topic chuno, 25 minutes focus karo, phir bina dekhe recall practice karo.';
 
  if(has('jarvis','system'))
-  return 'J.A.R.V.I.S. V2.1 is online. Media Hub and local demo tools are ready, Commander.';
+
+ return 'J.A.R.V.I.S. V2.1 is online. Media Hub and local demo tools are ready, Commander.';
 
  if(has('thank','thanks','shukriya','धन्यवाद'))
-  return 'You are welcome, Commander! Keep learning and building.';
+
+ return 'You are welcome, Commander! Keep learning and building.';
 
  if(has('help','commands','kya kar sakte'))
-  return 'Main Python, cybersecurity, study tips, website basics, date/time aur general questions mein basic help kar sakta hoon.';
+
+ return 'Main Python, cybersecurity, study tips, website basics, date/time aur general questions mein basic help kar sakta hoon.';
 
  if(lang==='bhojpuri')
-  return 'का हो Commander! रउआ सवाल समझ में आइल। थोड़ा अउरी साफ-साफ बताईं।';
+
+ return 'का हो Commander! रउआ सवाल समझ में आइल। थोड़ा अउरी साफ-साफ बताईं।';
 
  if(lang==='hindi')
-  return 'आपका सवाल मिला। मैं एक डेमो असिस्टेंट हूँ। थोड़ा और स्पष्ट लिखें।';
+
+ return 'आपका सवाल मिला। मैं एक डेमो असिस्टेंट हूँ। थोड़ा और स्पष्ट लिखें।';
 
  if(lang==='english')
-  return 'I received your message. I am a rule-based demo assistant, not a live AI model.';
+
+ return 'I received your message. I am a rule-based demo assistant, not a live AI model.';
 
  return 'Samajh gaya, Commander! Main abhi rule-based demo assistant hoon. Python, cybersecurity, study ya website ke baare mein poochho.';
+
 }
 
 function sendChat(){
 
  const input=document.getElementById('chatInput');
+
  const msg=input.value.trim();
 
  if(!msg)return;
 
  addChat('user',msg);
+
  input.value='';
 
  const reply=getReply(msg);
@@ -771,7 +1004,12 @@ function sendChat(){
 renderChat();
 
 if(chatHistory.length===0){
- addChat('bot','Welcome Commander Prem! J.A.R.V.I.S. V2.1 online. Ask me something.');
+
+ addChat(
+  'bot',
+  'Welcome Commander Prem! J.A.R.V.I.S. V2.1 online. Ask me something.'
+ );
+
 }
 
 /* LINK CHECKER */
@@ -779,6 +1017,7 @@ if(chatHistory.length===0){
 function checkLink(){
 
  const value=document.getElementById('linkInput').value.trim();
+
  const out=document.getElementById('linkResult');
 
  try{
@@ -786,8 +1025,11 @@ function checkLink(){
   const u=new URL(value);
 
   if(!['http:','https:'].includes(u.protocol)){
+
    out.textContent='Unsupported link protocol.';
+
    return;
+
   }
 
   out.textContent=
@@ -796,8 +1038,11 @@ function checkLink(){
   '\n\nThis does NOT confirm that the website is safe.';
 
  }catch(e){
+
   out.textContent='Invalid URL format. Check the link.';
+
  }
+
 }
 
 /* FILE HASH */
@@ -805,11 +1050,15 @@ function checkLink(){
 async function checkFile(){
 
  const file=document.getElementById('fileInput').files[0];
+
  const out=document.getElementById('fileResult');
 
  if(!file){
+
   out.textContent='Please select a file first.';
+
   return;
+
  }
 
  out.textContent='Analyzing file...';
@@ -817,6 +1066,7 @@ async function checkFile(){
  try{
 
   const buffer=await file.arrayBuffer();
+
   const hash=await crypto.subtle.digest('SHA-256',buffer);
 
   const hex=Array.from(new Uint8Array(hash))
@@ -829,15 +1079,19 @@ async function checkFile(){
   '\n\nThis is metadata/hash analysis, not antivirus scanning.';
 
  }catch(e){
+
   out.textContent='Hash unavailable. Try HTTPS or a supported browser.';
+
  }
+
 }
 
-/* OLD VIDEO TOOL */
+/* VIDEO TOOL */
 
 function openVideo(){
 
  const value=document.getElementById('videoInput').value.trim();
+
  const out=document.getElementById('videoResult');
 
  try{
@@ -851,8 +1105,11 @@ function openVideo(){
   window.open(u.href,'_blank','noopener,noreferrer');
 
  }catch(e){
+
   out.textContent='Please enter a valid http or https video URL.';
+
  }
+
 }
 
 /* TEXT HELPER */
@@ -860,16 +1117,23 @@ function openVideo(){
 function fixText(){
 
  const value=document.getElementById('textInput').value.trim();
+
  const out=document.getElementById('textResult');
 
  if(!value){
+
   out.textContent='Enter some text first.';
+
   return;
+
  }
 
- const fixed=value.replace(/\s+/g,' ').replace(/\s+([,.!?])/g,'$1');
+ const fixed=value
+ .replace(/\s+/g,' ')
+ .replace(/\s+([,.!?])/g,'$1');
 
  out.textContent=fixed.charAt(0).toUpperCase()+fixed.slice(1);
+
 }
 
 /* CALCULATOR */
@@ -877,16 +1141,23 @@ function fixText(){
 function calculate(){
 
  const value=document.getElementById('calcInput').value.trim();
+
  const out=document.getElementById('calcResult');
 
  if(!value){
+
   out.textContent='Enter a calculation.';
+
   return;
+
  }
 
  if(!/^[0-9+\-*/().%\s]+$/.test(value)){
+
   out.textContent='Only numbers and basic math operators are allowed.';
+
   return;
+
  }
 
  try{
@@ -897,8 +1168,11 @@ function calculate(){
   'Result: '+result:'Invalid calculation.';
 
  }catch(e){
+
   out.textContent='Invalid calculation.';
+
  }
+
 }
 
 /* NOTES */
@@ -912,18 +1186,26 @@ function saveNote(){
  let notes=[];
 
  try{
-  notes=JSON.parse(localStorage.getItem('jarvis_notes_v2')||'[]');
+
+  notes=JSON.parse(
+   localStorage.getItem('jarvis_notes_v2')||'[]'
+  );
+
  }catch(e){}
 
  if(!Array.isArray(notes))notes=[];
 
  notes.push(value);
 
- localStorage.setItem('jarvis_notes_v2',JSON.stringify(notes));
+ localStorage.setItem(
+  'jarvis_notes_v2',
+  JSON.stringify(notes)
+ );
 
  document.getElementById('noteInput').value='';
 
  renderNotes();
+
 }
 
 function renderNotes(){
@@ -931,21 +1213,29 @@ function renderNotes(){
  let notes=[];
 
  try{
-  notes=JSON.parse(localStorage.getItem('jarvis_notes_v2')||'[]');
+
+  notes=JSON.parse(
+   localStorage.getItem('jarvis_notes_v2')||'[]'
+  );
+
  }catch(e){}
 
  if(!Array.isArray(notes))notes=[];
 
  const out=document.getElementById('noteResult');
+
  out.replaceChildren();
 
  notes.forEach((n,i)=>{
 
   const row=document.createElement('p');
+
   row.textContent=(i+1)+'. '+n;
 
   out.appendChild(row);
+
  });
+
 }
 
 renderNotes();
@@ -956,18 +1246,24 @@ function getTasks(){
 
  try{
 
-  const t=JSON.parse(localStorage.getItem('jarvis_tasks_v2')||'[]');
+  const t=JSON.parse(
+   localStorage.getItem('jarvis_tasks_v2')||'[]'
+  );
 
   return Array.isArray(t)?t:[];
 
  }catch(e){
+
   return [];
+
  }
+
 }
 
 function addTask(){
 
  const input=document.getElementById('taskInput');
+
  const value=input.value.trim();
 
  if(!value)return;
@@ -976,11 +1272,15 @@ function addTask(){
 
  tasks.push({text:value,done:false});
 
- localStorage.setItem('jarvis_tasks_v2',JSON.stringify(tasks));
+ localStorage.setItem(
+  'jarvis_tasks_v2',
+  JSON.stringify(tasks)
+ );
 
  input.value='';
 
  renderTasks();
+
 }
 
 function toggleTask(i){
@@ -991,9 +1291,13 @@ function toggleTask(i){
 
  tasks[i].done=!tasks[i].done;
 
- localStorage.setItem('jarvis_tasks_v2',JSON.stringify(tasks));
+ localStorage.setItem(
+  'jarvis_tasks_v2',
+  JSON.stringify(tasks)
+ );
 
  renderTasks();
+
 }
 
 function deleteTask(i){
@@ -1002,48 +1306,68 @@ function deleteTask(i){
 
  tasks.splice(i,1);
 
- localStorage.setItem('jarvis_tasks_v2',JSON.stringify(tasks));
+ localStorage.setItem(
+  'jarvis_tasks_v2',
+  JSON.stringify(tasks)
+ );
 
  renderTasks();
+
 }
 
 function renderTasks(){
 
  const out=document.getElementById('taskList');
+
  out.replaceChildren();
 
  getTasks().forEach((t,i)=>{
 
   const row=document.createElement('div');
+
   row.style.margin='8px 0';
 
   const label=document.createElement('span');
+
   label.textContent=(t.done?'✅ ':'⬜ ')+t.text+' ';
+
   label.style.textDecoration=t.done?'line-through':'none';
 
   const done=document.createElement('button');
+
   done.textContent='DONE';
+
   done.onclick=()=>toggleTask(i);
 
   const del=document.createElement('button');
+
   del.textContent='DELETE';
+
   del.style.marginLeft='5px';
+
   del.onclick=()=>deleteTask(i);
 
   row.append(label,done,del);
+
   out.appendChild(row);
+
  });
+
 }
 
 renderTasks();
 
-/* VOICE */
+/* VOICE ASSISTANT */
 
 function speakText(text){
 
  if(!('speechSynthesis' in window)){
-  document.getElementById('voiceResult').textContent='Speech output not supported.';
+
+  document.getElementById('voiceResult').textContent=
+  'Speech output not supported.';
+
   return;
+
  }
 
  const speech=new SpeechSynthesisUtterance(text);
@@ -1051,17 +1375,24 @@ function speakText(text){
  speech.lang='en-IN';
 
  speechSynthesis.cancel();
+
  speechSynthesis.speak(speech);
+
 }
 
 function startVoice(){
 
- const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+ const SpeechRecognition=
+ window.SpeechRecognition||window.webkitSpeechRecognition;
+
  const out=document.getElementById('voiceResult');
 
  if(!SpeechRecognition){
+
   out.textContent='Voice input is not supported in this browser.';
+
   return;
+
  }
 
  const rec=new SpeechRecognition();
@@ -1081,34 +1412,39 @@ function startVoice(){
   showTool('chat');
 
   sendChat();
+
  };
 
  rec.onerror=()=>out.textContent='Voice recognition error. Try again.';
 
  rec.start();
+
 }
 
-/* V2.1 MEDIA HUB */
-
-/* LOADING EFFECT */
+/* MEDIA LOADER */
 
 function mediaLoading(id,show){
 
  const el=document.getElementById(id);
 
  el.classList.toggle('active',show);
+
 }
 
-/* SOCIAL PLATFORM DETECTION */
+/* SOCIAL VIDEO DETECTION */
 
 function detectSocial(){
 
  const input=document.getElementById('socialInput').value.trim();
+
  const out=document.getElementById('socialResult');
 
  if(!input){
+
   out.textContent='Please paste a video link.';
+
   return;
+
  }
 
  let url;
@@ -1122,7 +1458,9 @@ function detectSocial(){
  }catch(e){
 
   out.textContent='Invalid URL.';
+
   return;
+
  }
 
  mediaLoading('mediaLoader',true);
@@ -1134,6 +1472,7 @@ function detectSocial(){
   const host=url.hostname.toLowerCase().replace(/^www\./,'');
 
   const platforms={
+
    'youtube.com':'YouTube',
    'youtu.be':'YouTube',
    'youtube-nocookie.com':'YouTube',
@@ -1145,6 +1484,7 @@ function detectSocial(){
    'twitter.com':'X / Twitter',
    'pinterest.com':'Pinterest',
    'pin.it':'Pinterest'
+
   };
 
   let platform='Unknown Platform';
@@ -1152,42 +1492,60 @@ function detectSocial(){
   for(const domain in platforms){
 
    if(host===domain||host.endsWith('.'+domain)){
+
     platform=platforms[domain];
+
     break;
+
    }
+
   }
 
   out.replaceChildren();
 
   const title=document.createElement('h3');
+
   title.className='result-title';
+
   title.textContent='SYSTEM ANALYSIS COMPLETE';
 
   const name=document.createElement('p');
+
   name.textContent='Detected platform: '+platform;
 
   const link=document.createElement('p');
+
   link.textContent=url.href;
 
   const copy=document.createElement('button');
+
   copy.textContent='📋 COPY LINK';
+
   copy.onclick=()=>copyMediaText(url.href);
 
   const open=document.createElement('button');
+
   open.textContent='🌐 OPEN VIDEO';
-  open.onclick=()=>window.open(url.href,'_blank','noopener,noreferrer');
+
+  open.onclick=()=>window.open(
+   url.href,'_blank','noopener,noreferrer'
+  );
 
   out.append(title,name,link,copy,open);
 
   const note=document.createElement('p');
+
   note.className='small';
-  note.textContent='Download availability depends on the platform. Use official download options where available. Login, DRM and platform restrictions are not bypassed.';
+
+  note.textContent=
+  'Download availability depends on the platform. Use official download options where available.';
 
   out.appendChild(note);
 
   mediaLoading('mediaLoader',false);
 
  },500);
+
 }
 
 /* DIRECT VIDEO DOWNLOAD */
@@ -1195,6 +1553,7 @@ function detectSocial(){
 function downloadDirectVideo(){
 
  const input=document.getElementById('directVideo').value.trim();
+
  const out=document.getElementById('downloadResult');
 
  try{
@@ -1206,14 +1565,19 @@ function downloadDirectVideo(){
   if(!/\.(mp4|webm|mov|m4v)(\?|$)/i.test(url.href)){
 
    out.textContent='Direct MP4/WebM/MOV video file URL required.';
+
    return;
+
   }
 
   const link=document.createElement('a');
 
   link.href=url.href;
+
   link.download='';
+
   link.target='_blank';
+
   link.rel='noopener noreferrer';
 
   document.body.appendChild(link);
@@ -1222,15 +1586,18 @@ function downloadDirectVideo(){
 
   link.remove();
 
-  out.textContent='Download requested. Browser or source server may open the video instead. Only save media you own or are permitted to download.';
+  out.textContent=
+  'Download requested. Browser or source server may open the video instead.';
 
  }catch(e){
 
   out.textContent='Please enter a valid direct video file URL.';
+
  }
+
 }
 
-/* COPY BUTTON */
+/* COPY */
 
 async function copyMediaText(text){
 
@@ -1251,14 +1618,21 @@ async function copyMediaText(text){
   area.select();
 
   try{
+
    document.execCommand('copy');
+
    alert('Copied!');
+
   }catch(err){
+
    alert('Copy not supported by this browser.');
+
   }
 
   area.remove();
+
  }
+
 }
 
 /* AUDIO SEARCH */
@@ -1266,11 +1640,15 @@ async function copyMediaText(text){
 async function searchAudio(){
 
  const query=document.getElementById('songSearch').value.trim();
+
  const out=document.getElementById('audioResults');
 
  if(!query){
+
   out.textContent='Enter a song or artist name.';
+
   return;
+
  }
 
  mediaLoading('audioLoader',true);
@@ -1279,7 +1657,8 @@ async function searchAudio(){
 
  try{
 
-  const api='https://itunes.apple.com/search?term='+
+  const api=
+  'https://itunes.apple.com/search?term='+
   encodeURIComponent(query)+'&entity=song&limit=10';
 
   const response=await fetch(api);
@@ -1291,22 +1670,29 @@ async function searchAudio(){
   if(!data.results||data.results.length===0){
 
    out.textContent='No songs found.';
+
    return;
+
   }
 
   data.results.forEach(song=>{
 
    const card=document.createElement('div');
+
    card.className='media-card';
 
    const title=document.createElement('h3');
+
    title.textContent=song.trackName;
 
    const artist=document.createElement('p');
+
    artist.textContent=song.artistName;
 
    const album=document.createElement('p');
+
    album.className='small';
+
    album.textContent=song.collectionName||'';
 
    card.append(title,artist,album);
@@ -1316,11 +1702,15 @@ async function searchAudio(){
     const image=document.createElement('img');
 
     image.src=song.artworkUrl100;
+
     image.alt='Album artwork';
+
     image.style.width='85px';
+
     image.style.borderRadius='8px';
 
     card.appendChild(image);
+
    }
 
    if(song.previewUrl){
@@ -1328,16 +1718,21 @@ async function searchAudio(){
     const audio=document.createElement('audio');
 
     audio.controls=true;
+
     audio.src=song.previewUrl;
+
     audio.preload='none';
 
     card.appendChild(audio);
 
     const preview=document.createElement('p');
+
     preview.className='small';
+
     preview.textContent='Short music preview';
 
     card.appendChild(preview);
+
    }
 
    const copy=document.createElement('button');
@@ -1355,13 +1750,21 @@ async function searchAudio(){
    official.onclick=()=>{
 
     if(song.trackViewUrl){
-     window.open(song.trackViewUrl,'_blank','noopener,noreferrer');
+
+     window.open(
+      song.trackViewUrl,
+      '_blank',
+      'noopener,noreferrer'
+     );
+
     }
+
    };
 
    card.append(copy,official);
 
    out.appendChild(card);
+
   });
 
  }catch(e){
@@ -1371,7 +1774,9 @@ async function searchAudio(){
  }finally{
 
   mediaLoading('audioLoader',false);
+
  }
+
 }
 
 /* LYRICS FINDER */
@@ -1379,13 +1784,17 @@ async function searchAudio(){
 function findLyrics(){
 
  const song=document.getElementById('lyricsSong').value.trim();
+
  const artist=document.getElementById('lyricsArtist').value.trim();
 
  const out=document.getElementById('lyricsResult');
 
  if(!song){
+
   out.textContent='Enter a song name.';
+
   return;
+
  }
 
  const searchText=encodeURIComponent(
@@ -1396,7 +1805,8 @@ function findLyrics(){
 
  const info=document.createElement('p');
 
- info.textContent='Lyrics search ready. Opening external search results lets you find authorized lyrics sources.';
+ info.textContent=
+ 'Lyrics search ready. Search authorized lyrics sources.';
 
  const searchButton=document.createElement('button');
 
@@ -1417,6 +1827,7 @@ function findLyrics(){
  );
 
  out.append(info,searchButton,copyButton);
+
 }
 
 </script>
