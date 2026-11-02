@@ -3,178 +3,1126 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PREM X JARVIS V3.1</title>
+<title>PREM X JARVIS V4.0</title>
 <meta name="theme-color" content="#050812">
+<meta name="description" content="PREM X JARVIS - Personal Digital Workspace by Prem Patel.">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf-lib/1.17.1/pdf-lib.min.js"></script>
+
 <style>
-:root{--bg:#050812;--card:#0c1629;--blue:#168cff;--cyan:#00d9ff;--text:#f2f6ff;--muted:#9baac4;--border:rgba(0,180,255,.2)}
-*{box-sizing:border-box;margin:0;padding:0}body{background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
-header{position:sticky;top:0;z-index:10;background:#070d1bf5;padding:15px;border-bottom:1px solid var(--border)}
-.header{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center}.logo{font-size:20px;font-weight:900}.logo span,h1 span{color:var(--cyan)}.status{font-size:11px;color:#00e6a0;margin-top:5px}
-button{cursor:pointer}.menu{background:var(--card);color:white;border:1px solid var(--border);padding:10px;border-radius:8px}
-nav{max-width:1200px;margin:12px auto 0;display:flex;gap:7px;flex-wrap:wrap}nav button{background:var(--card);border:1px solid var(--border);color:white;padding:10px;border-radius:8px;font-size:12px}nav button.active{background:var(--blue)}
-.container{max-width:1200px;margin:auto;padding:18px 14px 50px}.hero{background:radial-gradient(circle at top,#10345b,#0c1629 65%);border:1px solid var(--border);border-radius:18px;text-align:center;padding:35px 15px;margin-bottom:22px}.hero h1{font-size:clamp(25px,6vw,42px);margin-bottom:12px}.hero p{color:var(--muted);line-height:1.6}
-.section-title{margin:22px 0 14px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px}.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:17px}.card:hover{border-color:var(--cyan)}.icon{font-size:27px;margin-bottom:10px}.card h3{margin-bottom:8px}.card p{font-size:13px;color:var(--muted);line-height:1.5;min-height:38px}
-.action{display:inline-block;background:var(--blue);color:white;border:0;padding:11px 15px;border-radius:8px;margin:8px 5px 5px 0;text-decoration:none}.secondary{background:#17243b;border:1px solid var(--border)}
-.tool{display:none;background:var(--card);border:1px solid var(--border);border-radius:15px;padding:18px;margin-top:18px}.tool.active{display:block}.tool h2{margin-bottom:12px}.tool p{color:var(--muted);font-size:13px;line-height:1.6;margin:8px 0}
-input,textarea,select{width:100%;background:#050c19;border:1px solid var(--border);color:white;border-radius:8px;padding:12px;margin:7px 0 12px;outline:none}textarea{min-height:110px;resize:vertical}.result{white-space:pre-wrap;overflow-wrap:anywhere;background:#050c19;border:1px solid var(--border);padding:13px;border-radius:9px;margin-top:10px;line-height:1.6;color:var(--cyan)}
-.item{background:#101f35;border:1px solid var(--border);padding:12px;border-radius:8px;margin:8px 0;display:flex;justify-content:space-between;gap:8px;align-items:center;overflow-wrap:anywhere}.item button{background:#a42b40;color:white;border:0;border-radius:6px;padding:7px}
-.chatbox{height:250px;overflow:auto;background:#050c19;padding:12px;border-radius:9px;margin:12px 0}.msg{padding:10px;background:#12223b;border-radius:8px;margin-bottom:8px;font-size:13px;line-height:1.5;white-space:pre-wrap}.msg.user{border-left:3px solid var(--blue)}.msg.jarvis{border-left:3px solid var(--cyan)}
-iframe{width:100%;height:300px;background:white;border:0;border-radius:8px}#qrcode{background:white;padding:12px;display:inline-block;margin-top:12px}footer{text-align:center;padding:25px;color:var(--muted);font-size:12px;border-top:1px solid var(--border)}.hidden{display:none!important}
-.ott-platforms{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:12px;margin-bottom:22px}
-.ott-platform{min-height:78px;background:#fff;border:2px solid transparent;border-radius:12px;display:flex;align-items:center;justify-content:center;padding:12px;cursor:pointer;transition:.2s}
-.ott-platform img{max-width:100%;max-height:44px;object-fit:contain}.ott-platform span{color:#111;font-weight:bold;text-align:center;font-size:13px}.ott-search-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:17px;margin:18px 0}
-.ott-filters{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}.ott-status{color:var(--muted);font-size:13px;margin:18px 0}
-.ott-movie-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:13px}.ott-movie{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:.2s}.ott-movie:hover{transform:translateY(-3px);border-color:var(--cyan)}
-.ott-movie img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block}.ott-movie-info{padding:10px}.ott-movie-info h3{font-size:14px;margin-bottom:7px}.ott-movie-info p{font-size:11px;color:var(--muted);line-height:1.5}
-.ott-pagination{display:flex;justify-content:center;align-items:center;gap:12px;margin:22px 0;flex-wrap:wrap}.ott-modal{display:none;position:fixed;inset:0;z-index:50;background:#000e;overflow-y:auto;padding:15px}.ott-modal-content{max-width:700px;margin:25px auto;background:#0c1629;border:1px solid var(--border);border-radius:15px;padding:18px}
-.ott-detail-poster{width:100%;max-height:330px;object-fit:cover;border-radius:10px;margin:15px 0}.ott-detail-text{color:var(--muted);line-height:1.7;font-size:14px;margin:10px 0}.provider-logo{width:30px;height:30px;object-fit:contain;border-radius:5px;vertical-align:middle;margin-right:6px}.provider-chip{display:inline-flex;align-items:center;gap:5px;margin:5px;background:#17243b;padding:7px;border-radius:8px;font-size:12px}
-@media(max-width:650px){nav{display:none}nav.show{display:flex}.header{gap:10px}}
-@media(max-width:500px){.ott-movie-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ott-platforms{grid-template-columns:repeat(3,1fr)}}
+:root{
+--bg:#050812;--card:#0c1629;--blue:#168cff;
+--cyan:#00d9ff;--text:#f2f6ff;--muted:#9baac4;
+--border:rgba(0,180,255,.2)
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{background:var(--bg);color:var(--text);font-family:Arial,sans-serif}
+header{position:sticky;top:0;z-index:20;background:#070d1bf5;padding:15px;border-bottom:1px solid var(--border);backdrop-filter:blur(12px)}
+.header{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.logo{font-size:20px;font-weight:900}.logo span,h1 span{color:var(--cyan)}
+.status{font-size:11px;color:#00e6a0;margin-top:5px}
+button{cursor:pointer}
+.menu{background:var(--card);color:white;border:1px solid var(--border);padding:10px;border-radius:8px}
+nav{max-width:1200px;margin:12px auto 0;display:flex;gap:7px;flex-wrap:wrap}
+nav button{background:var(--card);border:1px solid var(--border);color:white;padding:10px;border-radius:8px;font-size:12px}
+nav button.active{background:var(--blue)}
+.container{max-width:1200px;margin:auto;padding:18px 14px 50px}
+.hero{background:radial-gradient(circle at top,#10345b,#0c1629 65%);border:1px solid var(--border);border-radius:18px;text-align:center;padding:35px 15px;margin-bottom:22px;overflow:hidden}
+.hero h1{font-size:clamp(25px,6vw,42px);margin-bottom:12px}
+.hero p{color:var(--muted);line-height:1.6}
+.section-title{margin:22px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:13px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:17px}
+.card:hover{border-color:var(--cyan)}
+.icon{font-size:27px;margin-bottom:10px}
+.card h3{margin-bottom:8px}
+.card p{font-size:13px;color:var(--muted);line-height:1.5;min-height:38px}
+.action{display:inline-block;background:var(--blue);color:white;border:0;padding:11px 15px;border-radius:8px;margin:8px 5px 5px 0;text-decoration:none}
+.secondary{background:#17243b;border:1px solid var(--border)}
+.tool{display:none;background:var(--card);border:1px solid var(--border);border-radius:15px;padding:18px;margin-top:18px}
+.tool.active{display:block}
+.tool h2{margin-bottom:12px}
+.tool p{color:var(--muted);font-size:13px;line-height:1.6;margin:8px 0}
+input,textarea,select{width:100%;background:#050c19;border:1px solid var(--border);color:white;border-radius:8px;padding:12px;margin:7px 0 12px;outline:none}
+textarea{min-height:110px;resize:vertical}
+input:focus,textarea:focus,select:focus{border-color:var(--cyan)}
+.result{white-space:pre-wrap;overflow-wrap:anywhere;background:#050c19;border:1px solid var(--border);padding:13px;border-radius:9px;margin-top:10px;line-height:1.6;color:var(--cyan)}
+.item{background:#101f35;border:1px solid var(--border);padding:12px;border-radius:8px;margin:8px 0;display:flex;justify-content:space-between;gap:8px;align-items:center;overflow-wrap:anywhere}
+.item button{background:#a42b40;color:white;border:0;border-radius:6px;padding:7px}
+.chatbox{height:250px;overflow:auto;background:#050c19;padding:12px;border-radius:9px;margin:12px 0}
+.msg{padding:10px;background:#12223b;border-radius:8px;margin-bottom:8px;font-size:13px;line-height:1.5;white-space:pre-wrap}
+.msg.user{border-left:3px solid var(--blue)}
+.msg.jarvis{border-left:3px solid var(--cyan)}
+iframe{width:100%;height:300px;background:white;border:0;border-radius:8px}
+#qrcode{background:white;padding:12px;display:inline-block;margin-top:12px}
+footer{text-align:center;padding:25px;color:var(--muted);font-size:12px;border-top:1px solid var(--border)}
+.hidden{display:none!important}
+
+/* OTT PLATFORM CARDS */
+.ott-platforms{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin-bottom:24px}
+.ott-platform{
+min-height:105px;background:#fff;border:2px solid transparent;
+border-radius:15px;display:flex;flex-direction:column;
+align-items:center;justify-content:center;padding:12px;
+cursor:pointer;transition:.2s;text-decoration:none;gap:8px;
+}
+.ott-platform:hover{transform:translateY(-4px);border-color:var(--cyan);box-shadow:0 5px 20px #00d9ff25}
+.ott-platform img{width:48px;height:42px;object-fit:contain}
+.ott-platform span{color:#111;font-weight:800;text-align:center;font-size:13px}
+.ott-platform .brand-fallback{font-size:16px;letter-spacing:-.5px}
+.ott-search-box{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:17px;margin:18px 0}
+.ott-filters{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.ott-status{color:var(--muted);font-size:13px;margin:18px 0;line-height:1.6}
+.ott-movie-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:13px}
+.ott-movie{background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:.2s;position:relative}
+.ott-movie:hover{transform:translateY(-3px);border-color:var(--cyan)}
+.ott-movie img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;background:#101827}
+.ott-movie-info{padding:10px}
+.ott-movie-info h3{font-size:14px;margin-bottom:7px}
+.ott-movie-info p{font-size:11px;color:var(--muted);line-height:1.5}
+.ott-watch-btn{position:absolute;top:8px;right:8px;border:0;border-radius:50%;width:34px;height:34px;background:#07101ddd;color:white;font-size:18px}
+.ott-watch-btn.saved{color:#ff4d79}
+.ott-pagination{display:flex;justify-content:center;align-items:center;gap:12px;margin:22px 0;flex-wrap:wrap}
+.ott-modal{display:none;position:fixed;inset:0;z-index:50;background:#000e;overflow-y:auto;padding:15px}
+.ott-modal-content{max-width:700px;margin:25px auto;background:#0c1629;border:1px solid var(--border);border-radius:15px;padding:18px}
+.ott-detail-poster{width:100%;max-height:330px;object-fit:cover;border-radius:10px;margin:15px 0}
+.ott-detail-text{color:var(--muted);line-height:1.7;font-size:14px;margin:10px 0}
+.provider-logo{width:30px;height:30px;object-fit:contain;border-radius:5px;vertical-align:middle}
+.provider-chip{display:inline-flex;align-items:center;gap:5px;margin:5px;background:#17243b;padding:7px;border-radius:8px;font-size:12px}
+.ott-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:15px 0}
+.ott-tabs button{background:#17243b;color:white;border:1px solid var(--border);padding:9px 13px;border-radius:8px}
+.ott-tabs button.active{background:var(--blue)}
+.ott-empty{padding:20px;text-align:center;color:var(--muted);background:var(--card);border-radius:10px}
+@media(max-width:800px){.ott-platforms{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:650px){
+nav{display:none}nav.show{display:flex}
+.header{gap:10px}
+.ott-movie-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.ott-platforms{grid-template-columns:repeat(3,minmax(0,1fr));gap:9px}
+.ott-platform{min-height:95px;padding:8px}
+.ott-platform img{width:42px;height:38px}
+.ott-search-box{padding:13px}
+.ott-filters{grid-template-columns:1fr 1fr}
+}
+@media(max-width:360px){.ott-filters{grid-template-columns:1fr}.ott-platform span{font-size:11px}}
 </style>
 </head>
-<body>
-<header><div class="header"><div><div class="logo">PREM <span>X JARVIS</span></div><div class="status">● SYSTEM ONLINE | V3.1</div></div><button class="menu" onclick="toggleMenu()">☰ MENU</button></div>
-<nav id="nav">
-<button class="active" onclick="page('home',this)">Home</button><button onclick="page('ai',this)">AI Lab</button><button onclick="page('study',this)">Study Hub</button><button onclick="page('entertainment',this)">Entertainment</button><button onclick="page('cyber',this)">Cyber Lab</button><button onclick="page('developer',this)">Developer</button><button onclick="page('utilities',this)">Utilities</button><button onclick="page('space',this)">My Space</button>
-</nav></header>
-<main class="container">
-<section class="page" id="home"><div class="hero"><h1>WELCOME TO <span>J.A.R.V.I.S.</span></h1><p>Your Personal Digital Workspace<br>Technology • AI • Education • Cybersecurity</p><p style="color:var(--cyan);margin-top:15px">CREATED BY PREM PATEL</p></div><h2 class="section-title">CONTROL CENTER</h2><div class="grid" id="homeCards"></div></section>
-<section class="page hidden" id="ai"><div class="hero"><h1>🤖 AI <span>LAB</span></h1><p>Artificial Intelligence Workspace</p></div><div class="grid">
-<div class="card"><div class="icon">🤖</div><h3>JARVIS Chat</h3><p>Offline assistant demo.</p><button class="action" onclick="openTool('chat')">Open</button></div><div class="card"><div class="icon">🔎</div><h3>Smart Search</h3><p>Search your saved notes.</p><button class="action" onclick="openTool('smartsearch')">Open</button></div><div class="card"><div class="icon">📄</div><h3>Document Simplifier</h3><p>Extract and simplify text using local text tools.</p><button class="action" onclick="openTool('text')">Open</button></div></div></section>
-<section class="page hidden" id="study"><div class="hero"><h1>📚 STUDY <span>HUB</span></h1><p>Your learning and revision workspace.</p></div><div class="grid">
-<div class="card"><div class="icon">📅</div><h3>Revision Tracker</h3><p>Track chapters and revision progress.</p><button class="action" onclick="openTool('revision')">Open</button></div><div class="card"><div class="icon">🎯</div><h3>Study Planner</h3><p>Organize your study tasks.</p><button class="action" onclick="openTool('tasks')">Open</button></div><div class="card"><div class="icon">🧠</div><h3>Study Notes</h3><p>Save your learning notes.</p><button class="action" onclick="openTool('notes')">Open</button></div><div class="card"><div class="icon">🆚</div><h3>Text Difference Finder</h3><p>Compare two answers or notes.</p><button class="action" onclick="openTool('diff')">Open</button></div></div></section>
 
-<!-- ALL OTT ENTERTAINMENT HUB -->
-<section class="page hidden" id="entertainment">
-<div class="hero"><h1>🎬 ALL <span>OTT PLATFORMS</span></h1><p>Discover movies and web series from around the world</p></div>
-<h2 class="section-title">STREAMING PLATFORMS</h2><div class="ott-platforms" id="ottPlatforms"></div>
-<div class="ott-search-box"><h2>🌍 Worldwide Entertainment</h2>
-<input id="ottSearch" placeholder="Search movies or web series..." onkeydown="if(event.key==='Enter')loadOTTMovies()">
-<div class="ott-filters">
-<select id="ottType" onchange="resetOTTPage()"><option value="movie">Movies</option><option value="tv">Web Series</option></select>
-<select id="ottCountry" onchange="resetOTTPage()"><option value="">All Countries</option><option value="IN">India</option><option value="US">USA</option><option value="KR">South Korea</option><option value="JP">Japan</option><option value="CN">China</option><option value="GB">United Kingdom</option><option value="FR">France</option><option value="DE">Germany</option><option value="ES">Spain</option><option value="IT">Italy</option><option value="CA">Canada</option><option value="AU">Australia</option><option value="TR">Turkey</option><option value="TH">Thailand</option><option value="BR">Brazil</option><option value="MX">Mexico</option><option value="RU">Russia</option><option value="NG">Nigeria</option><option value="NZ">New Zealand</option></select>
-<select id="ottSort" onchange="resetOTTPage()"><option value="popular">Popular</option><option value="top_rated">Top Rated</option><option value="now_playing">Recently Released</option><option value="upcoming">Upcoming</option></select>
-</div><button class="action" onclick="loadOTTMovies()">🔎 Search</button><button class="action secondary" onclick="loadOTTTrending()">🔥 Trending</button></div>
-<div class="ott-status" id="ottStatus">Add a TMDB API key below to load the live movie catalogue.</div>
-<h2 class="section-title">🎥 Explore Movies & Series</h2><div class="ott-movie-grid" id="ottMovies"></div>
-<div class="ott-pagination"><button class="action secondary" onclick="changeOTTPage(-1)">← Previous</button><span id="ottPageNumber">Page 1</span><button class="action secondary" onclick="changeOTTPage(1)">Next →</button></div>
-<div class="ott-modal" id="ottModal" onclick="if(event.target===this)closeOTTDetails()"><div class="ott-modal-content"><button class="action secondary" onclick="closeOTTDetails()">✕ Close</button><div id="ottDetails"></div></div></div>
-<div class="card" style="margin-top:24px"><h3>⚙️ Connect Movie Catalogue</h3><p>TMDB API key is required for movie search, posters, ratings and provider information. For a public website, a secure Cloudflare Worker backend is recommended instead of exposing a key in the page.</p><input id="tmdbKey" type="password" placeholder="Paste TMDB API key (v3)"><button class="action" onclick="saveTMDBKey()">Connect Catalogue</button><button class="action secondary" onclick="removeTMDBKey()">Remove Key</button><p>Playback is handled by official streaming services. This hub provides discovery and legal watch links; it does not host movies.</p></div>
+<body>
+<header>
+<div class="header">
+<div>
+<div class="logo">PREM <span>X JARVIS</span></div>
+<div class="status">● SYSTEM ONLINE | V4.0</div>
+</div>
+<button class="menu" onclick="toggleMenu()">☰ MENU</button>
+</div>
+<nav id="nav">
+<button class="active" onclick="page('home',this)">Home</button>
+<button onclick="page('ai',this)">AI Lab</button>
+<button onclick="page('study',this)">Study Hub</button>
+<button onclick="page('entertainment',this)">Entertainment</button>
+<button onclick="page('cyber',this)">Cyber Lab</button>
+<button onclick="page('developer',this)">Developer</button>
+<button onclick="page('utilities',this)">Utilities</button>
+<button onclick="page('space',this)">My Space</button>
+</nav>
+</header>
+
+<main class="container">
+
+<section class="page" id="home">
+<div class="hero">
+<h1>WELCOME TO <span>J.A.R.V.I.S.</span></h1>
+<p>Your Personal Digital Workspace<br>Technology • AI • Education • Cybersecurity</p>
+<p style="color:var(--cyan);margin-top:15px">CREATED BY PREM PATEL</p>
+</div>
+<h2 class="section-title">CONTROL CENTER</h2>
+<div class="grid" id="homeCards"></div>
 </section>
 
-<section class="page hidden" id="cyber"><div class="hero"><h1>🛡️ CYBER <span>LAB</span></h1><p>Defensive cybersecurity learning tools.</p></div><div class="grid">
-<div class="card"><div class="icon">🔍</div><h3>Phishing Detector</h3><p>Check URLs and messages for suspicious signs.</p><button class="action" onclick="openTool('phishing')">Open</button></div><div class="card"><div class="icon">🔐</div><h3>File Hash Scanner</h3><p>Generate SHA-256 file hashes.</p><button class="action" onclick="openTool('hash')">Open</button></div><div class="card"><div class="icon">🔗</div><h3>Link Checker</h3><p>Check URL structure and HTTPS.</p><button class="action" onclick="openTool('link')">Open</button></div><div class="card"><div class="icon">🔑</div><h3>Password Generator</h3><p>Create random passwords locally.</p><button class="action" onclick="openTool('password')">Open</button></div></div></section>
-<section class="page hidden" id="developer"><div class="hero"><h1>💻 DEVELOPER <span>ZONE</span></h1><p>Build and experiment with code.</p></div><div class="grid">
-<div class="card"><div class="icon">🌐</div><h3>HTML Editor</h3><p>Write HTML and preview it.</p><button class="action" onclick="openTool('html')">Open</button></div><div class="card"><div class="icon">🎨</div><h3>CSS Playground</h3><p>Experiment with CSS styling.</p><button class="action" onclick="openTool('css')">Open</button></div><div class="card"><div class="icon">📦</div><h3>JSON Formatter</h3><p>Format and validate JSON.</p><button class="action" onclick="openTool('json')">Open</button></div><div class="card"><div class="icon">🆚</div><h3>Text Difference</h3><p>Compare two texts.</p><button class="action" onclick="openTool('diff')">Open</button></div></div></section>
-<section class="page hidden" id="utilities"><div class="hero"><h1>⚙️ <span>UTILITIES</span></h1><p>Everyday digital tools.</p></div><div class="grid">
-<div class="card"><div class="icon">🧮</div><h3>Calculator</h3><p>Perform calculations.</p><button class="action" onclick="openTool('calculator')">Open</button></div><div class="card"><div class="icon">📱</div><h3>QR Generator</h3><p>Create QR codes from text or URLs.</p><button class="action" onclick="openTool('qr')">Open</button></div><div class="card"><div class="icon">🖼️</div><h3>Image Compressor</h3><p>Compress images in your browser.</p><button class="action" onclick="openTool('image')">Open</button></div><div class="card"><div class="icon">📄</div><h3>PDF Merger</h3><p>Merge multiple PDF files.</p><button class="action" onclick="openTool('pdf')">Open</button></div><div class="card"><div class="icon">📶</div><h3>Network Outage Diary</h3><p>Record network interruptions.</p><button class="action" onclick="openTool('outage')">Open</button></div><div class="card"><div class="icon">📊</div><h3>Internet Speed Diary</h3><p>Record speed test results.</p><button class="action" onclick="openTool('speed')">Open</button></div><div class="card"><div class="icon">🔗</div><h3>Link Checker</h3><p>Inspect URL formatting.</p><button class="action" onclick="openTool('link')">Open</button></div><div class="card"><div class="icon">✍️</div><h3>Text Helper</h3><p>Count and transform text.</p><button class="action" onclick="openTool('text')">Open</button></div></div></section>
-<section class="page hidden" id="space"><div class="hero"><h1>👤 MY <span>SPACE</span></h1><p>Your personal workspace.</p></div><div class="grid">
-<div class="card"><div class="icon">📝</div><h3>Notes</h3><p>Save personal notes.</p><button class="action" onclick="openTool('notes')">Open</button></div><div class="card"><div class="icon">✅</div><h3>Tasks</h3><p>Manage daily tasks.</p><button class="action" onclick="openTool('tasks')">Open</button></div><div class="card"><div class="icon">📅</div><h3>Deadline Tracker</h3><p>Save important deadlines.</p><button class="action" onclick="openTool('deadline')">Open</button></div><div class="card"><div class="icon">👨‍💻</div><h3>Developer Profile</h3><p>About this project.</p><button class="action" onclick="openTool('about')">Open</button></div></div></section>
+<section class="page hidden" id="ai">
+<div class="hero"><h1>🤖 AI <span>LAB</span></h1><p>Artificial Intelligence Workspace</p></div>
+<div class="grid">
+<div class="card"><div class="icon">🤖</div><h3>JARVIS Chat</h3><p>Offline assistant demo.</p><button class="action" onclick="openTool('chat')">Open</button></div>
+<div class="card"><div class="icon">🔎</div><h3>Smart Search</h3><p>Search your saved notes.</p><button class="action" onclick="openTool('smartsearch')">Open</button></div>
+<div class="card"><div class="icon">📄</div><h3>Document Simplifier</h3><p>Extract and simplify text using local text tools.</p><button class="action" onclick="openTool('text')">Open</button></div>
+</div>
+</section>
 
-<section class="tool" id="chat"><button class="action secondary" onclick="goHome()">← Back</button><h2>🤖 JARVIS CHAT</h2><p>Offline demo assistant. Actual AI answers require an AI API connection.</p><div class="chatbox" id="chatbox"><div class="msg jarvis">J.A.R.V.I.S. SYSTEM ONLINE. Hello Commander!</div></div><input id="chatinput" placeholder="Type a message..."><button class="action" onclick="sendChat()">Send</button><button class="action secondary" onclick="clearChat()">Clear</button></section>
-<section class="tool" id="notes"><button class="action secondary" onclick="goHome()">← Back</button><h2>📝 NOTES MANAGER</h2><textarea id="noteInput" placeholder="Write a note..."></textarea><button class="action" onclick="saveNote()">Save Note</button><div id="noteList"></div></section>
-<section class="tool" id="tasks"><button class="action secondary" onclick="goHome()">← Back</button><h2>✅ TASK MANAGER</h2><input id="taskInput" placeholder="Enter a task"><button class="action" onclick="addTask()">Add Task</button><div id="taskList"></div></section>
-<section class="tool" id="calculator"><button class="action secondary" onclick="goHome()">← Back</button><h2>🧮 CALCULATOR</h2><input id="calcInput" placeholder="Example: 25*4+10"><button class="action" onclick="calculate()">Calculate</button><div class="result" id="calcResult">Result appears here.</div></section>
-<section class="tool" id="text"><button class="action secondary" onclick="goHome()">← Back</button><h2>✍️ TEXT HELPER</h2><textarea id="textInput" placeholder="Enter text..."></textarea><button class="action" onclick="textAction('upper')">UPPERCASE</button><button class="action" onclick="textAction('lower')">lowercase</button><button class="action" onclick="textAction('title')">Title Case</button><button class="action secondary" onclick="textCount()">Count</button><div class="result" id="textResult"></div></section>
-<section class="tool" id="link"><button class="action secondary" onclick="goHome()">← Back</button><h2>🔗 LINK CHECKER</h2><input id="linkInput" placeholder="https://example.com"><button class="action" onclick="checkLink()">Check URL</button><div class="result" id="linkResult"></div></section>
-<section class="tool" id="phishing"><button class="action secondary" onclick="goHome()">← Back</button><h2>🔍 PHISHING WARNING ANALYZER</h2><p>Checks common warning signs. This is not a malware scanner and cannot guarantee a link is safe.</p><textarea id="phishInput" placeholder="Paste a URL or suspicious message..."></textarea><button class="action" onclick="analyzePhishing()">Analyze</button><div class="result" id="phishResult"></div></section>
-<section class="tool" id="hash"><button class="action secondary" onclick="goHome()">← Back</button><h2>🔐 SHA-256 FILE HASH</h2><input type="file" id="hashFile"><button class="action" onclick="makeHash()">Generate Hash</button><div class="result" id="hashResult"></div></section>
-<section class="tool" id="password"><button class="action secondary" onclick="goHome()">← Back</button><h2>🔑 PASSWORD GENERATOR</h2><label>Password length</label><input type="number" id="passLength" value="16" min="8" max="64"><button class="action" onclick="makePassword()">Generate Password</button><div class="result" id="passResult"></div><button class="action secondary" onclick="copyText('passResult')">Copy</button></section>
-<section class="tool" id="json"><button class="action secondary" onclick="goHome()">← Back</button><h2>📦 JSON FORMATTER</h2><textarea id="jsonInput" placeholder='{"name":"JARVIS","status":"online"}'></textarea><button class="action" onclick="formatJSON()">Format JSON</button><div class="result" id="jsonResult"></div></section>
-<section class="tool" id="html"><button class="action secondary" onclick="goHome()">← Back</button><h2>🌐 HTML EDITOR</h2><textarea id="htmlInput" style="min-height:220px"><h1>Hello Commander!</h1><p>Welcome to PREM X JARVIS.</p></textarea><button class="action" onclick="previewHTML()">Run Preview</button><iframe id="htmlPreview" sandbox=""></iframe></section>
-<section class="tool" id="css"><button class="action secondary" onclick="goHome()">← Back</button><h2>🎨 CSS PLAYGROUND</h2><textarea id="cssInput">body { background: #101827; color: cyan; font-family: Arial; text-align: center; padding: 30px; } h1 { text-shadow: 0 0 10px cyan; }</textarea><button class="action" onclick="previewCSS()">Run CSS</button><iframe id="cssPreview" sandbox=""></iframe></section>
-<section class="tool" id="qr"><button class="action secondary" onclick="goHome()">← Back</button><h2>📱 QR GENERATOR</h2><input id="qrInput" placeholder="Enter text or URL"><button class="action" onclick="makeQR()">Generate QR</button><div id="qrcode"></div></section>
-<section class="tool" id="image"><button class="action secondary" onclick="goHome()">← Back</button><h2>🖼️ IMAGE COMPRESSOR</h2><input type="file" id="imageInput" accept="image/*"><label>Quality (lower = smaller file)</label><input type="range" id="imageQuality" min="20" max="95" value="70"><button class="action" onclick="compressImage()">Compress Image</button><div id="imageResult" class="result"></div><a id="imageDownload" class="action hidden" download="compressed-image.jpg">Download Image</a></section>
-<section class="tool" id="pdf"><button class="action secondary" onclick="goHome()">← Back</button><h2>📄 PDF MERGER</h2><p>Select multiple PDF files. They will be merged in the order selected.</p><input type="file" id="pdfInput" accept="application/pdf" multiple><button class="action" onclick="mergePDF()">Merge PDFs</button><div id="pdfResult" class="result"></div></section>
-<section class="tool" id="diff"><button class="action secondary" onclick="goHome()">← Back</button><h2>🆚 TEXT DIFFERENCE FINDER</h2><textarea id="diffA" placeholder="Original text"></textarea><textarea id="diffB" placeholder="New text"></textarea><button class="action" onclick="compareText()">Compare Texts</button><div id="diffResult" class="result"></div></section>
-<section class="tool" id="outage"><button class="action secondary" onclick="goHome()">← Back</button><h2>📶 NETWORK OUTAGE DIARY</h2><input id="outProvider" placeholder="Network provider"><label>Outage start</label><input id="outStart" type="datetime-local"><label>Outage end</label><input id="outEnd" type="datetime-local"><textarea id="outNotes" placeholder="What happened?"></textarea><button class="action" onclick="saveOutage()">Save Record</button><div id="outList"></div></section>
-<section class="tool" id="speed"><button class="action secondary" onclick="goHome()">← Back</button><h2>📊 INTERNET SPEED DIARY</h2><p>Enter the results from a speed test you performed.</p><input id="speedProvider" placeholder="Network/provider"><input id="speedDown" type="number" placeholder="Download Mbps"><input id="speedUp" type="number" placeholder="Upload Mbps"><input id="speedPing" type="number" placeholder="Ping ms"><button class="action" onclick="saveSpeed()">Save Speed Record</button><div id="speedList"></div></section>
-<section class="tool" id="revision"><button class="action secondary" onclick="goHome()">← Back</button><h2>📅 REVISION TRACKER</h2><input id="revSubject" placeholder="Subject"><input id="revChapter" placeholder="Chapter name"><select id="revStatus"><option>Not Started</option><option>In Progress</option><option>Completed</option></select><button class="action" onclick="saveRevision()">Save Progress</button><div id="revList"></div></section>
-<section class="tool" id="deadline"><button class="action secondary" onclick="goHome()">← Back</button><h2>📆 DEADLINE TRACKER</h2><input id="deadlineName" placeholder="Deadline title"><input id="deadlineDate" type="date"><button class="action" onclick="saveDeadline()">Save Deadline</button><div id="deadlineList"></div></section>
-<section class="tool" id="smartsearch"><button class="action secondary" onclick="goHome()">← Back</button><h2>🔎 SMART NOTES SEARCH</h2><input id="searchInput" placeholder="Search saved notes..."><button class="action" onclick="searchNotes()">Search</button><div id="searchResult"></div></section>
-<section class="tool" id="about"><button class="action secondary" onclick="goHome()">← Back</button><h2>👨‍💻 DEVELOPER PROFILE</h2><div class="result">PROJECT: PREM X JARVIS\nCREATOR: PREM PATEL\nASSISTANT: J.A.R.V.I.S.\nVERSION: 3.1\nINTERESTS: Technology, Python, Cybersecurity, AI\nSTATUS: UNDER DEVELOPMENT</div></section>
+<section class="page hidden" id="study">
+<div class="hero"><h1>📚 STUDY <span>HUB</span></h1><p>Your learning and revision workspace.</p></div>
+<div class="grid">
+<div class="card"><div class="icon">📅</div><h3>Revision Tracker</h3><p>Track chapters and revision progress.</p><button class="action" onclick="openTool('revision')">Open</button></div>
+<div class="card"><div class="icon">🎯</div><h3>Study Planner</h3><p>Organize your study tasks.</p><button class="action" onclick="openTool('tasks')">Open</button></div>
+<div class="card"><div class="icon">🧠</div><h3>Study Notes</h3><p>Save your learning notes.</p><button class="action" onclick="openTool('notes')">Open</button></div>
+<div class="card"><div class="icon">🆚</div><h3>Text Difference Finder</h3><p>Compare two answers or notes.</p><button class="action" onclick="openTool('diff')">Open</button></div>
+</div>
+</section>
+
+<!-- ENTERTAINMENT -->
+<section class="page hidden" id="entertainment">
+<div class="hero">
+<h1>🎬 ALL <span>OTT PLATFORMS</span></h1>
+<p>Discover movies and web series from around the world</p>
+</div>
+
+<h2 class="section-title">STREAMING PLATFORMS</h2>
+<div class="ott-platforms" id="ottPlatforms"></div>
+
+<div class="ott-search-box">
+<h2>🌍 Worldwide Entertainment</h2>
+<input id="ottSearch" placeholder="Search movies or web series..." onkeydown="if(event.key==='Enter')loadOTTMovies()">
+
+<div class="ott-filters">
+<select id="ottType" onchange="resetOTTPage()">
+<option value="movie">Movies</option>
+<option value="tv">Web Series</option>
+</select>
+
+<select id="ottCountry" onchange="resetOTTPage()">
+<option value="">All Countries</option>
+<option value="IN">India</option>
+<option value="US">USA</option>
+<option value="KR">South Korea</option>
+<option value="JP">Japan</option>
+<option value="CN">China</option>
+<option value="GB">United Kingdom</option>
+<option value="FR">France</option>
+<option value="DE">Germany</option>
+<option value="ES">Spain</option>
+<option value="IT">Italy</option>
+<option value="CA">Canada</option>
+<option value="AU">Australia</option>
+<option value="TR">Turkey</option>
+<option value="TH">Thailand</option>
+<option value="BR">Brazil</option>
+<option value="MX">Mexico</option>
+<option value="RU">Russia</option>
+<option value="NG">Nigeria</option>
+<option value="NZ">New Zealand</option>
+</select>
+
+<select id="ottLanguage" onchange="resetOTTPage()">
+<option value="">All Languages</option>
+<option value="hi">Hindi</option>
+<option value="en">English</option>
+<option value="ko">Korean</option>
+<option value="ja">Japanese</option>
+<option value="zh">Chinese</option>
+<option value="ta">Tamil</option>
+<option value="te">Telugu</option>
+<option value="ml">Malayalam</option>
+<option value="fr">French</option>
+<option value="es">Spanish</option>
+<option value="tr">Turkish</option>
+<option value="pt">Portuguese</option>
+</select>
+
+<select id="ottGenre" onchange="resetOTTPage()">
+<option value="">All Genres</option>
+</select>
+
+<select id="ottSort" onchange="resetOTTPage()">
+<option value="popular">Popular</option>
+<option value="top_rated">Top Rated</option>
+<option value="now_playing">Recently Released</option>
+<option value="upcoming">Upcoming</option>
+</select>
+</div>
+
+<button class="action" onclick="loadOTTMovies()">🔎 Search</button>
+<button class="action secondary" onclick="loadOTTTrending()">🔥 Trending</button>
+<button class="action secondary" onclick="showWatchlist()">❤️ My Watchlist</button>
+<button class="action secondary" onclick="clearOTTFilters()">Clear Filters</button>
+</div>
+
+<div class="ott-status" id="ottStatus">Add a TMDB API key below to load the live movie catalogue.</div>
+
+<div class="ott-tabs">
+<button class="active" id="tabExplore" onclick="showOTTTab('explore')">Explore</button>
+<button id="tabWatchlist" onclick="showOTTTab('watchlist')">❤️ Watchlist</button>
+</div>
+
+<h2 class="section-title" id="ottResultsTitle">🎥 Explore Movies & Series</h2>
+<div class="ott-movie-grid" id="ottMovies"></div>
+
+<div class="ott-pagination">
+<button class="action secondary" onclick="changeOTTPage(-1)">← Previous</button>
+<span id="ottPageNumber">Page 1</span>
+<button class="action secondary" onclick="changeOTTPage(1)">Next →</button>
+</div>
+
+<div class="ott-modal" id="ottModal" onclick="if(event.target===this)closeOTTDetails()">
+<div class="ott-modal-content">
+<button class="action secondary" onclick="closeOTTDetails()">✕ Close</button>
+<div id="ottDetails"></div>
+</div>
+</div>
+
+<div class="card" style="margin-top:24px">
+<h3>⚙️ Connect Movie Catalogue</h3>
+<p>TMDB API key is required for movie search, posters, ratings and provider information. For a public website, a secure Cloudflare Worker backend is recommended instead of exposing a key in the page.</p>
+<input id="tmdbKey" type="password" placeholder="Paste TMDB API key (v3)">
+<button class="action" onclick="saveTMDBKey()">Connect Catalogue</button>
+<button class="action secondary" onclick="removeTMDBKey()">Remove Key</button>
+<p>Playback is handled by official streaming services. This hub provides discovery and legal watch links; it does not host movies.</p>
+</div>
+</section>
+
+<section class="page hidden" id="cyber">
+<div class="hero"><h1>🛡️ CYBER <span>LAB</span></h1><p>Defensive cybersecurity learning tools.</p></div>
+<div class="grid">
+<div class="card"><div class="icon">🔍</div><h3>Phishing Detector</h3><p>Check URLs and messages for suspicious signs.</p><button class="action" onclick="openTool('phishing')">Open</button></div>
+<div class="card"><div class="icon">🔐</div><h3>File Hash Scanner</h3><p>Generate SHA-256 file hashes.</p><button class="action" onclick="openTool('hash')">Open</button></div>
+<div class="card"><div class="icon">🔗</div><h3>Link Checker</h3><p>Check URL structure and HTTPS.</p><button class="action" onclick="openTool('link')">Open</button></div>
+<div class="card"><div class="icon">🔑</div><h3>Password Generator</h3><p>Create random passwords locally.</p><button class="action" onclick="openTool('password')">Open</button></div>
+</div>
+</section>
+
+<section class="page hidden" id="developer">
+<div class="hero"><h1>💻 DEVELOPER <span>ZONE</span></h1><p>Build and experiment with code.</p></div>
+<div class="grid">
+<div class="card"><div class="icon">🌐</div><h3>HTML Editor</h3><p>Write HTML and preview it.</p><button class="action" onclick="openTool('html')">Open</button></div>
+<div class="card"><div class="icon">🎨</div><h3>CSS Playground</h3><p>Experiment with CSS styling.</p><button class="action" onclick="openTool('css')">Open</button></div>
+<div class="card"><div class="icon">📦</div><h3>JSON Formatter</h3><p>Format and validate JSON.</p><button class="action" onclick="openTool('json')">Open</button></div>
+<div class="card"><div class="icon">🆚</div><h3>Text Difference</h3><p>Compare two texts.</p><button class="action" onclick="openTool('diff')">Open</button></div>
+</div>
+</section>
+
+<section class="page hidden" id="utilities">
+<div class="hero"><h1>⚙️ <span>UTILITIES</span></h1><p>Everyday digital tools.</p></div>
+<div class="grid">
+<div class="card"><div class="icon">🧮</div><h3>Calculator</h3><p>Perform calculations.</p><button class="action" onclick="openTool('calculator')">Open</button></div>
+<div class="card"><div class="icon">📱</div><h3>QR Generator</h3><p>Create QR codes from text or URLs.</p><button class="action" onclick="openTool('qr')">Open</button></div>
+<div class="card"><div class="icon">🖼️</div><h3>Image Compressor</h3><p>Compress images in your browser.</p><button class="action" onclick="openTool('image')">Open</button></div>
+<div class="card"><div class="icon">📄</div><h3>PDF Merger</h3><p>Merge multiple PDF files.</p><button class="action" onclick="openTool('pdf')">Open</button></div>
+<div class="card"><div class="icon">📶</div><h3>Network Outage Diary</h3><p>Record network interruptions.</p><button class="action" onclick="openTool('outage')">Open</button></div>
+<div class="card"><div class="icon">📊</div><h3>Internet Speed Diary</h3><p>Record speed test results.</p><button class="action" onclick="openTool('speed')">Open</button></div>
+<div class="card"><div class="icon">🔗</div><h3>Link Checker</h3><p>Inspect URL formatting.</p><button class="action" onclick="openTool('link')">Open</button></div>
+<div class="card"><div class="icon">✍️</div><h3>Text Helper</h3><p>Count and transform text.</p><button class="action" onclick="openTool('text')">Open</button></div>
+</div>
+</section>
+
+<section class="page hidden" id="space">
+<div class="hero"><h1>👤 MY <span>SPACE</span></h1><p>Your personal workspace.</p></div>
+<div class="grid">
+<div class="card"><div class="icon">📝</div><h3>Notes</h3><p>Save personal notes.</p><button class="action" onclick="openTool('notes')">Open</button></div>
+<div class="card"><div class="icon">✅</div><h3>Tasks</h3><p>Manage daily tasks.</p><button class="action" onclick="openTool('tasks')">Open</button></div>
+<div class="card"><div class="icon">📅</div><h3>Deadline Tracker</h3><p>Save important deadlines.</p><button class="action" onclick="openTool('deadline')">Open</button></div>
+<div class="card"><div class="icon">👨‍💻</div><h3>Developer Profile</h3><p>About this project.</p><button class="action" onclick="openTool('about')">Open</button></div>
+</div>
+</section>
+
+<!-- TOOLS -->
+<section class="tool" id="chat">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>🤖 JARVIS CHAT</h2>
+<p>Offline demo assistant. Actual AI answers require an AI API connection.</p>
+<div class="chatbox" id="chatbox"><div class="msg jarvis">J.A.R.V.I.S. SYSTEM ONLINE. Hello Commander!</div></div>
+<input id="chatinput" placeholder="Type a message...">
+<button class="action" onclick="sendChat()">Send</button>
+<button class="action secondary" onclick="clearChat()">Clear</button>
+</section>
+
+<section class="tool" id="notes">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>📝 NOTES MANAGER</h2>
+<textarea id="noteInput" placeholder="Write a note..."></textarea>
+<button class="action" onclick="saveNote()">Save Note</button>
+<div id="noteList"></div>
+</section>
+
+<section class="tool" id="tasks">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>✅ TASK MANAGER</h2>
+<input id="taskInput" placeholder="Enter a task">
+<button class="action" onclick="addTask()">Add Task</button>
+<div id="taskList"></div>
+</section>
+
+<section class="tool" id="calculator">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>🧮 CALCULATOR</h2>
+<input id="calcInput" placeholder="Example: 25*4+10">
+<button class="action" onclick="calculate()">Calculate</button>
+<div class="result" id="calcResult">Result appears here.</div>
+</section>
+
+<section class="tool" id="text">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>✍️ TEXT HELPER</h2>
+<textarea id="textInput" placeholder="Enter text..."></textarea>
+<button class="action" onclick="textAction('upper')">UPPERCASE</button>
+<button class="action" onclick="textAction('lower')">lowercase</button>
+<button class="action" onclick="textAction('title')">Title Case</button>
+<button class="action secondary" onclick="textCount()">Count</button>
+<div class="result" id="textResult"></div>
+</section>
+
+<section class="tool" id="link">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>🔗 LINK CHECKER</h2>
+<input id="linkInput" placeholder="https://example.com">
+<button class="action" onclick="checkLink()">Check URL</button>
+<div class="result" id="linkResult"></div>
+</section>
+
+<section class="tool" id="phishing">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>🔍 PHISHING WARNING ANALYZER</h2>
+<p>Checks common warning signs. This is not a malware scanner and cannot guarantee a link is safe.</p>
+<textarea id="phishInput" placeholder="Paste a URL or suspicious message..."></textarea>
+<button class="action" onclick="analyzePhishing()">Analyze</button>
+<div class="result" id="phishResult"></div>
+</section>
+
+<section class="tool" id="hash">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>🔐 SHA-256 FILE HASH</h2>
+<input type="file" id="hashFile">
+<button class="action" onclick="makeHash()">Generate Hash</button>
+<div class="result" id="hashResult"></div>
+</section>
+
+<section class="tool" id="password">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>🔑 PASSWORD GENERATOR</h2>
+<label>Password length</label>
+<input type="number" id="passLength" value="16" min="8" max="64">
+<button class="action" onclick="makePassword()">Generate Password</button>
+<div class="result" id="passResult"></div>
+<button class="action secondary" onclick="copyText('passResult')">Copy</button>
+</section>
+
+<section class="tool" id="json">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>📦 JSON FORMATTER</h2>
+<textarea id="jsonInput" placeholder='{"name":"JARVIS","status":"online"}'></textarea>
+<button class="action" onclick="formatJSON()">Format JSON</button>
+<div class="result" id="jsonResult"></div>
+</section>
+
+<section class="tool" id="html">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>🌐 HTML EDITOR</h2>
+<textarea id="htmlInput" style="min-height:220px"><h1>Hello Commander!</h1><p>Welcome to PREM X JARVIS.</p></textarea>
+<button class="action" onclick="previewHTML()">Run Preview</button>
+<iframe id="htmlPreview" sandbox=""></iframe>
+</section>
+
+<section class="tool" id="css">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>🎨 CSS PLAYGROUND</h2>
+<textarea id="cssInput">body { background: #101827; color: cyan; font-family: Arial; text-align: center; padding: 30px; } h1 { text-shadow: 0 0 10px cyan; }</textarea>
+<button class="action" onclick="previewCSS()">Run CSS</button>
+<iframe id="cssPreview" sandbox=""></iframe>
+</section>
+
+<section class="tool" id="qr">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>📱 QR GENERATOR</h2>
+<input id="qrInput" placeholder="Enter text or URL">
+<button class="action" onclick="makeQR()">Generate QR</button>
+<div id="qrcode"></div>
+</section>
+
+<section class="tool" id="image">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>🖼️ IMAGE COMPRESSOR</h2>
+<input type="file" id="imageInput" accept="image/*">
+<label>Quality (lower = smaller file)</label>
+<input type="range" id="imageQuality" min="20" max="95" value="70">
+<button class="action" onclick="compressImage()">Compress Image</button>
+<div id="imageResult" class="result"></div>
+<a id="imageDownload" class="action hidden" download="compressed-image.jpg">Download Image</a>
+</section>
+
+<section class="tool" id="pdf">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>📄 PDF MERGER</h2>
+<p>Select multiple PDF files. They will be merged in the order selected.</p>
+<input type="file" id="pdfInput" accept="application/pdf" multiple>
+<button class="action" onclick="mergePDF()">Merge PDFs</button>
+<div id="pdfResult" class="result"></div>
+</section>
+
+<section class="tool" id="diff">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>🆚 TEXT DIFFERENCE FINDER</h2>
+<textarea id="diffA" placeholder="Original text"></textarea>
+<textarea id="diffB" placeholder="New text"></textarea>
+<button class="action" onclick="compareText()">Compare Texts</button>
+<div id="diffResult" class="result"></div>
+</section>
+
+<section class="tool" id="outage">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>📶 NETWORK OUTAGE DIARY</h2>
+<input id="outProvider" placeholder="Network provider">
+<label>Outage start</label><input id="outStart" type="datetime-local">
+<label>Outage end</label><input id="outEnd" type="datetime-local">
+<textarea id="outNotes" placeholder="What happened?"></textarea>
+<button class="action" onclick="saveOutage()">Save Record</button>
+<div id="outList"></div>
+</section>
+
+<section class="tool" id="speed">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>📊 INTERNET SPEED DIARY</h2>
+<p>Enter the results from a speed test you performed.</p>
+<input id="speedProvider" placeholder="Network/provider">
+<input id="speedDown" type="number" placeholder="Download Mbps">
+<input id="speedUp" type="number" placeholder="Upload Mbps">
+<input id="speedPing" type="number" placeholder="Ping ms">
+<button class="action" onclick="saveSpeed()">Save Speed Record</button>
+<div id="speedList"></div>
+</section>
+
+<section class="tool" id="revision">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>📅 REVISION TRACKER</h2>
+<input id="revSubject" placeholder="Subject">
+<input id="revChapter" placeholder="Chapter name">
+<select id="revStatus"><option>Not Started</option><option>In Progress</option><option>Completed</option></select>
+<button class="action" onclick="saveRevision()">Save Progress</button>
+<div id="revList"></div>
+</section>
+
+<section class="tool" id="deadline">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>📆 DEADLINE TRACKER</h2>
+<input id="deadlineName" placeholder="Deadline title">
+<input id="deadlineDate" type="date">
+<button class="action" onclick="saveDeadline()">Save Deadline</button>
+<div id="deadlineList"></div>
+</section>
+
+<section class="tool" id="smartsearch">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>🔎 SMART NOTES SEARCH</h2>
+<input id="searchInput" placeholder="Search saved notes...">
+<button class="action" onclick="searchNotes()">Search</button>
+<div id="searchResult"></div>
+</section>
+
+<section class="tool" id="about">
+<button class="action secondary" onclick="goHome()">← Back</button>
+<h2>👨‍💻 DEVELOPER PROFILE</h2>
+<div class="result">PROJECT: PREM X JARVIS
+CREATOR: PREM PATEL
+ASSISTANT: J.A.R.V.I.S.
+VERSION: 4.0
+INTERESTS: Technology, Python, Cybersecurity, AI
+STATUS: UNDER DEVELOPMENT</div>
+</section>
+
 </main>
-<footer><h3>PREM <span style="color:var(--cyan)">X JARVIS</span></h3><p>Designed & Developed by Prem Patel</p><p>Technology • Innovation • Learning</p><p>© 2026 PREM X JARVIS</p></footer>
+
+<footer>
+<h3>PREM <span style="color:var(--cyan)">X JARVIS</span></h3>
+<p>Designed & Developed by Prem Patel</p>
+<p>Technology • Innovation • Learning</p>
+<p>© 2026 PREM X JARVIS V4.0</p>
+</footer>
+
 <script>
+/* NAVIGATION */
 function toggleMenu(){document.getElementById("nav").classList.toggle("show")}
-function page(id,btn){document.querySelectorAll(".page").forEach(x=>x.classList.add("hidden"));document.querySelectorAll(".tool").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.remove("hidden");document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));if(btn)btn.classList.add("active");document.getElementById("nav").classList.remove("show");window.scrollTo(0,0)}
-function openTool(id){document.querySelectorAll(".page").forEach(x=>x.classList.add("hidden"));document.querySelectorAll(".tool").forEach(x=>x.classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo(0,0);renderTool(id)}
+function page(id,btn){
+document.querySelectorAll(".page").forEach(x=>x.classList.add("hidden"));
+document.querySelectorAll(".tool").forEach(x=>x.classList.remove("active"));
+document.getElementById(id).classList.remove("hidden");
+document.querySelectorAll("nav button").forEach(x=>x.classList.remove("active"));
+if(btn)btn.classList.add("active");
+document.getElementById("nav").classList.remove("show");
+window.scrollTo(0,0)
+}
+function openTool(id){
+document.querySelectorAll(".page").forEach(x=>x.classList.add("hidden"));
+document.querySelectorAll(".tool").forEach(x=>x.classList.remove("active"));
+document.getElementById(id).classList.add("active");
+window.scrollTo(0,0);renderTool(id)
+}
 function goHome(){page("home",document.querySelector("nav button"))}
-function renderTool(id){const map={notes:renderNotes,tasks:renderTasks,outage:renderOutages,speed:renderSpeeds,revision:renderRevisions,deadline:renderDeadlines};if(map[id])map[id]()}
-const homeTools=[["🤖","JARVIS Chat","chat"],["📝","Notes Manager","notes"],["✅","Task Manager","tasks"],["🧮","Calculator","calculator"],["🔐","File Hash Scanner","hash"],["🔗","Link Checker","link"],["✍️","Text Helper","text"],["📦","JSON Formatter","json"],["📱","QR Generator","qr"],["🖼️","Image Compressor","image"],["📄","PDF Merger","pdf"],["🔑","Password Generator","password"]];
-document.getElementById("homeCards").innerHTML=homeTools.map(t=>`<div class="card"><div class="icon">${t[0]}</div><h3>${t[1]}</h3><p>Open this tool in your workspace.</p><button class="action" onclick="openTool('${t[2]}')">Launch Tool</button></div>`).join("");
+function renderTool(id){
+const map={notes:renderNotes,tasks:renderTasks,outage:renderOutages,speed:renderSpeeds,revision:renderRevisions,deadline:renderDeadlines};
+if(map[id])map[id]()
+}
+
+/* HOME */
+const homeTools=[
+["🤖","JARVIS Chat","chat"],["📝","Notes Manager","notes"],
+["✅","Task Manager","tasks"],["🧮","Calculator","calculator"],
+["🔐","File Hash Scanner","hash"],["🔗","Link Checker","link"],
+["✍️","Text Helper","text"],["📦","JSON Formatter","json"],
+["📱","QR Generator","qr"],["🖼️","Image Compressor","image"],
+["📄","PDF Merger","pdf"],["🔑","Password Generator","password"]
+];
+document.getElementById("homeCards").innerHTML=homeTools.map(t=>
+`<div class="card"><div class="icon">${t[0]}</div><h3>${t[1]}</h3><p>Open this tool in your workspace.</p><button class="action" onclick="openTool('${t[2]}')">Launch Tool</button></div>`
+).join("");
+
+/* STORAGE */
 function getData(key){try{return JSON.parse(localStorage.getItem("pxj_"+key)||"[]")}catch{return []}}
 function putData(key,data){localStorage.setItem("pxj_"+key,JSON.stringify(data))}
-function makeItem(container,text,onDelete){const d=document.createElement("div");d.className="item";const s=document.createElement("span");s.textContent=text;const b=document.createElement("button");b.textContent="Delete";b.onclick=onDelete;d.append(s,b);container.appendChild(d)}
-function sendChat(){const input=document.getElementById("chatinput"),v=input.value.trim();if(!v)return;addMessage("You: "+v,"user");const l=v.toLowerCase();let answer="I received your message. This is the offline demo. Connect an AI backend for intelligent answers.";if(l.includes("hello")||l.includes("hi"))answer="Hello Commander! J.A.R.V.I.S. is online.";else if(l.includes("time"))answer="Current time: "+new Date().toLocaleTimeString();else if(l.includes("date"))answer="Today's date: "+new Date().toLocaleDateString();else if(l.includes("creator"))answer="My creator is Prem Patel.";else if(l.includes("your name"))answer="I am J.A.R.V.I.S., your digital assistant.";addMessage("J.A.R.V.I.S.: "+answer,"jarvis");input.value=""}
-function addMessage(t,c){const d=document.createElement("div");d.className="msg "+c;d.textContent=t;const box=document.getElementById("chatbox");box.appendChild(d);box.scrollTop=box.scrollHeight}
+function makeItem(container,text,onDelete){
+const d=document.createElement("div");d.className="item";
+const s=document.createElement("span");s.textContent=text;
+const b=document.createElement("button");b.textContent="Delete";b.onclick=onDelete;
+d.append(s,b);container.appendChild(d)
+}
+
+/* CHAT */
+function sendChat(){
+const input=document.getElementById("chatinput"),v=input.value.trim();if(!v)return;
+addMessage("You: "+v,"user");
+const l=v.toLowerCase();
+let answer="I received your message. This is the offline demo. Connect an AI backend for intelligent answers.";
+if(l.includes("hello")||l.includes("hi"))answer="Hello Commander! J.A.R.V.I.S. is online.";
+else if(l.includes("time"))answer="Current time: "+new Date().toLocaleTimeString();
+else if(l.includes("date"))answer="Today's date: "+new Date().toLocaleDateString();
+else if(l.includes("creator"))answer="My creator is Prem Patel.";
+else if(l.includes("your name"))answer="I am J.A.R.V.I.S., your digital assistant.";
+addMessage("J.A.R.V.I.S.: "+answer,"jarvis");input.value=""
+}
+function addMessage(t,c){
+const d=document.createElement("div");d.className="msg "+c;d.textContent=t;
+const box=document.getElementById("chatbox");box.appendChild(d);box.scrollTop=box.scrollHeight
+}
 function clearChat(){document.getElementById("chatbox").innerHTML=""}
 document.getElementById("chatinput").addEventListener("keydown",e=>{if(e.key==="Enter")sendChat()});
-function saveNote(){const v=document.getElementById("noteInput").value.trim();if(!v)return alert("Write a note first.");const a=getData("notes");a.push({id:Date.now(),text:v,date:new Date().toLocaleString()});putData("notes",a);document.getElementById("noteInput").value="";renderNotes()}
-function renderNotes(){const box=document.getElementById("noteList");box.innerHTML="";getData("notes").forEach(n=>makeItem(box,n.text+" — "+n.date,()=>{putData("notes",getData("notes").filter(x=>x.id!==n.id));renderNotes()}))}
-function addTask(){const v=document.getElementById("taskInput").value.trim();if(!v)return;const a=getData("tasks");a.push({id:Date.now(),text:v});putData("tasks",a);document.getElementById("taskInput").value="";renderTasks()}
-function renderTasks(){const box=document.getElementById("taskList");box.innerHTML="";getData("tasks").forEach(n=>makeItem(box,n.text,()=>{putData("tasks",getData("tasks").filter(x=>x.id!==n.id));renderTasks()}))}
-function calculate(){const s=document.getElementById("calcInput").value.trim(),out=document.getElementById("calcResult");if(!s||!/^[0-9+\-*/().%\s]+$/.test(s)){out.textContent="Invalid expression.";return}try{const n=Function('"use strict";return ('+s+')')();if(!Number.isFinite(n))throw 0;out.textContent="Result: "+n}catch{out.textContent="Invalid calculation."}}
-function textAction(type){const el=document.getElementById("textInput");let s=el.value;if(type==="upper")s=s.toUpperCase();if(type==="lower")s=s.toLowerCase();if(type==="title")s=s.toLowerCase().replace(/\b\w/g,x=>x.toUpperCase());el.value=s;document.getElementById("textResult").textContent=s}
-function textCount(){const s=document.getElementById("textInput").value;document.getElementById("textResult").textContent="Characters: "+s.length+"\nWords: "+(s.trim()?s.trim().split(/\s+/).length:0)+"\nLines: "+(s?s.split("\n").length:0)}
-function checkLink(){const s=document.getElementById("linkInput").value.trim(),out=document.getElementById("linkResult");try{const u=new URL(s);if(!["http:","https:"].includes(u.protocol))throw 0;out.textContent="Valid URL format\nDomain: "+u.hostname+"\nHTTPS: "+(u.protocol==="https:"?"Yes":"No")+"\n\nThis does not verify whether the website is safe."}catch{out.textContent="Invalid URL. Example: https://example.com"}}
-function analyzePhishing(){const s=document.getElementById("phishInput").value.trim(),out=document.getElementById("phishResult");if(!s){out.textContent="Enter a URL or message.";return}const flags=[];[[/urgent|immediately|act now|account suspended|verify now/i,"Urgent or pressure-based language"],[/password|otp|one.time.password|bank details|card number/i,"Requests sensitive personal information"],[/bit\.ly|tinyurl|t\.co|goo\.gl/i,"Shortened URL detected"],[/free money|you won|prize|lottery|reward/i,"Unexpected prize or reward claim"],[/login|sign.in|verify.account/i,"Login or account verification wording"],[/@.*@/,"Unusual email-like text"]].forEach(([r,t])=>{if(r.test(s))flags.push(t)});if(/https?:\/\/\d{1,3}(\.\d{1,3}){3}/i.test(s))flags.push("URL uses an IP address");if(/https?:\/\/.*-.*\.(com|net|org)/i.test(s))flags.push("Hyphenated domain - inspect carefully");out.textContent=(flags.length?"⚠️ Warning signs found:\n• "+flags.join("\n• "):"No common warning pattern detected.")+"\n\nThis is a basic heuristic check, not a definitive security verdict. Never share OTPs or passwords."}
-async function makeHash(){const f=document.getElementById("hashFile").files[0],out=document.getElementById("hashResult");if(!f)return out.textContent="Select a file first.";if(!crypto.subtle)return out.textContent="Use the HTTPS version of this website.";out.textContent="Calculating...";try{const h=await crypto.subtle.digest("SHA-256",await f.arrayBuffer());out.textContent="File: "+f.name+"\nSHA-256:\n"+Array.from(new Uint8Array(h)).map(x=>x.toString(16).padStart(2,"0")).join("")}catch{out.textContent="Could not process this file."}}
-function makePassword(){const len=Math.max(8,Math.min(64,Number(document.getElementById("passLength").value)||16)),chars="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*?",arr=new Uint32Array(len);crypto.getRandomValues(arr);document.getElementById("passResult").textContent=Array.from(arr,x=>chars[x%chars.length]).join("")}
-function formatJSON(){try{document.getElementById("jsonResult").textContent=JSON.stringify(JSON.parse(document.getElementById("jsonInput").value),null,4)}catch(e){document.getElementById("jsonResult").textContent="Invalid JSON: "+e.message}}
-function copyText(id){const s=document.getElementById(id).textContent;if(!s)return;navigator.clipboard?.writeText(s).then(()=>alert("Copied!")).catch(()=>alert("Copy not available in this browser."))}
-function previewHTML(){document.getElementById("htmlPreview").srcdoc=document.getElementById("htmlInput").value}
-function previewCSS(){document.getElementById("cssPreview").srcdoc="<h1>CSS Playground Preview</h1><p>PREM X JARVIS</p><style>"+document.getElementById("cssInput").value+"</style>"}
-function makeQR(){const v=document.getElementById("qrInput").value.trim(),box=document.getElementById("qrcode");box.innerHTML="";if(!v)return alert("Enter text or URL.");if(typeof QRCode==="undefined")return alert("QR library did not load.");new QRCode(box,{text:v,width:200,height:200,correctLevel:QRCode.CorrectLevel.H})}
-function compressImage(){const f=document.getElementById("imageInput").files[0],out=document.getElementById("imageResult");if(!f)return out.textContent="Select an image first.";if(!f.type.startsWith("image/"))return out.textContent="Choose an image file.";const reader=new FileReader();reader.onload=e=>{const img=new Image();img.onload=()=>{const canvas=document.createElement("canvas"),scale=Math.min(1,1800/Math.max(img.width,img.height));canvas.width=Math.round(img.width*scale);canvas.height=Math.round(img.height*scale);canvas.getContext("2d").drawImage(img,0,0,canvas.width,canvas.height);canvas.toBlob(blob=>{if(!blob)return out.textContent="Compression failed.";const url=URL.createObjectURL(blob),a=document.getElementById("imageDownload");a.href=url;a.classList.remove("hidden");out.textContent="Original: "+(f.size/1024).toFixed(1)+" KB\nCompressed: "+(blob.size/1024).toFixed(1)+" KB"},"image/jpeg",Number(document.getElementById("imageQuality").value)/100)};img.src=e.target.result};reader.readAsDataURL(f)}
-async function mergePDF(){const files=[...document.getElementById("pdfInput").files],out=document.getElementById("pdfResult");if(files.length<2)return out.textContent="Select at least two PDF files.";if(typeof PDFLib==="undefined")return out.textContent="PDF library failed to load.";try{const merged=await PDFLib.PDFDocument.create();for(const f of files){const doc=await PDFLib.PDFDocument.load(await f.arrayBuffer()),pages=await merged.copyPages(doc,doc.getPageIndices());pages.forEach(p=>merged.addPage(p))}const blob=new Blob([await merged.save()],{type:"application/pdf"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="merged.pdf";a.textContent="Download merged PDF";a.className="action";out.innerHTML="PDF merge complete. ";out.appendChild(a)}catch(e){out.textContent="PDF merge failed: "+e.message}}
-function compareText(){const a=document.getElementById("diffA").value.split("\n"),b=document.getElementById("diffB").value.split("\n"),max=Math.max(a.length,b.length),out=[];for(let i=0;i<max;i++){if(a[i]===b[i])out.push("= "+(a[i]||""));else{if(a[i]!==undefined)out.push("- "+a[i]);if(b[i]!==undefined)out.push("+ "+b[i])}}document.getElementById("diffResult").textContent=out.join("\n")}
-function saveOutage(){const provider=document.getElementById("outProvider").value.trim()||"Unknown",start=document.getElementById("outStart").value,end=document.getElementById("outEnd").value;if(!start||!end||new Date(end)<=new Date(start))return alert("Enter valid start and end times.");const mins=Math.round((new Date(end)-new Date(start))/60000),a=getData("outages");a.push({id:Date.now(),provider,start,end,mins,notes:document.getElementById("outNotes").value});putData("outages",a);renderOutages()}
-function renderOutages(){const box=document.getElementById("outList");box.innerHTML="";getData("outages").forEach(x=>makeItem(box,x.provider+" | "+x.mins+" minutes | "+x.start+" | "+x.notes,()=>{putData("outages",getData("outages").filter(y=>y.id!==x.id));renderOutages()}))}
-function saveSpeed(){const down=Number(document.getElementById("speedDown").value),up=Number(document.getElementById("speedUp").value),ping=Number(document.getElementById("speedPing").value);if(!Number.isFinite(down)||!Number.isFinite(up)||!Number.isFinite(ping)||down<0||up<0||ping<0)return alert("Enter valid speed and ping values.");const a=getData("speeds");a.push({id:Date.now(),provider:document.getElementById("speedProvider").value||"Unknown",down,up,ping,date:new Date().toLocaleString()});putData("speeds",a);renderSpeeds()}
-function renderSpeeds(){const box=document.getElementById("speedList");box.innerHTML="";getData("speeds").forEach(x=>makeItem(box,x.provider+" | Down: "+x.down+" Mbps | Up: "+x.up+" Mbps | Ping: "+x.ping+" ms | "+x.date,()=>{putData("speeds",getData("speeds").filter(y=>y.id!==x.id));renderSpeeds()}))}
-function saveRevision(){const subject=document.getElementById("revSubject").value.trim(),chapter=document.getElementById("revChapter").value.trim(),status=document.getElementById("revStatus").value;if(!subject||!chapter)return alert("Enter subject and chapter.");const a=getData("revision");a.push({id:Date.now(),subject,chapter,status});putData("revision",a);renderRevisions()}
-function renderRevisions(){const box=document.getElementById("revList");box.innerHTML="";getData("revision").forEach(x=>makeItem(box,x.subject+" — "+x.chapter+" — "+x.status,()=>{putData("revision",getData("revision").filter(y=>y.id!==x.id));renderRevisions()}))}
-function saveDeadline(){const name=document.getElementById("deadlineName").value.trim(),date=document.getElementById("deadlineDate").value;if(!name||!date)return alert("Enter a title and date.");const a=getData("deadlines");a.push({id:Date.now(),name,date});putData("deadlines",a);renderDeadlines()}
-function renderDeadlines(){const box=document.getElementById("deadlineList");box.innerHTML="";getData("deadlines").forEach(x=>makeItem(box,x.name+" — "+x.date,()=>{putData("deadlines",getData("deadlines").filter(y=>y.id!==x.id));renderDeadlines()}))}
-function searchNotes(){const q=document.getElementById("searchInput").value.toLowerCase().trim(),box=document.getElementById("searchResult");box.innerHTML="";if(!q)return box.textContent="Enter a search term.";const matches=getData("notes").filter(x=>x.text.toLowerCase().includes(q));matches.forEach(x=>{const d=document.createElement("div");d.className="result";d.textContent=x.text;box.appendChild(d)});if(!matches.length)box.textContent="No matching notes found."}
-document.getElementById("taskInput").addEventListener("keydown",e=>{if(e.key==="Enter")addTask()});
-function searchMovies(){const q=prompt("Enter movie or web series name:");if(q)window.open("https://www.google.com/search?q="+encodeURIComponent(q+" movie release OTT information"),"_blank","noopener")}
 
-/* OTT ENGINE */
+/* NOTES */
+function saveNote(){
+const v=document.getElementById("noteInput").value.trim();if(!v)return alert("Write a note first.");
+const a=getData("notes");a.push({id:Date.now(),text:v,date:new Date().toLocaleString()});
+putData("notes",a);document.getElementById("noteInput").value="";renderNotes()
+}
+function renderNotes(){
+const box=document.getElementById("noteList");box.innerHTML="";
+getData("notes").forEach(n=>makeItem(box,n.text+" — "+n.date,()=>{
+putData("notes",getData("notes").filter(x=>x.id!==n.id));renderNotes()
+}))
+}
+
+/* TASKS */
+function addTask(){
+const v=document.getElementById("taskInput").value.trim();if(!v)return;
+const a=getData("tasks");a.push({id:Date.now(),text:v});putData("tasks",a);
+document.getElementById("taskInput").value="";renderTasks()
+}
+function renderTasks(){
+const box=document.getElementById("taskList");box.innerHTML="";
+getData("tasks").forEach(n=>makeItem(box,n.text,()=>{
+putData("tasks",getData("tasks").filter(x=>x.id!==n.id));renderTasks()
+}))
+}
+document.getElementById("taskInput").addEventListener("keydown",e=>{if(e.key==="Enter")addTask()});
+
+/* CALCULATOR */
+function calculate(){
+const s=document.getElementById("calcInput").value.trim(),out=document.getElementById("calcResult");
+if(!s||!/^[0-9+\-*/().%\s]+$/.test(s)){out.textContent="Invalid expression.";return}
+try{const n=Function('"use strict";return ('+s+')')();if(!Number.isFinite(n))throw 0;out.textContent="Result: "+n}
+catch{out.textContent="Invalid calculation."}
+}
+
+/* TEXT */
+function textAction(type){
+const el=document.getElementById("textInput");let s=el.value;
+if(type==="upper")s=s.toUpperCase();
+if(type==="lower")s=s.toLowerCase();
+if(type==="title")s=s.toLowerCase().replace(/\b\w/g,x=>x.toUpperCase());
+el.value=s;document.getElementById("textResult").textContent=s
+}
+function textCount(){
+const s=document.getElementById("textInput").value;
+document.getElementById("textResult").textContent=
+"Characters: "+s.length+"\nWords: "+(s.trim()?s.trim().split(/\s+/).length:0)+"\nLines: "+(s?s.split("\n").length:0)
+}
+
+/* LINK CHECKER */
+function checkLink(){
+const s=document.getElementById("linkInput").value.trim(),out=document.getElementById("linkResult");
+try{
+const u=new URL(s);if(!["http:","https:"].includes(u.protocol))throw 0;
+out.textContent="Valid URL format\nDomain: "+u.hostname+"\nHTTPS: "+(u.protocol==="https:"?"Yes":"No")+"\n\nThis does not verify whether the website is safe."
+}catch{out.textContent="Invalid URL. Example: https://example.com"}
+}
+
+/* PHISHING CHECK */
+function analyzePhishing(){
+const s=document.getElementById("phishInput").value.trim(),out=document.getElementById("phishResult");
+if(!s){out.textContent="Enter a URL or message.";return}
+const flags=[];
+[[/urgent|immediately|act now|account suspended|verify now/i,"Urgent or pressure-based language"],
+[/password|otp|one.time.password|bank details|card number/i,"Requests sensitive personal information"],
+[/bit\.ly|tinyurl|t\.co|goo\.gl/i,"Shortened URL detected"],
+[/free money|you won|prize|lottery|reward/i,"Unexpected prize or reward claim"],
+[/login|sign.in|verify.account/i,"Login or account verification wording"],
+[/@.*@/,"Unusual email-like text"]].forEach(([r,t])=>{if(r.test(s))flags.push(t)});
+if(/https?:\/\/\d{1,3}(\.\d{1,3}){3}/i.test(s))flags.push("URL uses an IP address");
+if(/https?:\/\/.*-.*\.(com|net|org)/i.test(s))flags.push("Hyphenated domain - inspect carefully");
+out.textContent=(flags.length?"⚠️ Warning signs found:\n• "+flags.join("\n• "):"No common warning pattern detected.")+
+"\n\nThis is a basic heuristic check, not a definitive security verdict. Never share OTPs or passwords."
+}
+
+/* HASH */
+async function makeHash(){
+const f=document.getElementById("hashFile").files[0],out=document.getElementById("hashResult");
+if(!f)return out.textContent="Select a file first.";
+if(!crypto.subtle)return out.textContent="Use the HTTPS version of this website.";
+out.textContent="Calculating...";
+try{
+const h=await crypto.subtle.digest("SHA-256",await f.arrayBuffer());
+out.textContent="File: "+f.name+"\nSHA-256:\n"+Array.from(new Uint8Array(h)).map(x=>x.toString(16).padStart(2,"0")).join("")
+}catch{out.textContent="Could not process this file."}
+}
+
+/* PASSWORD */
+function makePassword(){
+const len=Math.max(8,Math.min(64,Number(document.getElementById("passLength").value)||16));
+const chars="ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz23456789!@#$%&*?";
+const arr=new Uint32Array(len);crypto.getRandomValues(arr);
+document.getElementById("passResult").textContent=Array.from(arr,x=>chars[x%chars.length]).join("")
+}
+function copyText(id){
+const s=document.getElementById(id).textContent;if(!s)return;
+navigator.clipboard?.writeText(s).then(()=>alert("Copied!")).catch(()=>alert("Copy not available in this browser."))
+}
+
+/* JSON */
+function formatJSON(){
+try{document.getElementById("jsonResult").textContent=JSON.stringify(JSON.parse(document.getElementById("jsonInput").value),null,4)}
+catch(e){document.getElementById("jsonResult").textContent="Invalid JSON: "+e.message}
+}
+
+/* HTML AND CSS PREVIEW */
+function previewHTML(){document.getElementById("htmlPreview").srcdoc=document.getElementById("htmlInput").value}
+function previewCSS(){
+document.getElementById("cssPreview").srcdoc="<h1>CSS Playground Preview</h1><p>PREM X JARVIS</p><style>"+document.getElementById("cssInput").value+"</style>"
+}
+
+/* QR */
+function makeQR(){
+const v=document.getElementById("qrInput").value.trim(),box=document.getElementById("qrcode");
+box.innerHTML="";if(!v)return alert("Enter text or URL.");
+if(typeof QRCode==="undefined")return alert("QR library did not load.");
+new QRCode(box,{text:v,width:200,height:200,correctLevel:QRCode.CorrectLevel.H})
+}
+
+/* IMAGE COMPRESSOR */
+function compressImage(){
+const f=document.getElementById("imageInput").files[0],out=document.getElementById("imageResult");
+if(!f)return out.textContent="Select an image first.";
+if(!f.type.startsWith("image/"))return out.textContent="Choose an image file.";
+const reader=new FileReader();
+reader.onload=e=>{
+const img=new Image();
+img.onload=()=>{
+const canvas=document.createElement("canvas");
+const scale=Math.min(1,1800/Math.max(img.width,img.height));
+canvas.width=Math.round(img.width*scale);canvas.height=Math.round(img.height*scale);
+canvas.getContext("2d").drawImage(img,0,0,canvas.width,canvas.height);
+canvas.toBlob(blob=>{
+if(!blob)return out.textContent="Compression failed.";
+const url=URL.createObjectURL(blob),a=document.getElementById("imageDownload");
+a.href=url;a.classList.remove("hidden");
+out.textContent="Original: "+(f.size/1024).toFixed(1)+" KB\nCompressed: "+(blob.size/1024).toFixed(1)+" KB"
+},"image/jpeg",Number(document.getElementById("imageQuality").value)/100)
+};
+img.src=e.target.result
+};
+reader.readAsDataURL(f)
+}
+
+/* PDF MERGER */
+async function mergePDF(){
+const files=[...document.getElementById("pdfInput").files],out=document.getElementById("pdfResult");
+if(files.length<2)return out.textContent="Select at least two PDF files.";
+if(typeof PDFLib==="undefined")return out.textContent="PDF library failed to load.";
+try{
+const merged=await PDFLib.PDFDocument.create();
+for(const f of files){
+const doc=await PDFLib.PDFDocument.load(await f.arrayBuffer());
+const pages=await merged.copyPages(doc,doc.getPageIndices());
+pages.forEach(p=>merged.addPage(p))
+}
+const blob=new Blob([await merged.save()],{type:"application/pdf"});
+const url=URL.createObjectURL(blob),a=document.createElement("a");
+a.href=url;a.download="merged.pdf";a.textContent="Download merged PDF";a.className="action";
+out.innerHTML="PDF merge complete. ";out.appendChild(a)
+}catch(e){out.textContent="PDF merge failed: "+e.message}
+}
+
+/* TEXT DIFFERENCE */
+function compareText(){
+const a=document.getElementById("diffA").value.split("\n");
+const b=document.getElementById("diffB").value.split("\n");
+const max=Math.max(a.length,b.length),out=[];
+for(let i=0;i<max;i++){
+if(a[i]===b[i])out.push("= "+(a[i]||""));
+else{if(a[i]!==undefined)out.push("- "+a[i]);if(b[i]!==undefined)out.push("+ "+b[i])}
+}
+document.getElementById("diffResult").textContent=out.join("\n")
+}
+
+/* OUTAGE DIARY */
+function saveOutage(){
+const provider=document.getElementById("outProvider").value.trim()||"Unknown";
+const start=document.getElementById("outStart").value,end=document.getElementById("outEnd").value;
+if(!start||!end||new Date(end)<=new Date(start))return alert("Enter valid start and end times.");
+const mins=Math.round((new Date(end)-new Date(start))/60000),a=getData("outages");
+a.push({id:Date.now(),provider,start,end,mins,notes:document.getElementById("outNotes").value});
+putData("outages",a);renderOutages()
+}
+function renderOutages(){
+const box=document.getElementById("outList");box.innerHTML="";
+getData("outages").forEach(x=>makeItem(box,x.provider+" | "+x.mins+" minutes | "+x.start+" | "+x.notes,()=>{
+putData("outages",getData("outages").filter(y=>y.id!==x.id));renderOutages()
+}))
+}
+
+/* SPEED DIARY */
+function saveSpeed(){
+const down=Number(document.getElementById("speedDown").value);
+const up=Number(document.getElementById("speedUp").value);
+const ping=Number(document.getElementById("speedPing").value);
+if(!Number.isFinite(down)||!Number.isFinite(up)||!Number.isFinite(ping)||down<0||up<0||ping<0)return alert("Enter valid speed and ping values.");
+const a=getData("speeds");
+a.push({id:Date.now(),provider:document.getElementById("speedProvider").value||"Unknown",down,up,ping,date:new Date().toLocaleString()});
+putData("speeds",a);renderSpeeds()
+}
+function renderSpeeds(){
+const box=document.getElementById("speedList");box.innerHTML="";
+getData("speeds").forEach(x=>makeItem(box,x.provider+" | Down: "+x.down+" Mbps | Up: "+x.up+" Mbps | Ping: "+x.ping+" ms | "+x.date,()=>{
+putData("speeds",getData("speeds").filter(y=>y.id!==x.id));renderSpeeds()
+}))
+}
+
+/* REVISION TRACKER */
+function saveRevision(){
+const subject=document.getElementById("revSubject").value.trim();
+const chapter=document.getElementById("revChapter").value.trim();
+const status=document.getElementById("revStatus").value;
+if(!subject||!chapter)return alert("Enter subject and chapter.");
+const a=getData("revision");a.push({id:Date.now(),subject,chapter,status});
+putData("revision",a);renderRevisions()
+}
+function renderRevisions(){
+const box=document.getElementById("revList");box.innerHTML="";
+getData("revision").forEach(x=>makeItem(box,x.subject+" — "+x.chapter+" — "+x.status,()=>{
+putData("revision",getData("revision").filter(y=>y.id!==x.id));renderRevisions()
+}))
+}
+
+/* DEADLINES */
+function saveDeadline(){
+const name=document.getElementById("deadlineName").value.trim();
+const date=document.getElementById("deadlineDate").value;
+if(!name||!date)return alert("Enter a title and date.");
+const a=getData("deadlines");a.push({id:Date.now(),name,date});
+putData("deadlines",a);renderDeadlines()
+}
+function renderDeadlines(){
+const box=document.getElementById("deadlineList");box.innerHTML="";
+getData("deadlines").forEach(x=>makeItem(box,x.name+" — "+x.date,()=>{
+putData("deadlines",getData("deadlines").filter(y=>y.id!==x.id));renderDeadlines()
+}))
+}
+
+/* SMART SEARCH */
+function searchNotes(){
+const q=document.getElementById("searchInput").value.toLowerCase().trim();
+const box=document.getElementById("searchResult");box.innerHTML="";
+if(!q)return box.textContent="Enter a search term.";
+const matches=getData("notes").filter(x=>x.text.toLowerCase().includes(q));
+matches.forEach(x=>{
+const d=document.createElement("div");d.className="result";d.textContent=x.text;box.appendChild(d)
+});
+if(!matches.length)box.textContent="No matching notes found."
+}
+
+/* OTT PLATFORM DIRECTORY */
 const OTT_PLATFORMS=[
 {name:"Netflix",logo:"https://cdn.simpleicons.org/netflix/E50914",url:"https://www.netflix.com/"},
 {name:"Prime Video",logo:"https://cdn.simpleicons.org/primevideo/00A8E1",url:"https://www.primevideo.com/"},
 {name:"JioHotstar",logo:"https://cdn.simpleicons.org/hotstar/1F80E0",url:"https://www.jiohotstar.com/"},
 {name:"ZEE5",logo:"https://cdn.simpleicons.org/zee5/8230C6",url:"https://www.zee5.com/"},
 {name:"Sony LIV",logo:"https://cdn.simpleicons.org/sonyliv/FFFFFF",url:"https://www.sonyliv.com/"},
-{name:"Apple TV+",logo:"https://cdn.simpleicons.org/appletv/FFFFFF",url:"https://tv.apple.com/"},
-{name:"MX Player",logo:"https://cdn.simpleicons.org/amazonfiretv/FFFFFF",url:"https://www.mxplayer.in/"},
+{name:"Apple TV+",logo:"https://cdn.simpleicons.org/appletv/111111",url:"https://tv.apple.com/"},
+{name:"MX Player",logo:"https://cdn.simpleicons.org/mxplayer/FF6B00",url:"https://www.mxplayer.in/"},
 {name:"YouTube",logo:"https://cdn.simpleicons.org/youtube/FF0000",url:"https://www.youtube.com/"},
 {name:"Crunchyroll",logo:"https://cdn.simpleicons.org/crunchyroll/F47521",url:"https://www.crunchyroll.com/"},
-{name:"MUBI",logo:"https://cdn.simpleicons.org/mubi/FFFFFF",url:"https://mubi.com/"}
+{name:"MUBI",logo:"https://cdn.simpleicons.org/mubi/111111",url:"https://mubi.com/"}
 ];
+
+function renderOTTPlatforms(){
+const box=document.getElementById("ottPlatforms");
+if(!box)return;
+box.innerHTML=OTT_PLATFORMS.map((p,i)=>
+`<a class="ott-platform" href="${p.url}" target="_blank" rel="noopener noreferrer" title="${p.name}">
+<img src="${p.logo}" alt="${p.name} logo" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.classList.add('brand-fallback')">
+<span>${p.name}</span></a>`
+).join("")
+}
+
+/* TMDB ENGINE */
 let ottPage=1;
-function renderOTTPlatforms(){const box=document.getElementById("ottPlatforms");if(!box)return;box.innerHTML=OTT_PLATFORMS.map(p=>`<a class="ott-platform" href="${p.url}" target="_blank" rel="noopener" title="${p.name}"><img src="${p.logo}" alt="${p.name}" onerror="this.outerHTML='<span>${p.name}</span>'"></a>`).join("")}
-function saveTMDBKey(){const key=document.getElementById("tmdbKey").value.trim();if(!key)return alert("Enter your TMDB API key.");localStorage.setItem("pxj_tmdb_key",key);document.getElementById("tmdbKey").value="";alert("Movie catalogue connected.");loadOTTTrending()}
-function removeTMDBKey(){localStorage.removeItem("pxj_tmdb_key");alert("Saved key removed from this browser.");document.getElementById("ottMovies").innerHTML="";ottMessage("Add a TMDB API key to load movies.")}
+let ottCurrentMode="explore";
+let ottLastResults=[];
+const TMDB_GENRES={
+movie:[
+[28,"Action"],[12,"Adventure"],[16,"Animation"],[35,"Comedy"],
+[80,"Crime"],[99,"Documentary"],[18,"Drama"],[10751,"Family"],
+[14,"Fantasy"],[36,"History"],[27,"Horror"],[10402,"Music"],
+[9648,"Mystery"],[10749,"Romance"],[878,"Science Fiction"],
+[10770,"TV Movie"],[53,"Thriller"],[10752,"War"],[37,"Western"]
+],
+tv:[
+[10759,"Action & Adventure"],[16,"Animation"],[35,"Comedy"],
+[80,"Crime"],[99,"Documentary"],[18,"Drama"],[10751,"Family"],
+[10762,"Kids"],[9648,"Mystery"],[10763,"News"],[10764,"Reality"],
+[10765,"Sci-Fi & Fantasy"],[10766,"Soap"],[10767,"Talk"],[10768,"War & Politics"],[37,"Western"]
+]
+};
+
+function updateOTTGenres(){
+const type=document.getElementById("ottType").value;
+const select=document.getElementById("ottGenre");
+const old=select.value;
+select.innerHTML='<option value="">All Genres</option>'+
+TMDB_GENRES[type].map(g=>`<option value="${g[0]}">${g[1]}</option>`).join("");
+if([...select.options].some(o=>o.value===old))select.value=old
+}
+document.getElementById("ottType").addEventListener("change",updateOTTGenres);
+updateOTTGenres();
+
 function ottKey(){return localStorage.getItem("pxj_tmdb_key")||""}
 function ottMessage(s){document.getElementById("ottStatus").textContent=s}
-function ottImage(path){return path?"https://image.tmdb.org/t/p/w500"+path:"https://placehold.co/400x600/101827/ffffff?text=No+Poster"}
-function safeText(s){return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
-async function ottFetch(path){const key=ottKey();if(!key)throw Error("First add your TMDB API key in the Connect Movie Catalogue box.");const url="https://api.themoviedb.org/3/"+path+(path.includes("?")?"&":"?")+"api_key="+encodeURIComponent(key);const r=await fetch(url);if(!r.ok)throw Error("TMDB error "+r.status+". Check the API key or internet connection.");return r.json()}
-function resetOTTPage(){ottPage=1;loadOTTMovies()}
-function ottSortPath(){const sort=document.getElementById("ottSort").value;if(sort==="top_rated")return "vote_average.desc";if(sort==="upcoming")return "primary_release_date.desc";if(sort==="now_playing")return "primary_release_date.desc";return "popularity.desc"}
-async function loadOTTMovies(){const query=document.getElementById("ottSearch").value.trim(),type=document.getElementById("ottType").value,country=document.getElementById("ottCountry").value,sort=document.getElementById("ottSort").value;ottMessage("Loading worldwide titles...");document.getElementById("ottMovies").innerHTML="";try{let data;if(query){data=await ottFetch("search/"+type+"?language=en-US&query="+encodeURIComponent(query)+"&page="+ottPage)}else{let path="discover/"+type+"?language=en-US&sort_by="+ottSortPath()+"&page="+ottPage+"&vote_count.gte=5";if(country)path+="&with_origin_country="+country;if(sort==="upcoming")path+="&"+(type==="movie"?"primary_release_date.gte":"first_air_date.gte")+"="+new Date().toISOString().slice(0,10);if(sort==="now_playing")path+="&"+(type==="movie"?"primary_release_date.lte":"first_air_date.lte")+"="+new Date().toISOString().slice(0,10);data=await ottFetch(path)}renderOTTResults(data.results||[],type);document.getElementById("ottPageNumber").textContent="Page "+ottPage+" of "+Math.max(1,data.total_pages||1);ottMessage((data.total_results||0)+" titles found. Select a title for details.")}catch(e){ottMessage(e.message);document.getElementById("ottMovies").innerHTML='<div class="card">Could not load catalogue. Check the API key and internet connection.</div>'}}
-function renderOTTResults(results,type){const box=document.getElementById("ottMovies");if(!results.length){box.innerHTML="<p>No titles found. Try another search.</p>";return}box.innerHTML=results.map(m=>{const title=safeText(m.title||m.name||"Untitled"),year=(m.release_date||m.first_air_date||"").slice(0,4),rating=Number(m.vote_average||0).toFixed(1);return `<div class="ott-movie" onclick="openOTTDetails(${Number(m.id)},'${type}')"><img src="${ottImage(m.poster_path)}" alt="${title}" loading="lazy"><div class="ott-movie-info"><h3>${title}</h3><p>${year||"Year unknown"} • ⭐ ${rating}/10</p><p>${type==="movie"?"Movie":"Web Series"}</p></div></div>`}).join("")}
-async function loadOTTTrending(){document.getElementById("ottSearch").value="";ottPage=1;const type=document.getElementById("ottType").value;ottMessage("Loading trending titles...");document.getElementById("ottMovies").innerHTML="";try{const data=await ottFetch("trending/"+type+"/week?language=en-US");renderOTTResults(data.results||[],type);document.getElementById("ottPageNumber").textContent="Trending";ottMessage("Trending movies and series this week.")}catch(e){ottMessage(e.message)}}
-function changeOTTPage(step){ottPage=Math.max(1,Math.min(500,ottPage+step));loadOTTMovies()}
-async function openOTTDetails(id,type){const modal=document.getElementById("ottModal"),details=document.getElementById("ottDetails");modal.style.display="block";details.innerHTML="<p>Loading title details...</p>";try{const d=await ottFetch(type+"/"+id+"?language=en-US&append_to_response=watch%2Fproviders%2Cvideos");const title=safeText(d.title||d.name),year=(d.release_date||d.first_air_date||"").slice(0,4),overview=safeText(d.overview||"No description available."),countries=(d.production_countries||[]).map(x=>safeText(x.name)).join(", ")||"Not listed",rating=Number(d.vote_average||0).toFixed(1),region=d["watch/providers"]?.results?.IN,providers=[...(region?.flatrate||[]),...(region?.rent||[]),...(region?.buy||[])],unique=[...new Map(providers.map(p=>[p.provider_id,p])).values()],trailer=d.videos?.results?.find(v=>v.site==="YouTube"&&v.type==="Trailer");const providerHTML=unique.length?unique.map(p=>`<span class="provider-chip"><img class="provider-logo" src="https://image.tmdb.org/t/p/w92${p.logo_path}" alt="">${safeText(p.provider_name)}</span>`).join(""):"<p>No India streaming-provider details are listed for this title.</p>";details.innerHTML=`<h2>${title}</h2><img class="ott-detail-poster" src="${ottImage(d.backdrop_path||d.poster_path)}" alt="${title}"><p class="ott-detail-text">${year} • ⭐ ${rating}/10 • ${countries}</p><p class="ott-detail-text">${overview}</p><h3>📺 Where to watch in India</h3><div style="margin:10px 0">${providerHTML}</div>${trailer?`<a class="action" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=${encodeURIComponent(trailer.key)}">▶ Watch Official Trailer</a>`:""}<a class="action secondary" target="_blank" rel="noopener" href="https://www.justwatch.com/in/search?q=${encodeURIComponent(d.title||d.name)}">Find Legal Streaming Options</a><p class="ott-detail-text">Availability can change. Streaming and playback take place on the official provider's website or app.</p>`}catch(e){details.textContent=e.message}}
+function ottImage(path){
+return path?"https://image.tmdb.org/t/p/w500"+path:
+"https://placehold.co/400x600/101827/ffffff?text=No+Poster"
+}
+function safeText(s){
+return String(s||"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))
+}
+async function ottFetch(path){
+const key=ottKey();
+if(!key)throw Error("First add your TMDB API key in the Connect Movie Catalogue box.");
+const url="https://api.themoviedb.org/3/"+path+(path.includes("?")?"&":"?")+"api_key="+encodeURIComponent(key);
+const r=await fetch(url);
+if(!r.ok)throw Error("TMDB error "+r.status+". Check the API key or internet connection.");
+return r.json()
+}
+function saveTMDBKey(){
+const key=document.getElementById("tmdbKey").value.trim();
+if(!key)return alert("Enter your TMDB API key.");
+localStorage.setItem("pxj_tmdb_key",key);
+document.getElementById("tmdbKey").value="";
+alert("Movie catalogue connected.");
+loadOTTTrending()
+}
+function removeTMDBKey(){
+localStorage.removeItem("pxj_tmdb_key");
+alert("Saved key removed from this browser.");
+document.getElementById("ottMovies").innerHTML="";
+ottMessage("Add a TMDB API key to load movies.")
+}
+function clearOTTFilters(){
+document.getElementById("ottSearch").value="";
+document.getElementById("ottCountry").value="";
+document.getElementById("ottLanguage").value="";
+document.getElementById("ottGenre").value="";
+document.getElementById("ottSort").value="popular";
+ottPage=1;showOTTTab("explore");loadOTTMovies()
+}
+function resetOTTPage(){
+ottPage=1;
+if(ottCurrentMode==="explore")loadOTTMovies()
+}
+function ottSortPath(type,sort){
+if(sort==="top_rated")return "vote_average.desc";
+if(sort==="upcoming")return type==="movie"?"primary_release_date.asc":"first_air_date.asc";
+if(sort==="now_playing")return type==="movie"?"primary_release_date.desc":"first_air_date.desc";
+return "popularity.desc"
+}
+function getOTTDate(days=0){
+const d=new Date();d.setDate(d.getDate()+days);
+return d.toISOString().slice(0,10)
+}
+async function loadOTTMovies(){
+ottCurrentMode="explore";
+const query=document.getElementById("ottSearch").value.trim();
+const type=document.getElementById("ottType").value;
+const country=document.getElementById("ottCountry").value;
+const language=document.getElementById("ottLanguage").value;
+const genre=document.getElementById("ottGenre").value;
+const sort=document.getElementById("ottSort").value;
+ottMessage("Loading worldwide titles...");
+document.getElementById("ottMovies").innerHTML="";
+document.getElementById("ottResultsTitle").textContent="🎥 Explore Movies & Series";
+try{
+let data;
+if(query){
+data=await ottFetch("search/"+type+"?language=en-US&query="+encodeURIComponent(query)+"&page="+ottPage);
+}else{
+let path="discover/"+type+"?language=en-US&sort_by="+ottSortPath(type,sort)+"&page="+ottPage+"&vote_count.gte=5";
+if(country)path+="&with_origin_country="+country;
+if(language)path+="&with_original_language="+language;
+if(genre)path+="&with_genres="+genre;
+const dateField=type==="movie"?"primary_release_date":"first_air_date";
+if(sort==="upcoming")path+="&"+dateField+".gte="+getOTTDate()+"&"+dateField+".lte="+getOTTDate(365);
+if(sort==="now_playing")path+="&"+dateField+".gte="+getOTTDate(-90)+"&"+dateField+".lte="+getOTTDate();
+if(sort==="top_rated")path+="&vote_count.gte=50";
+data=await ottFetch(path)
+}
+renderOTTResults(data.results||[],type);
+document.getElementById("ottPageNumber").textContent="Page "+ottPage+" of "+Math.max(1,Math.min(500,data.total_pages||1));
+ottMessage((data.total_results||0)+" titles found. Select a title for details.")
+}catch(e){
+ottMessage(e.message);
+document.getElementById("ottMovies").innerHTML='<div class="ott-empty">Could not load catalogue. Check the API key and internet connection.</div>'
+}
+}
+
+/* TRENDING */
+async function loadOTTTrending(){
+ottCurrentMode="explore";
+document.getElementById("ottSearch").value="";
+ottPage=1;
+const type=document.getElementById("ottType").value;
+ottMessage("Loading trending titles...");
+document.getElementById("ottMovies").innerHTML="";
+document.getElementById("ottResultsTitle").textContent="🔥 Trending This Week";
+try{
+const data=await ottFetch("trending/"+type+"/week?language=en-US");
+renderOTTResults(data.results||[],type);
+document.getElementById("ottPageNumber").textContent="Trending";
+ottMessage("Trending movies and series this week.")
+}catch(e){ottMessage(e.message)}
+}
+
+/* MOVIE CARDS */
+function renderOTTResults(results,type){
+const box=document.getElementById("ottMovies");
+ottLastResults=results;
+if(!results.length){
+box.innerHTML='<div class="ott-empty">No titles found. Try another search or filter.</div>';return
+}
+const saved=getData("ott_watchlist");
+box.innerHTML=results.map(m=>{
+const title=safeText(m.title||m.name||"Untitled");
+const year=(m.release_date||m.first_air_date||"").slice(0,4);
+const rating=Number(m.vote_average||0).toFixed(1);
+const isSaved=saved.some(x=>x.id===m.id&&x.type===type);
+return `<div class="ott-movie">
+<button class="ott-watch-btn ${isSaved?"saved":""}" title="Watchlist" onclick="event.stopPropagation();toggleWatchlist(${Number(m.id)},'${type}')">${isSaved?"♥":"♡"}</button>
+<div onclick="openOTTDetails(${Number(m.id)},'${type}')">
+<img src="${ottImage(m.poster_path)}" alt="${title}" loading="lazy" onerror="this.src='https://placehold.co/400x600/101827/ffffff?text=No+Poster'">
+<div class="ott-movie-info">
+<h3>${title}</h3>
+<p>${year||"Year unknown"} • ⭐ ${rating}/10</p>
+<p>${type==="movie"?"Movie":"Web Series"}</p>
+</div></div></div>`
+}).join("")
+}
+
+/* WATCHLIST */
+function toggleWatchlist(id,type){
+const list=getData("ott_watchlist");
+const found=list.findIndex(x=>x.id===id&&x.type===type);
+if(found>=0){list.splice(found,1);ottMessage("Removed from your watchlist.")}
+else{
+const m=ottLastResults.find(x=>x.id===id);
+if(!m)return;
+list.push({id,type,title:m.title||m.name,poster_path:m.poster_path,date:m.release_date||m.first_air_date,rating:m.vote_average});
+ottMessage("Added to your watchlist ❤️")
+}
+putData("ott_watchlist",list);
+if(ottCurrentMode==="watchlist")showWatchlist();
+else renderOTTResults(ottLastResults,type)
+}
+function showOTTTab(tab){
+document.getElementById("tabExplore").classList.toggle("active",tab==="explore");
+document.getElementById("tabWatchlist").classList.toggle("active",tab==="watchlist");
+if(tab==="watchlist")showWatchlist();
+else{ottCurrentMode="explore";document.getElementById("ottResultsTitle").textContent="🎥 Explore Movies & Series"}
+}
+function showWatchlist(){
+ottCurrentMode="watchlist";
+document.getElementById("tabExplore").classList.remove("active");
+document.getElementById("tabWatchlist").classList.add("active");
+document.getElementById("ottResultsTitle").textContent="❤️ My Watchlist";
+const list=getData("ott_watchlist");
+const box=document.getElementById("ottMovies");
+if(!list.length){
+box.innerHTML='<div class="ott-empty">Your watchlist is empty. Add movies or series using the ♡ button.</div>';
+document.getElementById("ottPageNumber").textContent="Saved titles: 0";
+return
+}
+box.innerHTML=list.map(m=>{
+const title=safeText(m.title);
+return `<div class="ott-movie">
+<button class="ott-watch-btn saved" onclick="event.stopPropagation();removeWatchlist(${Number(m.id)},'${m.type}')">♥</button>
+<div onclick="openOTTDetails(${Number(m.id)},'${m.type}')">
+<img src="${ottImage(m.poster_path)}" alt="${title}" loading="lazy">
+<div class="ott-movie-info"><h3>${title}</h3><p>${(m.date||"").slice(0,4)} • ⭐ ${Number(m.rating||0).toFixed(1)}/10</p><p>${m.type==="movie"?"Movie":"Web Series"}</p></div>
+</div></div>`
+}).join("");
+document.getElementById("ottPageNumber").textContent="Saved titles: "+list.length
+}
+function removeWatchlist(id,type){
+putData("ott_watchlist",getData("ott_watchlist").filter(x=>!(x.id===id&&x.type===type)));
+showWatchlist()
+}
+function changeOTTPage(step){
+if(ottCurrentMode==="watchlist")return;
+ottPage=Math.max(1,Math.min(500,ottPage+step));loadOTTMovies()
+}
+
+/* DETAILS AND PROVIDERS */
+async function openOTTDetails(id,type){
+const modal=document.getElementById("ottModal");
+const details=document.getElementById("ottDetails");
+modal.style.display="block";
+details.innerHTML="<p>Loading title details...</p>";
+try{
+const d=await ottFetch(type+"/"+id+"?language=en-US&append_to_response=videos");
+let providerData={};
+try{providerData=await ottFetch(type+"/"+id+"/watch/providers")}catch(e){}
+const title=safeText(d.title||d.name);
+const year=(d.release_date||d.first_air_date||"").slice(0,4);
+const overview=safeText(d.overview||"No description available.");
+const countries=(d.production_countries||[]).map(x=>safeText(x.name)).join(", ")||"Not listed";
+const rating=Number(d.vote_average||0).toFixed(1);
+const region=providerData.results?.IN;
+const providers=[...(region?.flatrate||[]),...(region?.rent||[]),...(region?.buy||[])];
+const unique=[...new Map(providers.map(p=>[p.provider_id,p])).values()];
+const trailer=d.videos?.results?.find(v=>v.site==="YouTube"&&v.type==="Trailer");
+const providerHTML=unique.length?unique.map(p=>
+`<span class="provider-chip"><img class="provider-logo" src="https://image.tmdb.org/t/p/w92${p.logo_path}" alt="">${safeText(p.provider_name)}</span>`
+).join(""):"<p>No India streaming-provider details are listed for this title.</p>";
+const genres=(d.genres||[]).map(g=>safeText(g.name)).join(", ");
+details.innerHTML=`
+<h2>${title}</h2>
+<img class="ott-detail-poster" src="${ottImage(d.backdrop_path||d.poster_path)}" alt="${title}">
+<p class="ott-detail-text">${year} • ⭐ ${rating}/10 • ${countries}</p>
+<p class="ott-detail-text">Genres: ${genres||"Not listed"}</p>
+<p class="ott-detail-text">${overview}</p>
+<h3>📺 Where to watch in India</h3>
+<div style="margin:10px 0">${providerHTML}</div>
+${trailer?`<a class="action" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=${encodeURIComponent(trailer.key)}">▶ Watch Official Trailer</a>`:""}
+<a class="action secondary" target="_blank" rel="noopener" href="https://www.justwatch.com/in/search?q=${encodeURIComponent(d.title||d.name)}">Find Legal Streaming Options</a>
+<p class="ott-detail-text">Availability can change. Streaming and playback take place on the official provider's website or app.</p>`
+}catch(e){details.textContent=e.message}
+}
 function closeOTTDetails(){document.getElementById("ottModal").style.display="none"}
+
 renderOTTPlatforms();
-console.log("PREM X JARVIS V3.1 ONLINE");
+console.log("PREM X JARVIS V4.0 ONLINE");
 </script>
 </body>
 </html>
